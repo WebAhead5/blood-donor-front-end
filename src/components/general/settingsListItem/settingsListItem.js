@@ -7,7 +7,6 @@ const SettingsListItem = (props) => {
             <img src={props.icon} alt={props.alt} className="settingsListItem_userIcon"/>
             <span>{props.title}</span>
             <img src='/img/icon-arrow.svg' alt="go arrow" className="settingsListItem_goArrow"/>
-            <div className="settingsListItem_horizental-line"></div>
          </div>
      )
 }

@@ -6,9 +6,11 @@ import SettingsListScreen from '../screens/settingsListScreen'
 function App() {
   return (
     <div>
-        <SettingsListScreen/>
+     <SettingsListScreen/>
         <NavBar />
+
     </div>
+
   );
 }
 

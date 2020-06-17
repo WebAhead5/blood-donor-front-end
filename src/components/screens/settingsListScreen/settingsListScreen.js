@@ -1,9 +1,9 @@
 import React from 'react';
-import SettingsList from '../../settingsList';
-import SettingsListItem from '../../settingsListItem';
+import SettingsList from '../../general/settingsList';
+import SettingsListItem from '../../general/settingsListItem';
 import './settingsListScreen.css'
 import { useHistory } from 'react-router-dom'
-import TitleHeader from '../../titleHeader'
+import TitleHeader from '../../general/titleHeader'
 
 const SettingsListScreen = () => {
 

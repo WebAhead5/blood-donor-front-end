@@ -4,4 +4,13 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
+
+}
+.settingsList_horizental-line {
+    border: 0.5px solid #c6c6c6;
+    width: 80%;
+
+    /*left: 20%;*/
+    /*right: 10%;*/
+
 }
