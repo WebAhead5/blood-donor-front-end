@@ -36,19 +36,21 @@ function NavBar({children, className, elementClassName, initialPosIndex = 0}) {
     }, [])
 
 
-    return <div className={`navBar ${className}`} ref={container}>
-        {
-            children ? children :
-                <Fragment>
-                    <NavBarItem src="/img/icon-nav-home.svg" title="home" className={`navBar_item ${elementClassName}`}/>
-                    <NavBarItem src="/img/icon-nav-flag.svg" title="Goal" className={`navBar_item ${elementClassName}`}/>
-                    <NavBarItem src="/img/icon-nav-map.svg" title="map" className={`navBar_item ${elementClassName}`}/>
-                    <NavBarItem src="/img/icon-nav-profile.svg" title="profile" className={`navBar_item ${elementClassName}`}/>
-                    <NavBarItem src="/img/icon-nav-settings.svg" title="settings" className={`navBar_item ${elementClassName}`}/>
-                </Fragment>
-        }
-        < div ref={selectedItem} className="navBar_selectedItem"/>
-    </div>
+    return <header className="navBar">
+        <nav className={`navBar_flexContainer ${className}`} ref={container}>
+            {
+                children ? children :
+                    <Fragment>
+                        <NavBarItem src="/img/icon-nav-home.svg" title="home" className={`navBar_item ${elementClassName}`}/>
+                        <NavBarItem src="/img/icon-nav-flag.svg" title="Goal" className={`navBar_item ${elementClassName}`}/>
+                        <NavBarItem src="/img/icon-nav-map.svg" title="map" className={`navBar_item ${elementClassName}`}/>
+                        <NavBarItem src="/img/icon-nav-profile.svg" title="profile" className={`navBar_item ${elementClassName}`}/>
+                        <NavBarItem src="/img/icon-nav-settings.svg" title="settings" className={`navBar_item ${elementClassName}`}/>
+                    </Fragment>
+            }
+            < div ref={selectedItem} className="navBar_selectedItem"/>
+        </nav>
+    </header>
 
 }
 

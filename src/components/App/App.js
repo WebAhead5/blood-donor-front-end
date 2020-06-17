@@ -4,10 +4,11 @@ import NavBar from "../general/navBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+
         <NavBar />
-      </header>
+
+
     </div>
   );
 }
