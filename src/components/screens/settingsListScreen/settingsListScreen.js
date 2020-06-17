@@ -3,6 +3,7 @@ import SettingsList from '../../settingsList';
 import SettingsListItem from '../../settingsListItem';
 import './settingsListScreen.css'
 import { useHistory } from 'react-router-dom'
+import TitleHeader from '../../titleHeader'
 
 const SettingsListScreen = () => {
 
@@ -10,6 +11,7 @@ const SettingsListScreen = () => {
 
     return (
        <div className='settingsListScreen_container'>
+           <TitleHeader title='Settings' />
             <SettingsList>
                 <SettingsListItem onClick={()=> history.push('/user-settings')} title="Personal" icon='/img/icon-user.svg'/>
                 <SettingsListItem onClick={()=> history.push('/reminders')} title="Reminders" icon='/img/icon-notification.svg'/>
