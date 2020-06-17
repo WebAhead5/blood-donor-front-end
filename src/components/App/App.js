@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
-import SettingsList from '../settingsList'
+import SettingsListScreen from '../screens/settingsListScreen'
 
 function App() {
   return (
     <div className="App">
+     <SettingsListScreen/>
      </div>
   );
 }
