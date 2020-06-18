@@ -16,7 +16,7 @@ const AlertMenuItem = (props) => {
                 <div className="alertMenuItem_container">
                     <WhiteBackgroundShadow className="alertMenuItem_whiteBackgroundShadow">
                     <div className='alertMenuItem_notification-icon-container'>
-                        <img className="alertMenuItem_notification-icon" src='/img/icon-notification.svg' alt="notification" />
+                        <img className="alertMenuItem_notification-icon" src='/img/icon-notification-red.svg' alt="notification" />
                         </div>
                     <div className="alertMenuItem_title_location_container">
                         <div className="alertMenuItem_title">{title}</div>

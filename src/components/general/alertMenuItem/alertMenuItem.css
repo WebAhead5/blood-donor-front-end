@@ -31,7 +31,7 @@
 }
 
 .alertMenuItem_location {
-  color: #ff0000;
+  color: var(--color-red);
   position: relative;
 }
 
