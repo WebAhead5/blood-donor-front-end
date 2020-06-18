@@ -1,0 +1,10 @@
+<svg id="Layer_1" data-name="Layer 1" width="1000px" height="103px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 103">
+    <defs>
+        <style>
+            .wave{fill:#4e0404;}
+        </style>
+    </defs>
+    <title>Untitled-1</title>
+    <path class="wave"
+          d="M1000,103H0V0C51,0,88.4,38.56,157.5,47.89c170.41,23,230.19-58.76,408-42.23,101.92,9.47,109.9,38.9,213,39.14C872.83,45,938,0,1000,0Z"/>
+</svg>
