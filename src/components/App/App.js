@@ -7,6 +7,7 @@ import HomeMenu from "../general/HomeMenu";
 function App() {
   return (
     <div>
+      <HomeMenu />
       <SettingsListScreen />
       <NavBar />
     </div>
