@@ -1,0 +1,85 @@
+.subHeader{
+    display: flex;
+    /*align-items: center;*/
+    justify-content: space-evenly;
+    width: 100%;
+    height: 200px;
+
+}
+.subHeader_goalGroup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: capitalize;
+}
+.subHeader_goalGroup_title{
+    font-weight: bolder;
+
+}
+
+
+
+.subHeader_dropBorder{
+
+    height: 200px;
+    width: 150px;
+    padding: 5px;
+    background-color: black;
+    mask-border: url("/img/icon-goal-drop.svg")  stretch ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.subHeader_drop{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    background: black;
+    mask-border: url("/img/icon-goal-drop.svg")  stretch ;
+
+}
+.subHeader_dropFill{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:40%;
+    background-color: var(--color-red);
+    z-index: 10;
+}
+
+
+
+.subHeader_wave {
+    width: 200px;
+    height:30px;
+
+    position: absolute;
+    top :-10px;
+
+    animation: sineMove 15s linear infinite;
+    animation-delay: 0s;
+
+    background: url("/img/img-goal-wave-red.svg") repeat-x;
+    background-size: cover;
+
+    z-index: 5;
+}
+.subHeader_wave2{
+    background-image: url("/img/img-goal-wave-darkRed.svg");
+    animation: sineMove 20s linear infinite;
+
+    top :-15px;
+    z-index: 4;
+
+
+}
+@keyframes sineMove {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 1000px;
+    }
+}
