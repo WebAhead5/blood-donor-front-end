@@ -28,8 +28,6 @@ const AppIndex = () => {
 }
 
 ReactDOM.render(
-  
-
   <AppIndex /> ,document.getElementById('root')
 );
 
