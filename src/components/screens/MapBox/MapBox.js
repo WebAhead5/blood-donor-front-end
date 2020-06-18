@@ -1,15 +1,12 @@
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import "./MapBox.css";
 import { fetchCoords, dummyLocationsObject } from './API-Geolocation';
-
 
 import React, { useState, useEffect, useRef } from "react";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 
-
-import logo from "../../../public/images/logo.png"
+// import logo from "../../../public/images/logo.png"
 
 // TODO: Need to take data as per Farid research
 // TODO: Need to link Farid website data and make map update
@@ -42,7 +39,7 @@ export default function MapBox() {
     const [selectedLocation, setSelectedLocation] = useState(null);
 
     return (
-        <div> Hey there
+        <div>
             <ReactMapGL
                 ref={myMap}
                 {...viewport}
@@ -72,7 +69,7 @@ export default function MapBox() {
                                 setSelectedLocation(location);
                             }}
                         >
-                            <img src={logo} alt="Bloodbank Location Icon" />
+                            {/* <img src={logo} alt="Bloodbank Location Icon" /> */}
                         </button>
                     </Marker>
                 ))}
@@ -91,8 +88,7 @@ export default function MapBox() {
                         </div>
                     </Popup>
                 ) : null}
-
-      End of Map Fragment</ReactMapGL>
+            </ReactMapGL>
         </div>
     );
 }
