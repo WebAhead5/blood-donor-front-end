@@ -48,7 +48,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: var(--color-red);
+    background-color: var(--color-darkred);
     z-index: 10;
 }
 
