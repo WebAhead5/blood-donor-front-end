@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useRef} from 'react';
 import NavBarItem from "../navBarItem";
-import "../navBar.css";
+import "./navBar.css";
 
 function NavBar({children, className, elementClassName, initialPosIndex = 0}) {
 
@@ -13,7 +13,6 @@ function NavBar({children, className, elementClassName, initialPosIndex = 0}) {
     // 2. set the position of the "selected item div" based on the div child index
     function setSelectedItemDimensions(index, domElement) {
 
-            console.log(index, domElement)
             selectedItem.current.style.height = `${domElement.offsetHeight}px`;
             selectedItem.current.style.width = `${domElement.offsetWidth}px`;
             selectedItem.current.style.left = `${(index) * domElement.clientWidth}px`;

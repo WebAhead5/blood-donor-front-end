@@ -1,17 +1,15 @@
 import React from 'react';
 import './App.css';
-import AlertList from '../general/alertList'
-import AlertMenuItem from '../general/alertMenuItem'
+import NavBar from '../general/navBar'
+import Button from '../general/button'
 
 function App() {
+
   return (
     <div>
-     <AlertList>
-      <AlertMenuItem />
-     </AlertList>
-
+      <Button />
+      <NavBar />
     </div>
-
   );
 }
 
