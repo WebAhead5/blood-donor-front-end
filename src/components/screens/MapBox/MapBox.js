@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 
-// import logo from "../../../public/images/logo.png"
+import logo from "../../../public/images/logo.png"
 
 // TODO: Need to take data as per Farid research
 // TODO: Need to link Farid website data and make map update
@@ -69,7 +69,7 @@ export default function MapBox() {
                                 setSelectedLocation(location);
                             }}
                         >
-                            {/* <img src={logo} alt="Bloodbank Location Icon" /> */}
+                            <img src={logo} alt="Bloodbank Location Icon" />
                         </button>
                     </Marker>
                 ))}
