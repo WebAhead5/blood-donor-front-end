@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { IntlProvider } from 'react-intl'
@@ -16,7 +16,7 @@ const AppIndex = () => {
   return (
 
     <React.StrictMode>
-      <IntlProvider locale={lang} languages={languages[lang]}>
+      <IntlProvider locale={lang} messages={languages[lang]}>
         <Router>
           <div style={{ direction: lang === 'ar' ? 'rtl' : 'ltr', fontFamily: 'Helvetica' }}>
           <App setLang={setLang} lang={lang}/>

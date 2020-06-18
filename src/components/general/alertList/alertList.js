@@ -1,12 +1,14 @@
 import React from 'react';
 import './alertList.css'
+import { FormattedMessage } from 'react-intl'
 
 const AlertList = (props) => {
 
 
     return (
         <div className="alertList_title_container">
-            <h3>Alerts</h3>
+            {/* adding the language support */}
+            <h3><FormattedMessage id="Alerts" /> </h3>
             <div className="alertList_container">
                 {props.children}
             </div>
