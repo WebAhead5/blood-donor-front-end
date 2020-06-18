@@ -1,7 +1,7 @@
 import React from 'react';
 import "./subHeader.css"
 
-function SubHeader({total = 1000, current = 0,titlePosPx=100}) {
+function SubHeader({total = 1000, current = 600,titlePosPx=100 , dropScale = 1}) {
     return (
         <div className="subHeader">
 
@@ -15,9 +15,13 @@ function SubHeader({total = 1000, current = 0,titlePosPx=100}) {
             {/*drop section---------------------------------------------------------------------*/}
 
             {/*this div add a border to the drop*/}
-            <div className="subHeader_dropBorder">
+            <div className="subHeader_dropBorder" style={{transform:`scale(${dropScale})`}}>
                 {/*the content od the drop*/}
                 <div className="subHeader_drop">
+
+                    {/*percentage*/}
+                    <div className="subHeader_percentage">{`${current / total * 100}%`}</div>
+
                     {/*the fill of the drop*/}
                     <div className="subHeader_dropFill" style={{height: `${current / total * 100}%`}}>
                         {/*wave effect*/}
