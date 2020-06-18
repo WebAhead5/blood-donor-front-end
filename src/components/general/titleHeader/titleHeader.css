@@ -1,0 +1,19 @@
+.titleHeader_title {
+    font-family: Alef;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 26px;
+}
+
+.titleHeader_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+  background-color: #4f98cd;
+  color: #FFFFFF;
+}

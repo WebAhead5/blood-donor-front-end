@@ -1,0 +1,27 @@
+.settingsListItem_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 35%;
+  height: 10vh;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.settingsListItem_goArrow {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+}
+
+.settingsListItem_userIcon {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 20px;
+}
+
