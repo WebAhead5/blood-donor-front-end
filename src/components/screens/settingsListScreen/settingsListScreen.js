@@ -4,13 +4,15 @@ import SettingsListItem from '../../general/settingsListItem';
 import './settingsListScreen.css'
 import { useHistory } from 'react-router-dom'
 import TitleHeader from '../../general/titleHeader'
+import MainScreenWrapper from '../../general/mainScreenWrapper'
+
 
 const SettingsListScreen = () => {
 
     const history = useHistory();
 
     return (
-       <div className='settingsListScreen_container'>
+       <MainScreenWrapper className='settingsListScreen_container'>
            <TitleHeader title='Settings' />
             <SettingsList>
                 <SettingsListItem onClick={()=> history.push('/user-settings')} title="Personal" icon='/img/icon-user.svg'/>
@@ -21,7 +23,7 @@ const SettingsListScreen = () => {
                 <SettingsListItem onClick={()=> history.push('/faq')} title='FAQ' icon='/img/icon-FAQ.svg'/>
                 <SettingsListItem onClick={()=> history.push('/about')} title='About' icon='/img/icon-about.svg'/>
             </SettingsList>
-       </div>
+       </MainScreenWrapper>
     )
 }
 

@@ -3,16 +3,17 @@ import './App.css';
 import NavBar from '../general/navBar'
 import AlertList from '../general/alertList'
 import AlertListItem from '../general/alertMenuItem'
+import SettingListScreen from '../screens/settingsListScreen'
 
 
 function App() {
 
   return (
     <div>
-      <AlertList>
-        <AlertListItem />
-      </AlertList>
-      <NavBar />
+
+        <SettingListScreen />
+        <NavBar />
+
     </div>
   );
 }
