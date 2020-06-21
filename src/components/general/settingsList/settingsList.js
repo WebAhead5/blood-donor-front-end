@@ -6,8 +6,8 @@ const SettingsList = (props) => {
 
     return (
         <div className="settingsList_container">
-           {props.children.map(child=>
-            <Fragment>
+           {props.children.map((child,index)=>
+            <Fragment key={`settingsList_${index}`}>
                 {child}
                 <div className="settingsList_horizental-line"></div>
             </Fragment>
