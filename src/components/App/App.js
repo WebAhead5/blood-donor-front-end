@@ -2,6 +2,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from '../general/navBar'
+import PersonalSettingsScreen from '../screens/personalSettingsScreen'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
 import SubHeader from "../general/subHeader";
@@ -9,10 +10,12 @@ import GoalsScreen from "../screens/goalsScreen";
 
 
 
+
 function App() {
 
   return (
     <div>
+
 
       <Switch>
         <Route exact path="/">
@@ -37,13 +40,14 @@ function App() {
         </Route>
 
         <Route exact path="/settings/personal">
-          {/*TODO - render home screen*/}
+          <PersonalSettingsScreen />
         </Route>
 
         <Route exact path="/settings/reminders">
           {/*TODO - render home screen*/}
         </Route>
       </Switch>
+
 
       <NavBar />
     </div>
