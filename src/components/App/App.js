@@ -19,8 +19,8 @@ function App() {
           <SubHeader/>
         </Route>
 
-        <Route exact path="/personal">
-          {/*TODO - render home screen*/}
+        <Route exact path="/map">
+          {/*TODO - render the map*/}
         </Route>
 
         <Route exact path="/personal">
