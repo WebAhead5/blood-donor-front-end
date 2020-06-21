@@ -5,10 +5,15 @@ import NavBar from '../general/navBar'
 import PersonalSettingsScreen from '../screens/personalSettingsScreen'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
-import SubHeader from "../general/subHeader";
 import GoalsScreen from "../screens/goalsScreen";
+import HomeScreen from "../screens/homeScreen";
 
 
+let alerts = [
+  {title:"Blood donation needed!", context: "Haifa district"},
+  {title:"Blood donation needed!", context: "jerusalem district"},
+  {title:"Blood donation needed!", context: "holululu district"},
+]
 
 
 function App() {
@@ -19,11 +24,10 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          {/*TODO - render home screen*/}
+          <HomeScreen alertsData={alerts}/>
         </Route>
 
         <Route exact path="/goals">
-          {/*TODO - render home screen*/}
           <GoalsScreen />
         </Route>
 
