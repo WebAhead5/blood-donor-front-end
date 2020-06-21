@@ -3,6 +3,33 @@ import {useHistory} from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
 
+
+const navBarData=[
+    {
+        title:"home",
+        redirectionLink:"/",
+        iconSrc:"/img/icon-nav-home.svg"
+    },{
+        title:"Goal",
+        redirectionLink:"/goals",
+        iconSrc:"/img/icon-nav-flag.svg"
+    },{
+        title:"map",
+        redirectionLink:"/map",
+        iconSrc:"/img/icon-nav-map.svg"
+    },{
+        title:"personal",
+        redirectionLink:"/personal",
+        iconSrc:"/img/icon-nav-profile.svg"
+    },{
+        title:"settings",
+        redirectionLink:"/settings",
+        iconSrc:"/img/icon-nav-settings.svg"
+    },
+]
+
+
+
 function NavBar({
                     children,
                     className,
@@ -44,38 +71,15 @@ function NavBar({
                 {children ? (
                     children
                 ) : (
-                    <Fragment>
+                    navBarData.map(element=>
                         <NavBarItem
-                            src="/img/icon-nav-home.svg"
-                            title="home"
+                            src={element.iconSrc}
+                            title={element.title}
                             className={`navBar_item ${elementClassName}`}
-                            onClick={() => history.push("/")}
+                            onClick={() => history.push(element.redirectionLink)}
                         />
-                        <NavBarItem
-                            src="/img/icon-nav-flag.svg"
-                            title="Goal"
-                            className={`navBar_item ${elementClassName}`}
-                            onClick={() => history.push("/goals")}
-                        />
-                        <NavBarItem
-                            src="/img/icon-nav-map.svg"
-                            title="map"
-                            className={`navBar_item ${elementClassName}`}
-                            onClick={() => history.push("/map")}
-                        />
-                        <NavBarItem
-                            src="/img/icon-nav-profile.svg"
-                            title="personal"
-                            className={`navBar_item ${elementClassName}`}
-                            onClick={() => history.push("/personal")}
-                        />
-                        <NavBarItem
-                            src="/img/icon-nav-settings.svg"
-                            title="settings"
-                            className={`navBar_item ${elementClassName}`}
-                            onClick={() => history.push("/settings")}
-                        />
-                    </Fragment>
+                    )
+
                 )}
                 <div ref={selectedItem} className="navBar_selectedItem"/>
             </nav>
