@@ -2,7 +2,6 @@
 import React from 'react';
 import './App.css';
 import NavBar from '../general/navBar'
-import SettingListScreen from '../screens/settingsListScreen'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
 import SubHeader from "../general/subHeader";
