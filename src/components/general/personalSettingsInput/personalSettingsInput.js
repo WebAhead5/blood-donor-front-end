@@ -5,11 +5,15 @@ import './personalSettingsInput.css'
 const PersonalSettingsInput = (props) => {
 
     return (
+
+        // using the general shadow box component.
         <WhiteBackgroundShodow className={`personalSettingsInput_container ${props.className}`}>
 
             <div className="personalSettingsInput_icon_container" >
                 <img className="personalSettingsInput_icon" src={props.icon} alt={props.alt} />
             </div>
+
+            {/* vertical line */}
             <div className='personalSettingsInput_vertical_line'></div>
             <div className={`personalSettingsInput_content ${props.contentClassName}`}>
                 {/* Default is an input for the name */}
