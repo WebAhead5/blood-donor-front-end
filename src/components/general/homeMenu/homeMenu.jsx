@@ -1,6 +1,7 @@
 import React from "react";
 import "./homeMenu.css";
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import { useHistory } from "react-router-dom";
 
 function HomeMenuItem(props) {
   return (
@@ -14,6 +15,8 @@ function HomeMenuItem(props) {
 }
 
 export const HomeMenu = () => {
+  const history = useHistory();
+
   return (
     <div>
       <CarouselProvider
@@ -29,6 +32,7 @@ export const HomeMenu = () => {
           <div className="homemenu-container">
             <Slide>
               <HomeMenuItem
+                onClick={() => history.push("/how-to-donate")}
                 icon="/img/dollar-icon.svg"
                 text="support us 
         financial"
@@ -36,6 +40,7 @@ export const HomeMenu = () => {
             </Slide>
             <Slide>
               <HomeMenuItem
+                onClick={() => history.push("/how-to-donate")}
                 icon="/img/icon3.svg"
                 text="How To Donate
       Blood"
@@ -43,6 +48,7 @@ export const HomeMenu = () => {
             </Slide>
             <Slide>
               <HomeMenuItem
+                onClick={() => history.push("/contribute")}
                 icon="/img/icon2.svg"
                 text="ways you could contribute "
               />
@@ -53,3 +59,5 @@ export const HomeMenu = () => {
     </div>
   );
 };
+
+export default HomeMenu;
