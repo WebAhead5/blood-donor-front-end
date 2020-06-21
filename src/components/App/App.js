@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from '../general/navBar'
-import AlertList from '../general/alertList'
-import AlertListItem from '../general/alertMenuItem'
-import SettingListScreen from '../screens/settingsListScreen'
+import PersonalSettingsScreen from '../screens/personalSettingsScreen'
 
 
 function App() {
@@ -11,7 +9,7 @@ function App() {
   return (
     <div>
 
-        <SettingListScreen />
+        <PersonalSettingsScreen />
         <NavBar />
 
     </div>
