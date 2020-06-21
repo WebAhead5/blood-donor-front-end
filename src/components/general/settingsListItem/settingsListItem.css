@@ -2,13 +2,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 35%;
+  padding-left: 25%;
   height: 10vh;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
   line-height: 21px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .settingsListItem_goArrow {
