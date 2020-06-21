@@ -4,9 +4,8 @@ import './App.css';
 import NavBar from '../general/navBar'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
-import SubHeader from "../general/subHeader";
 import GoalsScreen from "../screens/goalsScreen";
-import HomeScreen from "../screens/homeScreen/homeScreen";
+import HomeScreen from "../screens/homeScreen";
 
 
 
