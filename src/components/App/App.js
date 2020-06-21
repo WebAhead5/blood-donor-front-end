@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
 import NavBar from "../general/navBar";
-import {  Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
 import SubHeader from "../general/subHeader";
-
+import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
 
         <Route exact path="/goals">
           {/*TODO - render home screen*/}
-          <SubHeader/>
+          <SubHeader />
         </Route>
 
         <Route exact path="/map">
@@ -36,7 +36,7 @@ function App() {
         </Route>
 
         <Route exact path="/settings/reminders">
-          {/*TODO - render home screen*/}
+          <ReminderSettingsScreen />
         </Route>
       </Switch>
 
