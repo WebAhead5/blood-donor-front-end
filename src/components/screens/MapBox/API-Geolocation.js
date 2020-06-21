@@ -1,42 +1,92 @@
 const querystring = require('querystring');
 
-// Example urls from MapBox are: "/geocoding/v5/{endpoint}/{search_text}.json"; or "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoianJkNjU2IiwiYSI6ImNrYmh4azU5bDA5dnYycm81OHVqN3BzeHoifQ.U_d4TWgxve_kqekKbQGORg"
+// Example urls from Google are: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBM3rGm854oa_UAkDLZzGFZO5dcFPucQc8
 
 
-// Create URL
-let urlStart = "https://api.mapbox.com/geocoding/v5/mapbox.places/"
-let params = {
-    country: "il",
-    access_token: process.env.REACT_APP_MAPBOX_PUBLIC,
-    limit: 1
+// Dummy Data:
+let faridObject = [{
+    "DateDonation": "2020-06-18T00:00:00",
+    "FromHour": "16:00",
+    "ToHour": "19:30",
+    "Name": "מתנס ירוחם",
+    "City": "ירוחם",
+    "Street": "",
+    "NumHouse": "",
+    "AccountType": ""
+}]
+
+let jdObject = [
+    {
+    "DateDonation": "2020-06-18T00:00:00",
+    "FromHour": "16:00",
+    "ToHour": "19:30",
+    "Name": "מתנס ירוחם",
+    "City": "ירוחם",
+    "Street": "",
+    "NumHouse": "",
+    "AccountType": ""
+},
+{
+    "DateDonation": "2020-06-18T00:00:00",
+    "FromHour": "16:00",
+    "ToHour": "19:30",
+    "Name": "Italian hospital",
+    "City": "Haifa",
+    "Street": "",
+    "NumHouse": "",
+    "AccountType": ""
+},
+{
+    "DateDonation": "2020-06-18T00:00:00",
+    "FromHour": "16:00",
+    "ToHour": "19:30",
+    "Name": "German Colony",
+    "City": "Haifa",
+    "Street": "",
+    "NumHouse": "",
+    "AccountType": ""
 }
-let locationWords = "Tel Aviv"
-let queryString = querystring.stringify(params);
-let concat = `${urlStart}${encodeURI(locationWords)}.json?${queryString}`
+];
 
-// Make API call
-export async function fetchCoords() {
 
-    const mapBoxResponse = await fetch(concat)
-    const data = await mapBoxResponse.json();
-    let apiResponseObj = data.features[0].center;
-    let returnObject = {}
-    returnObject['lon'] = apiResponseObj[0];
-    returnObject['lat'] = apiResponseObj[1];
+let getGeolocation = async (arrayOfObjects) => {
+    let urlStart = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let arrayOfReturnedGeolocations = [];
+    let counter = 1;
 
-    return returnObject;
+    await arrayOfObjects.forEach(async object =>{
+        let params = {
+            address: `${object.Name}, ${object.City}`,
+            region: "il",
+            language: "he",
+            key: process.env.REACT_APP_GOOGLE_KEY,
+        }
+        let queryString = querystring.stringify(params);
+        let concat = `${urlStart}${queryString}`;
+        console.log("fetching from url:", concat);
+
+        const googleResponse = await fetch(concat)
+        const data = await googleResponse.json();
+
+        console.log("inside forEach",data);
+        console.log("inside forEach",data.results[0].geometry.location);
+
+        let newObj = {};
+        newObj["lon"] = data.results[0].geometry.location.lng;
+        newObj["lat"] = data.results[0].geometry.location.lat;
+        newObj["address"] = params.address;
+        newObj["id"] = counter;
+
+        counter++;
+        
+        arrayOfReturnedGeolocations.push(newObj)
+        
+    })
+
+    console.log("arrayOfReturnedGeolocations", arrayOfReturnedGeolocations);  
+    return arrayOfReturnedGeolocations
 }
 
-// Dummy data for early development
-export let dummyLocationsObject = [
-    { locationId: 1, lat: 32.710, lon: 34.920 },
-    { locationId: 2, lat: 32.720, lon: 34.930 },
-    { locationId: 3, lat: 32.730, lon: 34.920 },
-    { locationId: 4, lat: 32.740, lon: 34.940 },
-    { locationId: 5, lat: 32.750, lon: 34.970 },
-    { locationId: 6, lat: 32.760, lon: 34.960 },
-    { locationId: 7, lat: 32.770, lon: 34.950 },
-    { locationId: 8, lat: 32.780, lon: 34.980 },
-    { locationId: 9, lat: 32.790, lon: 34.990 },
-    { locationId: 10, lat: 32.800, lon: 34.999 }
-]
+export default getGeolocation
