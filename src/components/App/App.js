@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from '../general/navBar'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
+import Personal from "../screens/personal";
 import SubHeader from "../general/subHeader";
 import GoalsScreen from "../screens/goalsScreen";
 
@@ -29,7 +30,7 @@ function App() {
         </Route>
 
         <Route exact path="/personal">
-          {/*TODO - render home screen*/}
+          <Personal />
         </Route>
 
         <Route exact path="/settings">
