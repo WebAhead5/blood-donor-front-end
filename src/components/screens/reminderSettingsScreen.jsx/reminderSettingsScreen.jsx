@@ -10,18 +10,19 @@ const data = [
     alt: "phone",
     description: "Would you like to recieve SMS remiders ?",
     enterDetail: "Enter your phone number",
+    placeholder: "Enter Phone Number...",
   },
   {
     icon: "/img/mail-icon.svg",
     alt: "mail",
     description: "Would you like to recieve remiders to your email?",
     enterDetail: "Enter your phone Email address",
+    placeholder: "Enter Email Address...",
   },
   {
     icon: "/img/bell-icon.svg",
     alt: "bell",
     description: "Would you like to recieve notifications to your phone ?",
-    enterDetail: "Enter your phone number",
   },
 ];
 
@@ -39,6 +40,8 @@ const ReminderSettingsScreen = () => {
           description={element.description}
           icon={element.icon}
           enterDetail={element.enterDetail}
+          placeholder={element.placeholder}
+          hideInput={index === 2}
         />
       ))}
     </div>
