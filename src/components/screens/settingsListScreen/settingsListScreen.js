@@ -14,7 +14,7 @@ const SettingsListScreen = () => {
            <TitleHeader title='Settings' />
             <SettingsList>
                 <SettingsListItem onClick={()=> history.push('/settings/personal')} title="Personal" icon='/img/icon-user.svg'/>
-                <SettingsListItem onClick={()=> history.push('/settings/notifications')} title="Reminders" icon='/img/icon-notification.svg'/>
+                <SettingsListItem onClick={()=> history.push('/settings/reminders')} title="Reminders" icon='/img/icon-notification.svg'/>
                 <SettingsListItem onClick={()=> history.push('/settings/how-to-donate')} title="How-To-Donate" icon='/img/icon-how-to-donate.svg'/>
                 <SettingsListItem onClick={()=> history.push('/settings/help-support')} title="Help & Support" icon='/img/icon-help-support.svg'/>
                 <SettingsListItem onClick={()=> history.push('/settings/contact-us')} title='Contact Us' icon='/img/icon-contact-us.svg'/>

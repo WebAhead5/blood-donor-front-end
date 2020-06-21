@@ -35,7 +35,7 @@ function App() {
           {/*TODO - render home screen*/}
         </Route>
 
-        <Route exact path="/settings/notifications">
+        <Route exact path="/settings/reminders">
           {/*TODO - render home screen*/}
         </Route>
       </Switch>
