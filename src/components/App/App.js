@@ -1,14 +1,18 @@
-import React from "react";
-import "./App.css";
-import NavBar from "../general/navBar";
+
+import React from 'react';
+import './App.css';
+import NavBar from '../general/navBar'
 import {  Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
 import SubHeader from "../general/subHeader";
 
 
+
 function App() {
+
   return (
     <div>
+
       <Switch>
         <Route exact path="/">
           {/*TODO - render home screen*/}

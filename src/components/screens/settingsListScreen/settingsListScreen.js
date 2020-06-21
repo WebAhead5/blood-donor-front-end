@@ -4,6 +4,8 @@ import SettingsListItem from '../../general/settingsListItem';
 import './settingsListScreen.css'
 import { useHistory } from 'react-router-dom'
 import TitleHeader from '../../general/titleHeader'
+import MainScreenWrapper from '../../general/mainScreenWrapper'
+
 
 const data=[
     {
@@ -42,7 +44,7 @@ const SettingsListScreen = () => {
     const history = useHistory();
 
     return (
-       <div className='settingsListScreen_container'>
+       <MainScreenWrapper className='settingsListScreen_container'>
            <TitleHeader title='Settings' />
             <SettingsList>
                 {data.map((element,index)=>
@@ -54,7 +56,7 @@ const SettingsListScreen = () => {
                 )}
 
             </SettingsList>
-       </div>
+       </MainScreenWrapper>
     )
 }
 
