@@ -71,8 +71,9 @@ function NavBar({
                 {children ? (
                     children
                 ) : (
-                    navBarData.map(element=>
+                    navBarData.map((element,index)=>
                         <NavBarItem
+                            key={index}
                             src={element.iconSrc}
                             title={element.title}
                             className={`navBar_item ${elementClassName}`}
