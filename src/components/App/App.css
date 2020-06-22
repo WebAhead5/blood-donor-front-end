@@ -2,9 +2,3 @@
   text-align: center;
 }
 
-
-html{
-  /*to account for the bav bar height*/
-  padding-bottom: 80px;
-
-}

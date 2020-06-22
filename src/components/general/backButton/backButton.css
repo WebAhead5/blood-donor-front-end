@@ -1,0 +1,8 @@
+.backButton_general {
+    position: absolute;
+    left: 5px;
+    width: 35px;
+    height: 33px;
+    justify-self: start;
+    transform: rotate(180deg);
+}

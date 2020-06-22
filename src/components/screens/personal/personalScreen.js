@@ -3,6 +3,8 @@ import HistoryLogList from '../../general/historyLogList';
 import Image from "../../general/image";
 import './personalScreen.css'
 import TitleHeader from '../../general/titleHeader'
+import MainScreenWrapper from '../../general/mainScreenWrapper'
+
 
 
 
@@ -58,6 +60,10 @@ const PersonalScreen = () => {
             <HistoryLogList logs={logs} />
             <Image src="/img/icon-add.svg" className="personalScreenContainerAddBtn" alt="Add button" onClick={onAddClick} />
 
+            <MainScreenWrapper>
+                <TitleHeader title='History Log' />
+                <HistoryLogList />
+            </MainScreenWrapper>
         </div>
     )
 }

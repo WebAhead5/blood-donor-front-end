@@ -2,22 +2,26 @@ import React from 'react';
 import SubHeader from "../../general/subHeader";
 import MainHeader from "../../general/mainHeader/mainHeader";
 import "./goalsScreen.css"
+import MainScreenWrapper from '../../general/mainScreenWrapper'
 
-function GoalsScreen({totalGoal,currentBloodCount}) {
+
+function GoalsScreen({ totalGoal, currentBloodCount }) {
     return (
-        <div className="goalsScreen">
-            <div className="goalsScreen_headers">
-                <MainHeader/>
-                <SubHeader className="goalsScreen_dropSection"
-                           current={currentBloodCount}
-                           total={totalGoal} />
+        <MainScreenWrapper>
+            <div className="goalsScreen">
+                <div className="goalsScreen_headers">
+                    <MainHeader />
+                    <SubHeader className="goalsScreen_dropSection"
+                        current={currentBloodCount}
+                        total={totalGoal} />
+                </div>
+
+                <div className="goalsScreen_padding" />
+
+                {/*enter any content here*/}
+
             </div>
-
-            <div className="goalsScreen_padding"/>
-
-            {/*enter any content here*/}
-
-        </div>
+        </MainScreenWrapper>
     );
 }
 
