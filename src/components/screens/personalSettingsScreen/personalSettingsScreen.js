@@ -68,7 +68,7 @@ const PersonalSettingsScreen = () => {
                     {/* populate 4 buttons from the Array */}
                     {radioButton.map((button, index) => (
                         <label htmlFor={`${button}-time`} key={index}>
-                            <input type="radio" name="donation-reminder" value={button} checked={userSettings.reminderCount === button} />
+                            <input type="radio" name="donation-reminder" value={button} checked={userSettings.reminderCount === button} onChange={()=> 1}/>
                             <div
                                 className={`personalSettingsScreen_donation_reminder_select ${userSettings.reminderCount === button ? "personalSettingsScreen_donation_reminder_selected" : ""}`}
                                 onClick={() => setUserSettings({ ...userSettings, reminderCount: button })}>{button}</div>
