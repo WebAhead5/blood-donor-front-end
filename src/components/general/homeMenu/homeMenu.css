@@ -10,7 +10,6 @@
 .homemenu-container {
   display: flex;
   align-items: stretch;
-  /*justify-content:*/
 
   overflow: scroll;
   -ms-overflow-style: none;
