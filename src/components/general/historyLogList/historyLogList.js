@@ -50,11 +50,11 @@ const ListHeader = (props) => {
 const HistoryLogList = (props) => {
 
     return (
-        
+
         <div className='historyLogListContainer'>
             <ListHeader />
             {props.logs.map((element) => (
-                <HistoryLogItem onClick={() => { }} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+                <HistoryLogItem date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
             ))}
        
         </div>
