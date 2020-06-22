@@ -1,9 +1,15 @@
 import React from 'react';
 import "./subHeader.css"
 
-function SubHeader({total = 1000, current = 600,titlePosPx=100 , dropScale = 1}) {
+function SubHeader({total = 1000,
+                       current = 600,
+                       titlePosPx=100 ,
+                       dropScale = 1,
+                        className
+
+}) {
     return (
-        <div className="subHeader">
+        <div className={`subHeader ${className}`}>
 
             {/*goal section---------------------------------------------------------------------*/}
             <div className="subHeader_goalGroup" style={{marginTop:`${titlePosPx}px`}}>

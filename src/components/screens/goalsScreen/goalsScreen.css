@@ -1,0 +1,17 @@
+
+.goalsScreen{
+
+}
+.goalsScreen_headers{
+    position: relative;
+}
+.goalsScreen_dropSection{
+    width: 100%;
+    position: absolute;
+    /*top:0;*/
+    bottom: -100px;
+}
+.goalsScreen_padding{
+    width: 100%;
+    height: 100px;
+}

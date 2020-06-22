@@ -1,0 +1,77 @@
+.personalSettingsScreen_container {
+  display: flex;
+  height: 100vh;
+  padding-top: 90px;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.personalSettingsScreen_select_blood_type {
+  background-color: #ececec;
+  border: none;
+  font-size: 16px;
+  height: 30px;
+  width: 100%;
+  outline: none;
+}
+
+.personalSettingsScreen_donation_count label {
+  width: 70%;
+}
+
+.personalSettingsScreen_donation_count {
+    flex-direction: row;
+
+}
+
+.personalSettingsScreen_donation_count input {
+  width: 20%;
+  text-align: center;
+  background-color: #ECECEC;
+  outline: none;
+  border: none;
+}
+
+.personalSettingsInput_textContainer {
+    background-color: #ECECEC;
+    border: none;
+    font-size: 16px;
+    height: 30px;
+    width: 100%;
+    outline: none;
+}
+
+.personalSettingsScreen_donation_reminder_select {
+    background: url('/img/icon-hallow-blood-drop.svg') no-repeat center;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.personalSettingsScreen_donation_reminder_selected{
+    background: url('/img/icon-hallow-blood-drop-selected.svg') no-repeat center !important;
+}
+
+.personalSettingsScreen_donation_reminder_radios {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.personalSettingsScreen_donation_reminder_radios input{
+    display: none;
+}
+
+.personalSettingsScreen_double_blood_drops  {
+    height: 120px;
+    
+}
+
+.personalSettingsScreen_double_blood_drops .personalSettingsInput_vertical_line {
+    height: 120px;
+}
