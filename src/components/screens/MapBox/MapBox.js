@@ -27,21 +27,21 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
         latitude: parseFloat(process.env.REACT_APP_HAIFA_LAT),
         longitude: parseFloat(process.env.REACT_APP_HAIFA_LON),
         width: "100vw",
-        height: "90vh",
+        height: "91vh",
         zoom: 13
     });
 
-    useEffect(() => {
+    // set state for calendar date change
+    const [dateState, setDateState] = useState(
+        { date: new Date() })
 
-        
-        if(!userGeolocation) return;
+    // move home position to user's geolocation
+    useEffect(() => {
+        if (!userGeolocation) return;
         console.log(userGeolocation.location);
         if (viewport.latitude !== userGeolocation.location.lat || viewport.longitude !== userGeolocation.location.lng)
             setViewport({ ...viewport, latitude: userGeolocation.location.lat, longitude: userGeolocation.location.lng })
-
     }, [userGeolocation])
-
-
 
     // State for when user clicks a location icon and opens pop-up.
     const [selectedLocation, setSelectedLocation] = useState(null);
@@ -56,11 +56,18 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                     setViewport(viewport);
                 }}
             >
+                <input className="dateInput" type='date'
+                    onChange={(e) => {
+                        console.log(e.target.value)
+                        setDateState({ date: e.target.value })
+                    }}
+                    value={dateState.date}></input>
                 <div className="navStyle zoomButtons">
-                    <button className='pinButton' onClick={() => { 
+                    <button className='pinButton' onClick={() => {
                         console.log(viewport);
-                        
-                        return myMap.current.getMap().flyTo({ center: [userGeolocation.location.lng, userGeolocation.location.lat] })}}>
+
+                        return myMap.current.getMap().flyTo({ center: [userGeolocation.location.lng, userGeolocation.location.lat] })
+                    }}>
                         <img src={zoomHome} alt="Zoom Home Icon" />
                     </button>
                     <NavigationControl onViewportChange={(viewport) => setViewport(viewport)} />
@@ -73,7 +80,6 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
                     />
                 </div>
-
                 {/* Location Icons */}
                 {arrayOfGeolocationObjects.map(location => (
                     <Marker
@@ -108,6 +114,21 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                         </div>
                     </Popup>
                 ) : null}
+                <div className="infoPanel">
+                    <div id="upperLocation">
+                        <div id="locationDetails">
+                            <p>Location Name</p>
+                            <p>Location Address</p>
+                        </div>
+                        <div id="openingHours">
+                            <p>Opening Hours</p>
+                        </div>
+                    </div>
+                    <div id="locationButtons">
+                        <button id="reminderButton">Set a Reminder</button>
+                        <button id="shareButton">Share</button>
+                    </div>
+                </div>
 
             </ReactMapGL>
 
