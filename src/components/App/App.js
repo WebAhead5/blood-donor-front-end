@@ -8,6 +8,16 @@ import getUserGeolocation from "../screens/MapBox/API-UserGeolocation"
 
 import { Switch, Route } from "react-router-dom";
 import SubHeader from "../general/subHeader";
+import PersonalSettingsScreen from '../screens/personalSettingsScreen'
+import GoalsScreen from "../screens/goalsScreen";
+import HomeScreen from "../screens/homeScreen";
+
+
+let alerts = [
+  {title:"Blood donation needed!", context: "Haifa district"},
+  {title:"Blood donation needed!", context: "jerusalem district"},
+  {title:"Blood donation needed!", context: "holululu district"},
+]
 
 
 
@@ -71,15 +81,15 @@ function App() {
     return (
       <div>
 
-        <Switch>
-          <Route exact path="/">
-            {/*TODO - render home screen*/}
-          </Route>
 
-          <Route exact path="/goals">
-            {/*TODO - render home screen*/}
-            <SubHeader />
-          </Route>
+      <Switch>
+        <Route exact path="/">
+          <HomeScreen alertsData={alerts}/>
+        </Route>
+
+        <Route exact path="/goals">
+          <GoalsScreen />
+        </Route>
 
           <Route exact path="/map">
             <MapBox arrayOfGeolocationObjects={geolocationArray} userGeolocation={userGeolocationState} />
@@ -93,18 +103,19 @@ function App() {
             <SettingsListScreen />
           </Route>
 
-          <Route exact path="/settings/personal">
-            {/*TODO - render home screen*/}
-          </Route>
+        <Route exact path="/settings/personal">
+          <PersonalSettingsScreen />
+        </Route>
 
           <Route exact path="/settings/reminders">
             {/*TODO - render home screen*/}
           </Route>
         </Switch>
 
-        <NavBar />
-      </div>
-    );
-  }
+
+      <NavBar />
+    </div>
+  );
+}
 
   export default App;
