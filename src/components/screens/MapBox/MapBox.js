@@ -29,7 +29,7 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
         latitude: parseFloat(process.env.REACT_APP_HAIFA_LAT),
         longitude: parseFloat(process.env.REACT_APP_HAIFA_LON),
         width: "100vw",
-        height: "91vh",
+        height: "calc( 100vh - 53px)",
         zoom: 13
     });
 
