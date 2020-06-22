@@ -4,7 +4,7 @@ import './backButton.css'
 
 
 
-const BackButton = (props) => {
+const BackButton = () => {
 
     let history = useHistory();
 

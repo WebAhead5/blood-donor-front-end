@@ -2,16 +2,19 @@ import React from 'react';
 import HistoryLogList from '../../general/historyLogList';
 import './personalScreen.css'
 import TitleHeader from '../../general/titleHeader'
+import MainScreenWrapper from '../../general/mainScreenWrapper'
+
 
 const PersonalScreen = () => {
 
 
     return (
-       <div>
-           <TitleHeader title='History Log' />
-           <HistoryLogList/>
-           
-       </div>
+        <div>
+            <MainScreenWrapper>
+                <TitleHeader title='History Log' />
+                <HistoryLogList />
+            </MainScreenWrapper>
+        </div>
     )
 }
 
