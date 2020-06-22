@@ -18,6 +18,7 @@ function GoalsScreen({ totalGoal, currentBloodCount }) {
 
                 <div className="goalsScreen_padding" />
 
+
                 {/*enter any content here*/}
 
             </div>

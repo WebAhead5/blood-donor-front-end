@@ -9,6 +9,8 @@ import getUserGeolocation from "../screens/MapBox/API-UserGeolocation"
 import { Switch, Route } from "react-router-dom";
 import SubHeader from "../general/subHeader";
 import PersonalSettingsScreen from '../screens/personalSettingsScreen'
+import SettingsListScreen from "../screens/settingsListScreen";
+import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
 
@@ -95,9 +97,10 @@ function App() {
             <MapBox arrayOfGeolocationObjects={geolocationArray} userGeolocation={userGeolocationState} />
           </Route>
 
-          <Route exact path="/personal">
-            {/*TODO - render home screen*/}
-          </Route>
+        <Route exact path="/personal">
+          <Personal />
+        </Route>
+
 
           <Route exact path="/settings">
             <SettingsListScreen />

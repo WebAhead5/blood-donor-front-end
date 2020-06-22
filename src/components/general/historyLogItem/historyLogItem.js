@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './historyLogItem.css';
 import WhiteBackgroundShadow from '../whiteBackgroundShadow';
 import { isValidDate, isValidPulse, isValidPressure, isValidHemoglobin } from '../../../utils/validator'
@@ -9,25 +9,39 @@ const HistoryLogItem = (props) => {
     const [icon, setIcon] = useState("/img/icon-edit-log.svg");
     const [readOnly, setReadOnly] = useState(true);
 
+    //If all the fields is empty this means this is a new entry and fields should
+    //apper in edit mood
+    let style = "historyLogItemDateInputNotEditable";
+    useEffect(() => {
+        if(!props.date  && !props.pulse && !props.pressure && !props.hemoglobin){
+            changeAllStyles("historyLogItemDateInputEditable");
+            setIcon("/img/icon-save.svg")
+            setReadOnly(false);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
+
     const [inputs, setInputs] = useState({
         date: {
             value: props.date,
-            style: "historyLogItemDateInputNotEditable",
+            style: style,
             validate: isValidDate
         },
         pulse: {
             value: props.pulse,
-            style: "historyLogItemDateInputNotEditable",
+            style: style,
             validate: isValidPulse
         },
         pressure: {
             value: props.pressure,
-            style: "historyLogItemDateInputNotEditable",
+            style: style,
             validate: isValidPressure
         },
         hemoglobin: {
             value: props.hemoglobin,
-            style: "historyLogItemDateInputNotEditable",
+            style: style,
             validate: isValidHemoglobin
         }
     });

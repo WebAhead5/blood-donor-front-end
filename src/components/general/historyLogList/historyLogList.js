@@ -53,10 +53,10 @@ const HistoryLogList = (props) => {
 
         <div className='historyLogListContainer'>
             <ListHeader />
-            {/* This data here is testing,
-            In run time we shoud run over array of data as in ListHeader */}
-            <HistoryLogItem onClick={() => { }} date="12-3-2005" pulse="74" pressure="70/120" hemoglobin="13.5" />
-            <HistoryLogItem onClick={() => { }} date="12-3-2005" pulse="74" pressure="70/120" hemoglobin="13.5" />
+            {props.logs.map((element) => (
+                <HistoryLogItem date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+            ))}
+       
         </div>
     )
 }
