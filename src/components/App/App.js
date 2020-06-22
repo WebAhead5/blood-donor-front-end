@@ -21,17 +21,13 @@ let alerts = [
 
 const homeBarData = [
   {
-    title:"support us financialccccccccccccccccccccccccc cccccccccc",
+    title:"support us financially",
     src:"/img/dollar-icon.svg",
     redirectionLink:"/settings/support"
   },  {
     title:"How To Donate Blood",
     src:"/img/icon3.svg",
     redirectionLink:"/settings/how-to-donate"
-  },  {
-    title:"ways you could contribute",
-    src:"/img/icon2.svg",
-    redirectionLink:"/settings/contribute"
   },  {
     title:"ways you could contribute",
     src:"/img/icon2.svg",
