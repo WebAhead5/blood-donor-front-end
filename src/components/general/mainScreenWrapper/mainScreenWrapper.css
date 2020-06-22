@@ -1,4 +1,7 @@
 .mainScreenWrapper {
-    background-color: #f4f5f5;
+    background-color: var(--color-gray);
     height: calc(100vh - 58px);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
