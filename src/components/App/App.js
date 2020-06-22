@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
 import SubHeader from "../general/subHeader";
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
+import GoalsScreen from "../screens/goalsScreen";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/goals">
           {/*TODO - render home screen*/}
           <SubHeader />
+          <GoalsScreen />
         </Route>
 
         <Route exact path="/map">
