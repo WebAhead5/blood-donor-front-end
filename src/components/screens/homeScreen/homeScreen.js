@@ -1,12 +1,16 @@
 import React from 'react';
 import MainHeader from "../../general/mainHeader/mainHeader";
 import AlertList from "../../general/alertList";
+import MainScreenWrapper from '../../general/mainScreenWrapper'
 
-function HomeScreen({alertsData}) {
+
+function HomeScreen({ alertsData }) {
     return (
         <div>
-            <MainHeader/>
-            <AlertList data={alertsData} />
+            <MainScreenWrapper>
+                <MainHeader />
+                <AlertList data={alertsData} />
+            </MainScreenWrapper>
         </div>
     );
 }
