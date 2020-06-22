@@ -39,8 +39,8 @@ const ListHeader = (props) => {
     return (
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
             <div className='historyLogListHeader'>
-            {headerElements.map((element) => (
-                <ListHeaderElement src={element.src} title={element.title} />
+            {headerElements.map((element, index) => (
+                <ListHeaderElement key={index} src={element.src} title={element.title} />
             ))}
             </div>
         </WhiteBackgroundShadow>
@@ -53,8 +53,8 @@ const HistoryLogList = (props) => {
 
         <div className='historyLogListContainer'>
             <ListHeader />
-            {props.logs.map((element) => (
-                <HistoryLogItem date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+            {props.logs.map((element, index) => (
+                <HistoryLogItem key={index} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
             ))}
        
         </div>
