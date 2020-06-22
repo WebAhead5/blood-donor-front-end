@@ -1,5 +1,5 @@
 import React from 'react';
-import MainHeader from "../../general/mainHeader/mainHeader";
+import MainHeader from "../../general/mainHeader";
 import AlertList from "../../general/alertList";
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 

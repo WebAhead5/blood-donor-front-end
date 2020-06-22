@@ -24,7 +24,7 @@ const PersonalScreen = () => {
         }
     ])
 
-    const includeEmptyItem = (arr) => {       
+    const includeEmptyItem = (arr) => {
         let empty = false
         //I use the try catch to throw exception and stop the forEach loop
         try {
@@ -35,9 +35,9 @@ const PersonalScreen = () => {
                 }
             });
         } catch (e) {
-            if(e.message === "empty"){
+            if (e.message === "empty") {
                 //Do nothing
-            }else{
+            } else {
                 console.log(e);
             }
 
@@ -55,16 +55,12 @@ const PersonalScreen = () => {
 
 
     return (
-        <div>
+        <MainScreenWrapper className='personalScreenMainWrapper'>
             <TitleHeader title='History Log' />
             <HistoryLogList logs={logs} />
             <Image src="/img/icon-add.svg" className="personalScreenContainerAddBtn" alt="Add button" onClick={onAddClick} />
+        </MainScreenWrapper>
 
-            <MainScreenWrapper>
-                <TitleHeader title='History Log' />
-                <HistoryLogList />
-            </MainScreenWrapper>
-        </div>
     )
 }
 

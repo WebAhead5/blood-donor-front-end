@@ -11,3 +11,7 @@
     bottom:80px;
     right: 20px;
 }
+
+.personalScreenMainWrapper{
+    height: calc(100vh - 62px);
+}
