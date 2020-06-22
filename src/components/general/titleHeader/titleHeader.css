@@ -1,9 +1,9 @@
 .titleHeader_title {
-    font-family: Alef;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 26px;
+  font-family: Alef;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 26px;
 }
 
 .titleHeader_container {
@@ -15,5 +15,5 @@
   width: 100%;
   top: 0px;
   background-color: var(--color-blue);
-  color: #FFFFFF;
+  color: #ffffff;
 }
