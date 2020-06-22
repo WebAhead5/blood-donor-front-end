@@ -78,6 +78,9 @@ let getGeolocation = async (arrayOfObjects) => {
         newObj["lat"] = data.results[0].geometry.location.lat;
         newObj["address"] = params.address;
         newObj["id"] = counter;
+        newObj["opens"] = object.FromHour;
+        newObj["closes"] = object.ToHour;
+        newObj["dateDonation"] = object.DateDonation;
 
         counter++;
         

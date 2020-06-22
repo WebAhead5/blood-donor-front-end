@@ -14,6 +14,8 @@ import zoomHome from '../../../public/images/pin.svg'
 // TODO: Need panel at bottom to show opening times of bloodbank.
 // TODO: Need buttons at bottom to 'set a reminder' and 'share'(to calendar?)
 
+// TODO:
+
 console.log("geolocationResults IN MAPBOX",);
 
 // Function to Render MapBox Component
@@ -33,7 +35,7 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
 
     // set state for calendar date change
     const [dateState, setDateState] = useState(
-        { date: new Date() })
+        { date: new Date().toISOString().slice(0, 10) })
 
     // move home position to user's geolocation
     useEffect(() => {
@@ -54,6 +56,10 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
                 onViewportChange={viewport => {
                     setViewport(viewport);
+                }}
+                onClick={e => {
+                    e.preventDefault();
+                    setSelectedLocation(null)
                 }}
             >
                 <input className="dateInput" type='date'
@@ -100,36 +106,23 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                     </Marker>
                 ))}
                 {selectedLocation ? (
-                    <Popup
-                        latitude={selectedLocation.lat}
-                        longitude={selectedLocation.lon}
-                        id={selectedLocation.id}
-                        onClose={() => {
-                            setSelectedLocation(null);
-                        }}
-                    >
-                        <div>
-                            <h2>Here's the additional info for the location</h2>
-                            <h2>Here's the info from the object {selectedLocation.id} {selectedLocation.lat} {selectedLocation.lon}</h2>
+                    <div className="infoPanel">
+                        <div id="upperLocation">
+                            <div id="locationDetails">
+                                <p>{selectedLocation.address}</p>
+                            </div>
+                            <div id="openingHours">
+                                <p>{selectedLocation.opens}</p>
+                                <p>{selectedLocation.closes}</p>
+                                <p>{selectedLocation.dateDonation}</p>
+                            </div>
                         </div>
-                    </Popup>
+                        <div id="locationButtons">
+                            <button id="reminderButton">Set a Reminder</button>
+                            <button id="shareButton">Share</button>
+                        </div>
+                    </div>
                 ) : null}
-                <div className="infoPanel">
-                    <div id="upperLocation">
-                        <div id="locationDetails">
-                            <p>Location Name</p>
-                            <p>Location Address</p>
-                        </div>
-                        <div id="openingHours">
-                            <p>Opening Hours</p>
-                        </div>
-                    </div>
-                    <div id="locationButtons">
-                        <button id="reminderButton">Set a Reminder</button>
-                        <button id="shareButton">Share</button>
-                    </div>
-                </div>
-
             </ReactMapGL>
 
             Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
