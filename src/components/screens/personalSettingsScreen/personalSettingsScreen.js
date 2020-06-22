@@ -24,7 +24,9 @@ const PersonalSettingsScreen = () => {
         <MainScreenWrapper className='personalSettingsScreen_container'>
 
             {/* Header */}
-            <TitleHeader title='Personal Settings' />
+            <TitleHeader title='Personal Settings' backButton={true}> 
+
+            </TitleHeader>
 
             {/* Name Input */}
             <PersonalSettingsInput icon="/img/icon-user-name.svg" alt="enter your name" >
