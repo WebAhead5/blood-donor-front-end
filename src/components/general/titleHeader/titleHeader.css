@@ -10,10 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  
   height: 60px;
   width: 100%;
-  top: 0px;
+
   background-color: var(--color-blue);
   color: #FFFFFF;
 }
