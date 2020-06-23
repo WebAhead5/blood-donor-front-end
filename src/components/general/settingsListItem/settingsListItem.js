@@ -6,7 +6,7 @@ const SettingsListItem = (props) => {
          <div className="settingsListItem_container" onClick={props.onClick}>
             <img src={props.icon} alt={props.alt} className="settingsListItem_userIcon"/>
             <span>{props.title}</span>
-            <img src='/img/icon-arrow.svg' alt="go arrow" className="settingsListItem_goArrow"/>
+            <img src='/img/icon-arrow-black.svg' alt="go arrow" className="settingsListItem_goArrow"/>
          </div>
      )
 }
