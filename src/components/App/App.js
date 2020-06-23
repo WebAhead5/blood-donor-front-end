@@ -121,7 +121,7 @@ function App() {
           </Route>
 
         <Route exact path="/settings/personal">
-          <PersonalSettingsScreen />
+          {/* <PersonalSettingsScreen /> */}
         </Route>
 
           <Route exact path="/settings/reminders">
