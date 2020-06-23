@@ -6,4 +6,10 @@
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+
 }
+.mainScreenWrapper::-webkit-scrollbar {
+     display: none;
+ }
+

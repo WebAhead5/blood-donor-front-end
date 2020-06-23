@@ -26,6 +26,7 @@
     width: 150px;
     padding: 5px;
     background-color: black;
+    -webkit-mask-box-image: url("/img/icon-goal-drop.svg") stretch;
     mask-border: url("/img/icon-goal-drop.svg") stretch;
     display: flex;
     justify-content: center;
@@ -64,7 +65,7 @@
     animation-delay: 0s;
 
     background: url("/img/img-goal-wave-red.svg") repeat-x;
-    background-size: cover;
+    background-size: contain;
 
     z-index: 5;
 }
