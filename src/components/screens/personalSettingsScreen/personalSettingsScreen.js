@@ -24,7 +24,7 @@ const PersonalSettingsScreen = () => {
         <MainScreenWrapper className='personalSettingsScreen_container'>
 
             {/* Header */}
-            <TitleHeader title='Personal Settings' backButton={true}> 
+            <TitleHeader title='Personal Settings' backButton={true} className='personalSettingsScreen_titleHeader'> 
 
             </TitleHeader>
 

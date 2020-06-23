@@ -19,7 +19,7 @@ const AppIndex = () => {
           <div
             style={{
               direction: lang === "ar" ? "rtl" : "ltr",
-              fontFamily: "Helvetica",
+              fontFamily: ['Alef', 'sans-serif'],
             }}
           >
             <App setLang={setLang} lang={lang} />
@@ -35,4 +35,4 @@ ReactDOM.render(<AppIndex />, document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register()

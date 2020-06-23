@@ -1,7 +1,13 @@
 .mainScreenWrapper {
-    background-color: var(--color-gray);
-    height: calc(100vh - 58px);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  background-color: var(--color-gray);
+  height: calc(100vh - 58px);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+.mainScreenWrapper::-webkit-scrollbar {
+  display: none;
 }
