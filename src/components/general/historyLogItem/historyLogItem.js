@@ -64,7 +64,6 @@ const HistoryLogItem = (props) => {
             changeAllStyles("historyLogItemDateInputNotEditable");
             setReadOnly(true);
         }
-        props.onClick();
     }
 
     const change = ({ target }) => {
