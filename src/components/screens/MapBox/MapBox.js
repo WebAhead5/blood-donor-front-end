@@ -49,6 +49,7 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
                 <TitleHeader title={"title"}/>
 
+                {/* map component */}
                 <ReactMapGL
                     ref={myMap}
                     {...viewport}
@@ -57,9 +58,10 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                     onClick={() => setSelectedLocation(null)}
                 >
 
-
+                    {/*search field + live location  +  date field*/}
                     <div className="mapBox_topFields">
 
+                        {/*search field*/}
                         <Geocoder
                             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
                             onSelected={(viewport) => setViewport(viewport)}
@@ -71,9 +73,10 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                             updateInputOnSelect={true}
                         />
 
+                        {/*live location field*/}
                         <GeolocateControl className="mapBox_geolocation"/>
 
-
+                        {/*date field*/}
                         <input className="mapBox_dateInput"
                                type='date'
                                onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
@@ -82,11 +85,13 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
                     </div>
 
-
+                    {/*map marks*/}
                     {getMarkers(arrayOfGeolocationObjects, (location) => setSelectedLocation(location))}
 
 
                 </ReactMapGL>
+
+                {/*show popup if a location is selected*/}
                 {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
 
             </MainScreenWrapper>
