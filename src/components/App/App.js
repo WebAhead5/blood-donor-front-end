@@ -7,7 +7,6 @@ import getGeolocation from "../screens/MapBox/API-Geolocation"
 import getUserGeolocation from "../screens/MapBox/API-UserGeolocation"
 
 import { Switch, Route } from "react-router-dom";
-import SubHeader from "../general/subHeader";
 import PersonalSettingsScreen from '../screens/personalSettingsScreen'
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
@@ -20,6 +19,22 @@ let alerts = [
   {title:"Blood donation needed!", context: "holululu district"},
 ]
 
+
+const homeBarData = [
+  {
+    title:"support us financially",
+    src:"/img/dollar-icon.svg",
+    redirectionLink:"/settings/support"
+  },  {
+    title:"How To Donate Blood",
+    src:"/img/icon3.svg",
+    redirectionLink:"/settings/how-to-donate"
+  },  {
+    title:"ways you could contribute",
+    src:"/img/icon2.svg",
+    redirectionLink:"/settings/contribute"
+  }
+]
 
 
 let jdObject = [
@@ -85,11 +100,11 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <HomeScreen alertsData={alerts}/>
+          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData}/>
         </Route>
 
         <Route exact path="/goals">
-          <GoalsScreen />
+          <GoalsScreen  />
         </Route>
 
           <Route exact path="/map">
