@@ -76,7 +76,7 @@ input.dateInput {
   position: fixed;
   top: 70px;
   right: 0;
-  font-family: Helvetica;
+  font-family: 'Alef', sans-serif;
   font-size: 14px;
   line-height: 24px;
   font: inherit;
@@ -116,7 +116,7 @@ div#locationButtons{
 #locationButtons button{
   padding: 10px;
   margin: 0px 10px;
-  font-family: Helvetica;
+  font-family: 'Alef', sans-serif;
   font-size: 18px;
   color: white;
   line-height: 24px;
