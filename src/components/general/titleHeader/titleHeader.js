@@ -12,4 +12,4 @@ const TitleHeader = (props) => {
     )
 }
 
-export default TitleHeader
+export default TitleHeader;
