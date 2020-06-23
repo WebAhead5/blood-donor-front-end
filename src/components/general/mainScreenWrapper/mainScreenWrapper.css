@@ -1,24 +1,13 @@
 .mainScreenWrapper {
-<<<<<<< HEAD
   background-color: var(--color-gray);
   height: calc(100vh - 58px);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-=======
-    background-color: var(--color-gray);
-    height: calc(100vh - 58px);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
 }
 .mainScreenWrapper::-webkit-scrollbar {
-     display: none;
- }
-
->>>>>>> da09573f50ca053a875eae239127bd333bba4e93
+  display: none;
+}
