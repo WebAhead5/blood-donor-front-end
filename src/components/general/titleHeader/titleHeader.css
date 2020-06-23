@@ -1,5 +1,9 @@
 .titleHeader_title {
+<<<<<<< HEAD
   font-family: Alef;
+=======
+  font-family: "Alef", sans-serif;
+>>>>>>> da09573f50ca053a875eae239127bd333bba4e93
   font-style: normal;
   font-weight: bold;
   font-size: 19px;
@@ -10,10 +14,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+
   height: 60px;
   width: 100%;
-  top: 0px;
+
   background-color: var(--color-blue);
   color: #ffffff;
 }

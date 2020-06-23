@@ -1,7 +1,7 @@
 .historyLogListContainer{
     display:flex;
     flex-direction: column;
-    margin-top: 60px;
+
 }
 
 .historyLogListHeader{
@@ -16,6 +16,7 @@
 .historyLogListHeaderContainer{
     margin-bottom: 10px !important;
     background: linear-gradient(180deg, #f5f5f5 50%, white 50%) !important;
+    border: none;
 }
 
 .historyLogListHeaderIcon{
