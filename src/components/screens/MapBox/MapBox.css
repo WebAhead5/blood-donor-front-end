@@ -2,10 +2,6 @@
 .mapbox {
     --field-height: 40px
 }
-.mapBox_map{
-    /*position: abse;*/
-    top: 50px
-}
 
 .mapBox_marker {
     background: url("/img/logo.png") no-repeat center;

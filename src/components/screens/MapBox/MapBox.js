@@ -55,8 +55,6 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
                     onViewportChange={viewport => setViewport(viewport)}
                     onClick={() => setSelectedLocation(null)}
-                    className="mapBox_map"
-                    style={{top:"100px"}}
                 >
 
 
