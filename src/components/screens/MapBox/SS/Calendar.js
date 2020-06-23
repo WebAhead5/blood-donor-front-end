@@ -12,7 +12,7 @@ console.log(dateState);
 
     return (
         <div>
-            <input className="dateInput" type='date'></input>
+            <input className="mapBox_dateInput" type='date'></input>
             {/* <Calendar
                 onChange={(date) => { setDateState({ date }) }}
                 value={dateState.date}

@@ -4,10 +4,8 @@ import SettingsListScreen from '../screens/settingsListScreen'
 import MapBox from '../screens/MapBox/MapBox'
 import NavBar from "../general/navBar";
 import getGeolocation from "../screens/MapBox/API-Geolocation"
-import getUserGeolocation from "../screens/MapBox/API-UserGeolocation"
 
 import { Switch, Route } from "react-router-dom";
-import SubHeader from "../general/subHeader";
 import PersonalSettingsScreen from '../screens/personalSettingsScreen'
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
@@ -75,15 +73,6 @@ function App() {
       })
   }, [])
 
-  const [userGeolocationState, setUserGeolocationState] = useState()
-  useEffect(() => {
-    getUserGeolocation()
-      .then((result) => {
-        console.log("userGeolocation RESULT IS", result);
-
-        setUserGeolocationState(result)
-      })
-  }, [])
 
     return (
       <div>
@@ -99,7 +88,7 @@ function App() {
         </Route>
 
           <Route exact path="/map">
-            <MapBox arrayOfGeolocationObjects={geolocationArray} userGeolocation={userGeolocationState} />
+            <MapBox arrayOfGeolocationObjects={geolocationArray} />
           </Route>
 
           <Route exact path="/personal">

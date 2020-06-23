@@ -1,120 +1,84 @@
-div.mapboxgl-popup {
-  height: 100px;
-  width: 100px;
+
+.mapbox {
+    --field-height: 40px
 }
 
-.mapboxgl-popup h2 {
-  font-size: 10px;
-  color: black;
+.mapBox_marker {
+    background: url("/img/logo.png") no-repeat center;
+    background-size: contain;
+    height: 80px;
+    width: 60px;
+    border: none;
+    transform: translate(-50%, 0);
 }
+.mapBox_topFields {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
 
-.mapboxgl-popup button {
-  font-size: 20px;
+    height: var(--field-height);
+    padding: 5px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
 }
-
-button.marker-btn {
-  background: transparent;
-  height: 80px;
-  width: 60px;
-  border: none;
-  position: absolute;
-  transform: translate(-50%, 0)
-}
-
-/* .mapboxgl-ctrl-top-right {
-  margin: 0 !important;
-  display: block !important;
-}
-
-.mapboxgl-ctrl-geocoder {
-  margin: 0 !important;
-  width: 100%;
-  
-}
-
-.mapBox_searchAndHome {
-  margin-top: 10px;
-  position: relative;
-} */
-
-.marker-btn img {
-  height: 100%;
-  width: 100%;
-  background: transparent;
-}
-
-.navStyle {
-  position: absolute;
-  top: 10vh;
-  left: 10vh;
-}
-
-.zoomButtons button {
-  display: block;
-  padding: 0;
-  outline: none;
-  border: 0;
-  box-sizing: border-box;
-  background-color: white;
-  cursor: pointer;
-}
-
-.geolocateControl {
-  width: 50px;
-  height: 50px;
-}
-
-.geolocateControl button {
-  width: 100%;
-  height: 100%;
-}
-
-.navigationControl {}
-
-button.mapboxgl-ctrl-compass {
-  display: none;
-}
-
-.searchAndHome {
-  /* display: flex; */
-  width: 10%
-}
-
-input.dateInput {
-  position: fixed;
-  top: 70px;
-  right: 0;
-  font-family: Helvetica;
-  font-size: 14px;
-  line-height: 24px;
-  font: inherit;
-  border: 0;
-  margin: 10px 10px 0 0;
-  height: 40px;
-  color: rgba(0, 0, 0, 0.45);
-  font-weight: bold;
-  padding: 2px 5px;
-  border-radius: 4px;
+.mapBox_dateInput {
+    position: absolute;
+    bottom: calc(-1 * var(--field-height));
+    height: var(--field-height);
 }
 
 
-.react-geocoder	{
-  width: 80vw;
-  height: 40px;
+.react-geocoder {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 5px;
+    position: relative;
 }
-
 .react-geocoder input {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: var(--field-height);
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.react-geocoder-results {
+    width: 100%;
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+}
+.react-geocoder-item {
+    height: fit-content;
+    background-color: white;
+
+    padding: 15px  3px;
+    box-sizing: border-box;
+    box-shadow: black 0 0 2px ;
+    width: 100%;
 }
 
-.react-geocoder-results	{
- width: 100%
-}
 
-.react-geocoder-item	{
-  height: fit-content;
-  background-color: white;
-  margin-bottom: 5px;
-  width: 100%;
+.mapBox_geolocation {
+    width: var(--field-height);
+    height: var(--field-height);
+    box-sizing: border-box;
+}
+.mapBox_geolocation button {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: none;
+    /*background-color: none;*/
+    border: none;
+}
+.mapboxgl-ctrl-icon {
+    background: url("/img/icon-map-liveLocation.svg") no-repeat center !important;
+    background-size: 50% !important;
 }
