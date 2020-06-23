@@ -39,8 +39,8 @@ const ListHeader = (props) => {
     return (
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
             <div className='historyLogListHeader'>
-            {headerElements.map((element) => (
-                <ListHeaderElement src={element.src} title={element.title} />
+            {headerElements.map((element, index) => (
+                <ListHeaderElement key={index} src={element.src} title={element.title} />
             ))}
             </div>
         </WhiteBackgroundShadow>
@@ -53,10 +53,10 @@ const HistoryLogList = (props) => {
 
         <div className='historyLogListContainer'>
             <ListHeader />
-            {/* This data here is testing,
-            In run time we shoud run over array of data as in ListHeader */}
-            <HistoryLogItem onClick={() => { }} date="12-3-2005" pulse="74" pressure="70/120" hemoglobin="13.5" />
-            <HistoryLogItem onClick={() => { }} date="12-3-2005" pulse="74" pressure="70/120" hemoglobin="13.5" />
+            {props.logs.map((element, index) => (
+                <HistoryLogItem key={index} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+            ))}
+       
         </div>
     )
 }

@@ -1,10 +1,11 @@
 import "./MapBox.css";
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, Fragment} from "react";
 import ReactMapGL, {Marker, GeolocateControl} from "react-map-gl";
 import Geocoder from 'react-mapbox-gl-geocoder'
 import InfoPanel from './InfoPanel'
 import moment from "moment";
 import MainScreenWrapper from "../../general/mainScreenWrapper";
+import TitleHeader from "../../general/titleHeader";
 
 
 // TODO: What does the reminderButton do?
@@ -38,53 +39,60 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
 
     //show an error message if env file is not set
-    if(!process.env.REACT_APP_MAPBOX_PUBLIC)
-        return <MainScreenWrapper style={{display:"flex", justifyContent:"center", alignItems:"center"}}>server error</MainScreenWrapper>
+    if (!process.env.REACT_APP_MAPBOX_PUBLIC)
+        return <MainScreenWrapper style={{display: "flex", justifyContent: "center", alignItems: "center"}}>server
+            error</MainScreenWrapper>
 
 
     return (
-        <MainScreenWrapper className="mapbox">
-            <ReactMapGL
-                ref={myMap}
-                {...viewport}
-                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
-                onViewportChange={viewport => setViewport(viewport)}
-                onClick={() => setSelectedLocation(null)}
-            >
+            <MainScreenWrapper className="mapbox">
+
+                <TitleHeader title={"title"}/>
+
+                <ReactMapGL
+                    ref={myMap}
+                    {...viewport}
+                    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
+                    onViewportChange={viewport => setViewport(viewport)}
+                    onClick={() => setSelectedLocation(null)}
+                    className="mapBox_map"
+                    style={{top:"100px"}}
+                >
 
 
-                <div className="mapBox_topFields">
+                    <div className="mapBox_topFields">
 
-                    <Geocoder
-                        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
-                        onSelected={(viewport) => setViewport(viewport)}
-                        viewport={viewport}
-                        hideOnSelect={true}
-                        inputComponent={data =>
-                            <input placeholder="search..." {...data} value={data.value ||""} />
-                        }
-                        updateInputOnSelect={true}
-                    />
+                        <Geocoder
+                            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
+                            onSelected={(viewport) => setViewport(viewport)}
+                            viewport={viewport}
+                            hideOnSelect={true}
+                            inputComponent={data =>
+                                <input placeholder="search..." {...data} value={data.value || ""}/>
+                            }
+                            updateInputOnSelect={true}
+                        />
 
-                    <GeolocateControl className="mapBox_geolocation"/>
-
-
-                    <input className="mapBox_dateInput"
-                           type='date'
-                           onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
-                           value={dateState}>
-                    </input>
-
-                </div>
+                        <GeolocateControl className="mapBox_geolocation"/>
 
 
-                {getMarkers(arrayOfGeolocationObjects, (location) => setSelectedLocation(location))}
+                        <input className="mapBox_dateInput"
+                               type='date'
+                               onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
+                               value={dateState}>
+                        </input>
+
+                    </div>
 
 
-            </ReactMapGL>
-            {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
+                    {getMarkers(arrayOfGeolocationObjects, (location) => setSelectedLocation(location))}
 
-        </MainScreenWrapper>
+
+                </ReactMapGL>
+                {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
+
+            </MainScreenWrapper>
+
     );
 }
 
@@ -95,7 +103,8 @@ function getMarkers(locationsArr, onClick) {
             key={location.id}
             latitude={location.lat}
             longitude={location.lon}>
-            <button className="mapBox_marker" alt="Bloodbank Location Icon" onClick={() => onClick && onClick(location)}/>
+            <button className="mapBox_marker" alt="Bloodbank Location Icon"
+                    onClick={() => onClick && onClick(location)}/>
         </Marker>
-
-)}
+    )
+}
