@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -7,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import languages from "./languages";
-
+require ('dotenv').config();
 
 const AppIndex = () => {
   const [lang, setLang] = useState("en");

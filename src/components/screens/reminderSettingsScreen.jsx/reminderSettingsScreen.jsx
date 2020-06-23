@@ -6,7 +6,6 @@ import MainScreenWrapper from "../../general/mainScreenWrapper";
 
 const data = [
   {
-    id: "phoneNum",
     icon: "/img/phone-icon.svg",
     alt: "phone",
     description: "Would you like to recieve SMS reminders ?",
@@ -14,7 +13,6 @@ const data = [
     placeholder: "Enter Phone Number...",
   },
   {
-    id: "email",
     icon: "/img/mail-icon.svg",
     alt: "mail",
     description: "Would you like to recieve remiders to your Email?",
@@ -34,7 +32,6 @@ const ReminderSettingsScreen = () => {
       <TitleHeader title="Reminders Settings" />
       {data.map((element, index) => (
         <ReminderSettings
-          id={element.id}
           key={index}
           description={element.description}
           icon={element.icon}

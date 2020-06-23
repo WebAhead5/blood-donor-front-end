@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import "./reminderSettings.css";
 import Button from "../button";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
+import { isValidEmail } from "../../../utils/validator";
 
 const ReminderSettings = (props) => {
   const [reminderSettings, setReminderSettings] = useState({
     smsReminder: false,
     phoneNumber: "",
-    phoneAlerts: false,
   });
 
-  console.log(reminderSettings);
   return (
     <WhiteBackgroundShadow className="reminderSettings_container">
       <div className="reminderSettings_icon_container">

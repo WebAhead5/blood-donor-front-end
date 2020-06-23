@@ -65,3 +65,9 @@ input[type="text"] {
   flex-direction: column;
   justify-content: stretch;
 }
+
+.rightValidationGreenBorder {
+  width: 20%;
+  border: green solid 3px;
+  margin-right: 5px;
+}

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import NavBar from "../general/navBar";
-import { Switch, Route } from "react-router-dom";
 import SettingsListScreen from "../screens/settingsListScreen";
+import MapBox from "../screens/MapBox/MapBox";
+import NavBar from "../general/navBar";
+import getGeolocation from "../screens/MapBox/API-Geolocation";
+import getUserGeolocation from "../screens/MapBox/API-UserGeolocation";
+
+import { Switch, Route } from "react-router-dom";
 import SubHeader from "../general/subHeader";
-import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import PersonalSettingsScreen from "../screens/personalSettingsScreen";
+import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
+import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 
 let alerts = [
   { title: "Blood donation needed!", context: "Haifa district" },
@@ -15,7 +20,60 @@ let alerts = [
   { title: "Blood donation needed!", context: "holululu district" },
 ];
 
+let jdObject = [
+  {
+    DateDonation: "2020-06-18T00:00:00",
+    FromHour: "16:00",
+    ToHour: "19:30",
+    Name: "מתנס ירוחם",
+    City: "ירוחם",
+    Street: "",
+    NumHouse: "",
+    AccountType: "",
+  },
+  {
+    DateDonation: "2020-06-18T00:00:00",
+    FromHour: "16:00",
+    ToHour: "19:30",
+    Name: "Italian hospital",
+    City: "Haifa",
+    Street: "",
+    NumHouse: "",
+    AccountType: "",
+  },
+  {
+    DateDonation: "2020-06-18T00:00:00",
+    FromHour: "16:00",
+    ToHour: "19:30",
+    Name: "German Colony",
+    City: "Haifa",
+    Street: "",
+    NumHouse: "",
+    AccountType: "",
+  },
+];
+
 function App() {
+  const [geolocationArray, setGeolocationArray] = useState();
+  useEffect(() => {
+    getGeolocation(jdObject).then((result) => {
+      console.log("RESULT IS", result);
+
+      setGeolocationArray(result);
+    });
+  }, []);
+
+  const [userGeolocationState, setUserGeolocationState] = useState();
+  useEffect(() => {
+    getUserGeolocation().then((result) => {
+      console.log("userGeolocation RESULT IS", result);
+
+      setUserGeolocationState(result);
+    });
+  }, []);
+
+  setTimeout(console.log("TIMEOUT", userGeolocationState), 2000);
+
   return (
     <div>
       <Switch>
@@ -30,11 +88,14 @@ function App() {
         </Route>
 
         <Route exact path="/map">
-          {/*TODO - render the map*/}
+          <MapBox
+            arrayOfGeolocationObjects={geolocationArray}
+            userGeolocation={userGeolocationState}
+          />
         </Route>
 
         <Route exact path="/personal">
-          {/*TODO - render home screen*/}
+          <Personal />
         </Route>
 
         <Route exact path="/settings">
