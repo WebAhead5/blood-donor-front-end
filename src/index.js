@@ -19,7 +19,7 @@ const AppIndex = () => {
           <div
             style={{
               direction: lang === "ar" ? "rtl" : "ltr",
-              fontFamily: "Helvetica",
+              fontFamily: ['Alef', 'sans-serif'],
             }}
           >
             <App setLang={setLang} lang={lang} />
