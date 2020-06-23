@@ -28,11 +28,19 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
         zoom: 13
     });
 
+
     // set state for calendar date change
     const [dateState, setDateState] = useState(moment(Date.now()).format("YYYY-MM-DD"))
 
+
     // State for when user clicks a location icon and opens pop-up.
     const [selectedLocation, setSelectedLocation] = useState(null);
+
+
+    //show an error message if env file is not set
+    if(!process.env.REACT_APP_MAPBOX_PUBLIC)
+        return <MainScreenWrapper style={{display:"flex", justifyContent:"center", alignItems:"center"}}>server error</MainScreenWrapper>
+
 
     return (
         <MainScreenWrapper className="mapbox">
@@ -81,15 +89,13 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 }
 
 function getMarkers(locationsArr, onClick) {
-    {/* Location Icons */
-    }
-    return locationsArr.map(location => (
+
+    return locationsArr?.map(location =>
         <Marker
             key={location.id}
             latitude={location.lat}
             longitude={location.lon}>
-            <button className="mapBox_marker" alt="Bloodbank Location Icon" onClick={() => onClick(location)}/>
-
+            <button className="mapBox_marker" alt="Bloodbank Location Icon" onClick={() => onClick && onClick(location)}/>
         </Marker>
-    ))
-}
+
+)}
