@@ -3,10 +3,6 @@ div.mapboxgl-popup {
   width: 100px;
 }
 
-div.mapboxgl-popup-tip {}
-
-div.mapboxgl-popup-content {}
-
 .mapboxgl-popup h2 {
   font-size: 10px;
   color: black;
@@ -14,10 +10,6 @@ div.mapboxgl-popup-content {}
 
 .mapboxgl-popup button {
   font-size: 20px;
-}
-
-div.mapboxgl-marker {
-  /* border: yellow solid 5px; */
 }
 
 button.marker-btn {
@@ -29,6 +21,22 @@ button.marker-btn {
   transform: translate(-50%, 0)
 }
 
+/* .mapboxgl-ctrl-top-right {
+  margin: 0 !important;
+  display: block !important;
+}
+
+.mapboxgl-ctrl-geocoder {
+  margin: 0 !important;
+  width: 100%;
+  
+}
+
+.mapBox_searchAndHome {
+  margin-top: 10px;
+  position: relative;
+} */
+
 .marker-btn img {
   height: 100%;
   width: 100%;
@@ -37,14 +45,11 @@ button.marker-btn {
 
 .navStyle {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0 0 40px 20px;
+  top: 10vh;
+  left: 10vh;
 }
 
 .zoomButtons button {
-  width: 29px;
-  height: 29px;
   display: block;
   padding: 0;
   outline: none;
@@ -54,22 +59,25 @@ button.marker-btn {
   cursor: pointer;
 }
 
-button.pinButton {
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.133);
+.geolocateControl {
+  width: 50px;
+  height: 50px;
 }
 
-.pinButton img {
-  height: 60%;
-  width: 60%;
-  /* border: red solid 3px; */
+.geolocateControl button {
+  width: 100%;
+  height: 100%;
 }
+
+.navigationControl {}
 
 button.mapboxgl-ctrl-compass {
   display: none;
 }
 
-div.searchAndHome {
-  display: flex;
+.searchAndHome {
+  /* display: flex; */
+  width: 10%
 }
 
 input.dateInput {
@@ -90,62 +98,23 @@ input.dateInput {
 }
 
 
-div.infoPanel{
-  position: fixed;
-  height: 30vh;
-  width: 100vw;
-  bottom: 8vh;
+.react-geocoder	{
+  width: 80vw;
+  height: 40px;
+}
+
+.react-geocoder input {
+  width: 100%;
+  height: 100%;
+}
+
+.react-geocoder-results	{
+ width: 100%
+}
+
+.react-geocoder-item	{
+  height: fit-content;
   background-color: white;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 5px;
+  width: 100%;
 }
-
-div#upperLocation{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0px 20px;
-  height: 60%;
-}
-
-div#locationButtons{
-  display: flex;
-  justify-content: center;
-}
-
-#locationButtons button{
-  padding: 10px;
-  margin: 0px 10px;
-  font-family: Helvetica;
-  font-size: 18px;
-  color: white;
-  line-height: 24px;
-  font: inherit;
-  font-weight: bold; 
-  background-color: var(--color-blue);
-  border: 0;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.133);
-}
-
-button#reminderButton {
-  background-color: var(--color-red);
-  width: 50%;
-}
-
-button#shareButton {
-  width: 30%;
-}
-
-
-
-/* <div className="infoPanel">
-<div id="locationDetails">
-    <p>Location Name</p>
-    <p>Location Address</p>
-</div>
-<div id="openingHours">
-    <p>Opening Hours</p>
-</div>
-<button id="reminderButton">Set a Reminder</button>
-<button id="shareButton">Share</button>
-</div> */

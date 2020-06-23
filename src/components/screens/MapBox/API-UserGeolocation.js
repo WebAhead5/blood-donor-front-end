@@ -7,7 +7,6 @@ let getUserGeolocation = async (arrayOfObjects) => {
     let urlStart = "https://www.googleapis.com/geolocation/v1/geolocate?"
 
     let params = {
-
         key: process.env.REACT_APP_GOOGLE_KEY
     }
 
@@ -19,7 +18,11 @@ let getUserGeolocation = async (arrayOfObjects) => {
     const data = await googleResponse.json();
 
     console.log("get userGeoLocation data:", data);
-    return data
+    if(data.error){
+        console.error("Error message from Google API call for user Geolocation: ", data.error.message);
+        return {error: ""}
+    }
+    else return data
 }
 
 export default getUserGeolocation

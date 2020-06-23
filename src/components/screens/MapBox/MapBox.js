@@ -2,27 +2,27 @@ import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import "./MapBox.css";
 
 import React, { useState, useEffect, useRef } from "react";
-import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-import Geocoder from "react-map-gl-geocoder";
+import ReactMapGL, { Marker, NavigationControl, GeolocateControl } from "react-map-gl";
+// import Geocoder from "react-map-gl-geocoder";
+import Geocoder from 'react-mapbox-gl-geocoder'
+import AddToCalendar from './AddToCalendar'
+import InfoPanel from './InfoPanel'
 
 import logo from "../../../public/images/logo.png"
 import zoomHome from '../../../public/images/pin.svg'
-// TODO: Need to take data as per Farid research
-// TODO: Need to link Farid website data and make map update
-// TODO: Need to update CSS
-// TODO: Need button to reset map to current user location
-// TODO: Need panel at bottom to show opening times of bloodbank.
-// TODO: Need buttons at bottom to 'set a reminder' and 'share'(to calendar?)
 
-// TODO:
+// TODO: What does the reminderButton do?
 
-console.log("geolocationResults IN MAPBOX",);
+// TODO: Get data from API working (or datamining if needs be)
+// TODO: Refactor some code
+
 
 // Function to Render MapBox Component
 export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation }) {
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
+    let searchBar = useRef();
 
     // if(userGeolocation === undefined){return parseFloat(process.env.REACT_APP_HAIFA_LAT)} else return userGeolocation
     const [viewport, setViewport] = useState({
@@ -62,30 +62,27 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                     setSelectedLocation(null)
                 }}
             >
-                <input className="dateInput" type='date'
+                <input className="dateInput calendar" type='date'
                     onChange={(e) => {
                         console.log(e.target.value)
                         setDateState({ date: e.target.value })
                     }}
-                    value={dateState.date}></input>
-                <div className="navStyle zoomButtons">
-                    <button className='pinButton' onClick={() => {
-                        console.log(viewport);
-
-                        return myMap.current.getMap().flyTo({ center: [userGeolocation.location.lng, userGeolocation.location.lat] })
-                    }}>
-                        <img src={zoomHome} alt="Zoom Home Icon" />
-                    </button>
-                    <NavigationControl onViewportChange={(viewport) => setViewport(viewport)} />
-
-                </div>
-                <div className="searchAndHome">
+                    value={dateState.date}>
+                </input>
+                <div className="mapBox_searchAndHome">
+                    <GeolocateControl className="geolocateControl"/>
+                    {/* <NavigationControl className="navigationControl" onViewportChange={(viewport) => setViewport(viewport)}/>          */}
+                    
                     <Geocoder
-                        mapRef={myMap}
-                        onViewportChange={(viewport) => setViewport(viewport)}
+                        // mapRef={myMap}
+                        // containerRef={searchBar}
+                        // inputClass="searchAndHome"
+                        // onViewportChange={(viewport) => setViewport(viewport)}
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
+                        onSelected={(viewport) => setViewport(viewport)}
+                        viewport={viewport} hideOnSelect={true}
                     />
-                </div>
+             </div>
                 {/* Location Icons */}
                 {arrayOfGeolocationObjects.map(location => (
                     <Marker
@@ -94,8 +91,7 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                         longitude={location.lon}
                     // place_name={location.place_name}
                     >
-                        <button
-                            className="marker-btn"
+                        <button className="marker-btn"
                             onClick={e => {
                                 e.preventDefault();
                                 setSelectedLocation(location);
@@ -105,26 +101,10 @@ export default function MapBox({ arrayOfGeolocationObjects = [], userGeolocation
                         </button>
                     </Marker>
                 ))}
-                {selectedLocation ? (
-                    <div className="infoPanel">
-                        <div id="upperLocation">
-                            <div id="locationDetails">
-                                <p>{selectedLocation.address}</p>
-                            </div>
-                            <div id="openingHours">
-                                <p>{selectedLocation.opens}</p>
-                                <p>{selectedLocation.closes}</p>
-                                <p>{selectedLocation.dateDonation}</p>
-                            </div>
-                        </div>
-                        <div id="locationButtons">
-                            <button id="reminderButton">Set a Reminder</button>
-                            <button id="shareButton">Share</button>
-                        </div>
-                    </div>
-                ) : null}
             </ReactMapGL>
-
+            {selectedLocation ? (
+                    <InfoPanel selectedLocation={selectedLocation}/>
+                ) : null}
             Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
         </div>
     );

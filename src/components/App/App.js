@@ -51,6 +51,16 @@ let jdObject = [
     "Street": "",
     "NumHouse": "",
     "AccountType": ""
+  },
+  {
+    "DateDonation": "2020-06-18T00:00:00",
+    "FromHour": "16:00",
+    "ToHour": "19:30",
+    "Name": "One Stop",
+    "City": "Holywell",
+    "Street": "",
+    "NumHouse": "",
+    "AccountType": ""
   }
 ];
 
@@ -74,9 +84,6 @@ function App() {
         setUserGeolocationState(result)
       })
   }, [])
-
-  setTimeout(console.log("TIMEOUT", userGeolocationState), 2000
-  )
 
     return (
       <div>

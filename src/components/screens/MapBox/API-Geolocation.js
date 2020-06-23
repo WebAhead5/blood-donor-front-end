@@ -19,35 +19,35 @@ let faridObject = [{
 
 let jdObject = [
     {
-    "DateDonation": "2020-06-18T00:00:00",
-    "FromHour": "16:00",
-    "ToHour": "19:30",
-    "Name": "מתנס ירוחם",
-    "City": "ירוחם",
-    "Street": "",
-    "NumHouse": "",
-    "AccountType": ""
-},
-{
-    "DateDonation": "2020-06-18T00:00:00",
-    "FromHour": "16:00",
-    "ToHour": "19:30",
-    "Name": "Italian hospital",
-    "City": "Haifa",
-    "Street": "",
-    "NumHouse": "",
-    "AccountType": ""
-},
-{
-    "DateDonation": "2020-06-18T00:00:00",
-    "FromHour": "16:00",
-    "ToHour": "19:30",
-    "Name": "German Colony",
-    "City": "Haifa",
-    "Street": "",
-    "NumHouse": "",
-    "AccountType": ""
-}
+        "DateDonation": "2020-06-18T00:00:00",
+        "FromHour": "16:00",
+        "ToHour": "19:30",
+        "Name": "מתנס ירוחם",
+        "City": "ירוחם",
+        "Street": "",
+        "NumHouse": "",
+        "AccountType": ""
+    },
+    {
+        "DateDonation": "2020-06-18T00:00:00",
+        "FromHour": "16:00",
+        "ToHour": "19:30",
+        "Name": "Italian hospital",
+        "City": "Haifa",
+        "Street": "",
+        "NumHouse": "",
+        "AccountType": ""
+    },
+    {
+        "DateDonation": "2020-06-18T00:00:00",
+        "FromHour": "16:00",
+        "ToHour": "19:30",
+        "Name": "German Colony",
+        "City": "Haifa",
+        "Street": "",
+        "NumHouse": "",
+        "AccountType": ""
+    }
 ];
 
 
@@ -56,7 +56,8 @@ let getGeolocation = async (arrayOfObjects) => {
     let arrayOfReturnedGeolocations = [];
     let counter = 1;
 
-    await arrayOfObjects.forEach(async object =>{
+    for (let object of arrayOfObjects) {
+
         let params = {
             address: `${object.Name}, ${object.City}`,
             region: "il",
@@ -70,26 +71,34 @@ let getGeolocation = async (arrayOfObjects) => {
         const googleResponse = await fetch(concat)
         const data = await googleResponse.json();
 
-        console.log("inside forEach",data);
-        console.log("inside forEach",data.results[0].geometry.location);
+        if (data.results.length > 0) {
 
-        let newObj = {};
-        newObj["lon"] = data.results[0].geometry.location.lng;
-        newObj["lat"] = data.results[0].geometry.location.lat;
-        newObj["address"] = params.address;
-        newObj["id"] = counter;
-        newObj["opens"] = object.FromHour;
-        newObj["closes"] = object.ToHour;
-        newObj["dateDonation"] = object.DateDonation;
+            let newObj = {};
+            newObj["lon"] = data.results[0].geometry.location.lng;
+            newObj["lat"] = data.results[0].geometry.location.lat;
+            newObj["address"] = params.address;
+            newObj["id"] = counter;
+            newObj["opens"] = object.FromHour;
+            newObj["closes"] = object.ToHour;
+            newObj["dateDonation"] = new Date(object.DateDonation);
 
-        counter++;
-        
-        arrayOfReturnedGeolocations.push(newObj)
-        
-    })
+            counter++;
+            arrayOfReturnedGeolocations = [...arrayOfReturnedGeolocations, newObj]
+            // arrayOfReturnedGeolocations.push(newObj)
+        }
+        else {
+            console.error("error from Google API:", data.error_message)
+        }
+    }
 
-    console.log("arrayOfReturnedGeolocations", arrayOfReturnedGeolocations);  
-    return arrayOfReturnedGeolocations
+    if (arrayOfReturnedGeolocations.length > 0) {
+        console.log("arrayOfReturnedGeolocations", arrayOfReturnedGeolocations);
+        return arrayOfReturnedGeolocations
+    }
+    else {
+        console.error("Google API return no results, could be an error with API key");
+        // return {error: "Error message from Google API call for user Geolocation"};
+    }
 }
 
 export default getGeolocation
