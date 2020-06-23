@@ -4,7 +4,7 @@ import BackButton from '../backButton'
 
 const TitleHeader = (props) => {
     return (
-        <div className='titleHeader_container'>
+        <div className={`titleHeader_container ${props.className}`}>
             {/* Add backButton={true} if you want to have a back button in your header */}
             {props.backButton ? <BackButton /> : null}
             <span className="titleHeader_title">{props.title}</span>
