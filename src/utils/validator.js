@@ -63,12 +63,3 @@ export function isValidHemoglobin(hemoglobinString) {
 
   return true;
 }
-
-export default function isValidEmail(emailString) {
-  let errors = {};
-  if (!emailString.email) {
-  } else if (!/\S+@\S+\.\S+/.test(emailString.email)) {
-    errors.email = "Email address is invalid";
-  }
-  return errors;
-}

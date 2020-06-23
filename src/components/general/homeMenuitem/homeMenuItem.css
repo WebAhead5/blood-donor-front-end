@@ -1,0 +1,30 @@
+.homeMenuItem{
+    margin: 25px 0px 10px 10px;
+    padding: 15px 0 5px 0;
+
+    min-width:  200px;
+    min-height: 80px;
+    max-height: 100px;
+    height: auto !important;
+
+    border-radius: 9px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.homeMenuItem img {
+    position: absolute;
+    top: -20px;
+    width: 50px;
+    left: calc(50% - 25px);
+}
+
+.homeMenuItem p {
+    text-align: center;
+    word-break: break-word;
+    text-overflow: ellipsis;
+}

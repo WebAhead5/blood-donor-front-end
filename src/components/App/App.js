@@ -20,6 +20,24 @@ let alerts = [
   { title: "Blood donation needed!", context: "holululu district" },
 ];
 
+const homeBarData = [
+  {
+    title: "support us financially",
+    src: "/img/dollar-icon.svg",
+    redirectionLink: "/settings/support",
+  },
+  {
+    title: "How To Donate Blood",
+    src: "/img/icon3.svg",
+    redirectionLink: "/settings/how-to-donate",
+  },
+  {
+    title: "ways you could contribute",
+    src: "/img/icon2.svg",
+    redirectionLink: "/settings/contribute",
+  },
+];
+
 let jdObject = [
   {
     DateDonation: "2020-06-18T00:00:00",
@@ -78,12 +96,10 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <HomeScreen alertsData={alerts} />
+          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
         </Route>
 
         <Route exact path="/goals">
-          {/*TODO - render home screen*/}
-          <SubHeader />
           <GoalsScreen />
         </Route>
 
