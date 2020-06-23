@@ -1,6 +1,6 @@
 import React from 'react';
 import SubHeader from "../../general/subHeader";
-import MainHeader from "../../general/mainHeader/mainHeader";
+import MainHeader from "../../general/mainHeader";
 import "./goalsScreen.css"
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 
@@ -17,6 +17,7 @@ function GoalsScreen({ totalGoal, currentBloodCount }) {
                 </div>
 
                 <div className="goalsScreen_padding" />
+
 
                 {/*enter any content here*/}
 
