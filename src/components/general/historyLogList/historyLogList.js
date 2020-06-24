@@ -1,7 +1,11 @@
-import React from 'react'
-import HistoryLogItem from '../historyLogItem'
-import WhiteBackgroundShadow from '../whiteBackgroundShadow'
-import './historyLogList.css'
+import React from 'react';
+import HistoryLogItem from '../historyLogItem';
+import WhiteBackgroundShadow from '../whiteBackgroundShadow';
+import './historyLogList.css';
+import {useRecoilValue} from 'recoil';
+import {logsState} from '../../../store/logs';
+
+
 
 const headerElements = [
     {
@@ -48,12 +52,11 @@ const ListHeader = (props) => {
 }
 
 const HistoryLogList = (props) => {
-
+    const logs = useRecoilValue(logsState);
     return (
-
         <div className='historyLogListContainer'>
             <ListHeader />
-            {props.logs.map((element, index) => (
+            {logs.map((element, index) => (
                 <HistoryLogItem key={index} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
             ))}
        

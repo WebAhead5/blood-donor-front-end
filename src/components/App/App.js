@@ -12,6 +12,7 @@ import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
+import {RecoilRoot} from 'recoil';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 
 let alerts = [
@@ -93,6 +94,7 @@ function App() {
   setTimeout(console.log("TIMEOUT", userGeolocationState), 2000);
 
   return (
+    <RecoilRoot>
     <div>
       <Switch>
         <Route exact path="/">
@@ -129,6 +131,7 @@ function App() {
 
       <NavBar />
     </div>
+    </RecoilRoot>
   );
 }
 
