@@ -58,8 +58,7 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                     onClick={() => setSelectedLocation(null)}
                     className="mapBox_map"
                     width={"100%"}
-                    height={"calc( 100% - 66px)"}
-                    style={{top:"var(--titleHeader-field-height)"}}
+                    height={`calc(100% - 60px)` }
 
                 >
 
