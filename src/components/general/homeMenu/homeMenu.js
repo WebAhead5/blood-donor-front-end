@@ -7,12 +7,10 @@ import HomeMenuItem from "../homeMenuitem";
 export const HomeMenu = ({ data }) => {
   const history = useHistory();
   const myScrollBar = useRef();
-  const menuItem = useRef();
 
   useEffect(() => {
     const scrollWidth = 215 * data.length;
-    myScrollBar.current.scrollLeft = scrollWidth / 6 
-
+    myScrollBar.current.scrollLeft = (scrollWidth - window.innerWidth) / 2
   }, [])
 
   return (
@@ -22,7 +20,6 @@ export const HomeMenu = ({ data }) => {
 
         {data.map((element, index) =>
           <HomeMenuItem
-            ref={menuItem}
             key={index}
             onClick={() => history.push(element.redirectionLink)}
             icon={element.src}
