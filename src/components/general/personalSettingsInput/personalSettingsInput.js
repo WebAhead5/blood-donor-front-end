@@ -6,7 +6,6 @@ const PersonalSettingsInput = (props) => {
 
     return (
 
-        // using the general shadow box component.
         <WhiteBackgroundShodow className={`personalSettingsInput_container ${props.className}`}>
 
             <div className="personalSettingsInput_icon_container" >
