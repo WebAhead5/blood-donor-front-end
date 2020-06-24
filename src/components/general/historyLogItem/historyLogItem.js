@@ -55,18 +55,6 @@ const HistoryLogItem = (props) => {
     setInputs(editInputs);
   };
 
-<<<<<<< HEAD
-    const editClick = () => {
-        if (icon === "/img/icon-edit-log.svg") {
-            setIcon("/img/icon-save.svg")
-            changeAllStyles("historyLogItemDateInputEditable");
-            setReadOnly(false);
-        } else {
-            setIcon("/img/icon-edit-log.svg")
-            changeAllStyles("historyLogItemDateInputNotEditable");
-            setReadOnly(true);
-        }
-=======
   const editClick = () => {
     if (icon === "/img/icon-edit-log.svg") {
       setIcon("/img/icon-save.svg");
@@ -76,7 +64,6 @@ const HistoryLogItem = (props) => {
       setIcon("/img/icon-edit-log.svg");
       changeAllStyles("historyLogItemDateInputNotEditable");
       setReadOnly(true);
->>>>>>> b8fd621aa02a8f009cbb477bb72e5aafb392bcb2
     }
   };
 
