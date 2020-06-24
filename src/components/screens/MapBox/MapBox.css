@@ -29,6 +29,22 @@
     position: absolute;
     bottom: calc(-1 * var(--field-height));
     height: var(--field-height);
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+.mapBox_zoom{
+    position: absolute !important;
+
+    bottom: calc(-1 * var(--field-height));
+    right:5px;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.mapBox_zoom button{
+    width: var(--field-height);
+    height: var(--field-height);
+
 }
 
 
@@ -78,7 +94,7 @@
     /*background-color: none;*/
     border: none;
 }
-.mapboxgl-ctrl-icon {
+.mapBox_geolocation button .mapboxgl-ctrl-icon {
     background: url("/img/icon-map-liveLocation.svg") no-repeat center !important;
     background-size: 50% !important;
 }

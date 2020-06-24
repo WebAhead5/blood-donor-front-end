@@ -1,6 +1,6 @@
 import "./MapBox.css";
-import React, {useState, useRef, Fragment} from "react";
-import ReactMapGL, {Marker, GeolocateControl} from "react-map-gl";
+import React, {useState, useRef} from "react";
+import ReactMapGL, {Marker, GeolocateControl, NavigationControl} from "react-map-gl";
 import Geocoder from 'react-mapbox-gl-geocoder'
 import InfoPanel from './InfoPanel'
 import moment from "moment";
@@ -24,8 +24,7 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
     const [viewport, setViewport] = useState({
         latitude: parseFloat(process.env.REACT_APP_HAIFA_LAT),
         longitude: parseFloat(process.env.REACT_APP_HAIFA_LON),
-        width: "100vw",
-        height: "calc( 100vh - 53px)",
+
         zoom: 13
     });
 
@@ -45,17 +44,23 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
 
     return (
-            <MainScreenWrapper className="mapbox">
+        <MainScreenWrapper className="mapbox">
 
-                <TitleHeader title={"title"}/>
+            <TitleHeader title={"title"}/>
 
-                {/* map component */}
+            {/* map component */}
+
                 <ReactMapGL
                     ref={myMap}
                     {...viewport}
                     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
                     onViewportChange={viewport => setViewport(viewport)}
                     onClick={() => setSelectedLocation(null)}
+                    className="mapBox_map"
+                    width={"100%"}
+                    height={"calc( 100% - 66px)"}
+                    style={{top:"var(--titleHeader-field-height)"}}
+
                 >
 
                     {/*search field + live location  +  date field*/}
@@ -83,6 +88,8 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                                value={dateState}>
                         </input>
 
+                        <NavigationControl showZoom={true} showCompass={false} className="mapBox_zoom"/>
+
                     </div>
 
                     {/*map marks*/}
@@ -91,10 +98,11 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
                 </ReactMapGL>
 
-                {/*show popup if a location is selected*/}
-                {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
+            {/*show popup if a location is selected*/}
+            {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
 
-            </MainScreenWrapper>
+
+        </MainScreenWrapper>
 
     );
 }
