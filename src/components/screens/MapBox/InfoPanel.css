@@ -101,3 +101,13 @@ div.react-add-to-calendar__dropdown {
 .react-add-to-calendar__dropdown li {
     padding: 5px 5px;
 }
+
+div#shareButtonsContainer {
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    border: green solid 5px;
+    bottom: 50%;
+    left: 20%;
+    z-index: 99;
+}
