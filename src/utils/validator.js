@@ -38,8 +38,8 @@ export function isValidPressure(pressureString) {
   const values = pressureString.split("/");
   if (values === undefined || values.length !== 2) return false;
 
-  const topNumber = values[0];
-  const bottomNumber = values[1];
+  const bottomNumber = values[0];
+  const topNumber = values[1];
 
   if (isNaN(topNumber) || isNaN(bottomNumber)) return false;
 
