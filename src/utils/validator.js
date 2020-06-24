@@ -41,7 +41,6 @@ export function isValidPressure(pressureString) {
   const bottomNumber = values[0];
   const topNumber = values[1];
 
-  console.log(isNaN(topNumber), topNumber);
   if (isNaN(topNumber) || isNaN(bottomNumber)) return false;
 
   if (bottomNumber < 40 || bottomNumber > 100) return false;

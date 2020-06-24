@@ -21,7 +21,6 @@ export const useAddLogItemToLogsState = () => {
   const [items, setItems] = useRecoilState(logsState);
 
   return (item) => {
-    console.log(item.id);
     
     if (!item.id) {
       let id = parseInt(items[items.length - 1].id, 10) + 1;
