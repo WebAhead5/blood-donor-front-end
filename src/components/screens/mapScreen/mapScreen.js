@@ -7,7 +7,7 @@ import "./mapScreen.css"
 function MapScreen({arrayOfGeolocationObjects}) {
     return (
         <MainScreenWrapper className="mapScreen">
-            <TitleHeader title={"title"}/>
+            <TitleHeader title={"Blood Donation Spots & Centers"}/>
             <MapBox arrayOfGeolocationObjects={arrayOfGeolocationObjects}/>
         </MainScreenWrapper>
     );
