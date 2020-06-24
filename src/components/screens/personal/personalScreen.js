@@ -4,25 +4,17 @@ import Image from "../../general/image";
 import './personalScreen.css'
 import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
+import {useRecoilValue} from 'recoil';
+import {logsState, useSetLogsState} from '../../../store/logs';
 
 
 
 
 const PersonalScreen = () => {
-    const [logs, setLogs] = React.useState([
-        {
-            date: "12-3-2005",
-            pulse: "74",
-            pressure: "70/120",
-            hemoglobin: "13.5"
-        },
-        {
-            date: "12-3-2005",
-            pulse: "74",
-            pressure: "70/120",
-            hemoglobin: "13.5"
-        }
-    ])
+    const logsItemsState = useRecoilValue(logsState);
+    const setLogsItemsState = useSetLogsState();
+
+
 
     const includeEmptyItem = (arr) => {
         let empty = false
@@ -47,17 +39,17 @@ const PersonalScreen = () => {
 
     const onAddClick = () => {
         //if one element is empty ignore the click
-        if (includeEmptyItem(logs)) {
+        if (includeEmptyItem(logsItemsState)) {
             return;
         }
-        setLogs(logs.concat({ date: "", pulse: "", pressure: "", hemoglobin: "" }))
+        setLogsItemsState(logsItemsState.concat({ date: "", pulse: "", pressure: "", hemoglobin: "" }))
     }
 
 
     return (
         <MainScreenWrapper className='personalScreenMainWrapper'>
             <TitleHeader title='History Log' />
-            <HistoryLogList logs={logs} />
+            <HistoryLogList />
             <Image src="/img/icon-add.svg" className="personalScreenContainerAddBtn" alt="Add button" onClick={onAddClick} />
         </MainScreenWrapper>
 

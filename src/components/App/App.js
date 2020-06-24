@@ -9,6 +9,7 @@ import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
+import {RecoilRoot} from 'recoil';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
 
@@ -80,13 +81,12 @@ function App() {
   }, []);
 
 
-    return (
-      <div>
-
-
+  return (
+    <RecoilRoot>
+    <div>
       <Switch>
         <Route exact path="/">
-          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData}/>
+          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
         </Route>
 
         <Route exact path="/goals">
@@ -116,6 +116,7 @@ function App() {
 
       <NavBar />
     </div>
+    </RecoilRoot>
   );
 }
 
