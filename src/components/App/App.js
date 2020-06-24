@@ -74,8 +74,6 @@ function App() {
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
-      console.log("RESULT IS", result);
-
       setGeolocationArray(result);
     });
   }, []);

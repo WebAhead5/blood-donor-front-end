@@ -30,7 +30,7 @@ const PersonalScreen = () => {
             if (e.message === "empty") {
                 //Do nothing
             } else {
-                console.log(e);
+                console.error(e);
             }
 
         }
