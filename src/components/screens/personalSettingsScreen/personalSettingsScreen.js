@@ -24,9 +24,8 @@ const PersonalSettingsScreen = () => {
         <MainScreenWrapper className='personalSettingsScreen_container'>
 
             {/* Header */}
-            <TitleHeader title='Personal Settings' backButton={true} className='personalSettingsScreen_titleHeader'> 
+            <TitleHeader title='Personal Settings' backButton={true} className='personalSettingsScreen_titleHeader' />
 
-            </TitleHeader>
 
             {/* Name Input */}
             <PersonalSettingsInput icon="/img/icon-user-name.svg" alt="enter your name" >
@@ -42,8 +41,8 @@ const PersonalSettingsScreen = () => {
                 <label htmlFor="blood-type">What is your blood type?</label>
 
                 <select className="personalSettingsScreen_select_blood_type" onChange={(e) => {
-                            setUserSettings({...userSettings, bloodType: e.target.value })
-                        }}>
+                    setUserSettings({ ...userSettings, bloodType: e.target.value })
+                }}>
                     <option value="Choose your Blood Type" >Choose your Blood Type</option>
 
                     {/* Populates blood types options from the Array */}
@@ -64,11 +63,11 @@ const PersonalSettingsScreen = () => {
                 <span>How many times would you like to donate per year?</span>
                 <form className="personalSettingsScreen_donation_reminder_radios">
 
-                    
+
                     {/* populate 4 buttons from the Array */}
                     {radioButton.map((button, index) => (
                         <label htmlFor={`${button}-time`} key={index}>
-                            <input type="radio" name="donation-reminder" value={button} checked={userSettings.reminderCount === button} onChange={()=> 1}/>
+                            <input type="radio" name="donation-reminder" value={button} checked={userSettings.reminderCount === button} onChange={() => 1} />
                             <div
                                 className={`personalSettingsScreen_donation_reminder_select ${userSettings.reminderCount === button ? "personalSettingsScreen_donation_reminder_selected" : ""}`}
                                 onClick={() => setUserSettings({ ...userSettings, reminderCount: button })}>{button}</div>

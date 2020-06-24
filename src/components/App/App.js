@@ -120,9 +120,7 @@ function App() {
           <SettingsListScreen />
         </Route>
 
-        <Route exact path="/settings/personal">
-          <PersonalSettingsScreen />
-        </Route>
+        <Route exact path="/settings/personal" component={PersonalSettingsScreen} />
 
         <Route exact path="/settings/reminders">
           <ReminderSettingsScreen />
