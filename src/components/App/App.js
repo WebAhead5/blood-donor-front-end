@@ -7,7 +7,6 @@ import getGeolocation from "../screens/MapBox/API-Geolocation";
 import getUserGeolocation from "../screens/MapBox/API-UserGeolocation";
 
 import { Switch, Route } from "react-router-dom";
-import SubHeader from "../general/subHeader";
 import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";

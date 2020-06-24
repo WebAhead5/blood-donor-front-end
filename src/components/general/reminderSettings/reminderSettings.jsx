@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./reminderSettings.css";
 import Button from "../button";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
-import { isValidEmail } from "../../../utils/validator";
+// import { isValidEmail } from "../../../utils/validator";
 
 const ReminderSettings = (props) => {
   const [reminderSettings, setReminderSettings] = useState({
