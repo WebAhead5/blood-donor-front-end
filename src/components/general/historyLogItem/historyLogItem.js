@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./historyLogItem.css";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
+import { useRecoilValue } from 'recoil';
+import { logsState, useClearEmptyValuesLogsState, useSetLogsState } from '../../../store/logs';
 import {
   isValidDate,
   isValidPulse,
@@ -9,8 +11,16 @@ import {
 } from "../../../utils/validator";
 
 const HistoryLogItem = (props) => {
+
+  //Local states
   const [icon, setIcon] = useState("/img/icon-edit-log.svg");
   const [readOnly, setReadOnly] = useState(true);
+
+
+  //States and hooks for updating the relevant states
+  const logsItemsState = useRecoilValue(logsState);
+  const clearEmptyLogsFromLogsState = useClearEmptyValuesLogsState();
+  const setLogsItemsState = useSetLogsState();
 
   //If all the fields is empty this means this is a new entry and fields should
   //apper in edit mood
@@ -64,8 +74,32 @@ const HistoryLogItem = (props) => {
       setIcon("/img/icon-edit-log.svg");
       changeAllStyles("historyLogItemDateInputNotEditable");
       setReadOnly(true);
+      if (allFieldsEmpty()) {
+        clearEmptyLogsFromLogsState(logsItemsState);
+      } else {
+        setLogsItemsState(logsItemsState.filter(({date,pulse,pressure,hemoglobin}) => 
+        date||pulse||pressure||hemoglobin).concat({
+            date: inputs.date.value,
+            pulse: inputs.pulse.value,
+            pressure: inputs.pressure.value,
+            hemoglobin: inputs.hemoglobin.value
+          }
+        ))
+      }
     }
   };
+
+  const allFieldsEmpty = () => {
+    let empty = true;
+    let editInputs = Object.assign({}, inputs);
+    for (let key of Object.keys(editInputs)) {
+      if (editInputs[`${key}`].value !== "") {
+        empty = false;
+        break;
+      }
+    }
+    return empty;
+  }
 
   const change = ({ target }) => {
     if (!inputs[target.id].validate(target.value)) {

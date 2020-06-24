@@ -8,3 +8,22 @@ export const useSetLogsState = () => {
     setItems(data);
   };
 };
+
+export const useClearEmptyValuesLogsState = () => {
+  const [items, setItems] = useRecoilState(logsState);
+  return (data) => {
+    setItems(clearEmptyItems(data));
+  };
+};
+
+const clearEmptyItems = (arr) => {
+  let result = []
+  arr.forEach(element => {
+    if (!element.date && !element.pulse && !element.pressure && !element.hemoglobin) {
+
+    }else{
+      result.push(element);
+    }
+  });
+  return result;
+}
