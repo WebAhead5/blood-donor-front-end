@@ -1,7 +1,6 @@
 .personalSettingsScreen_container {
   display: flex;
   height: 100vh;
-  padding-top: 90px;
   box-sizing: border-box;
   align-items: center;
   flex-direction: column;
@@ -74,4 +73,8 @@
 
 .personalSettingsScreen_double_blood_drops .personalSettingsInput_vertical_line {
     height: 120px;
+}
+
+.personalSettingsScreen_titleHeader {
+  margin-bottom: 20px;
 }

@@ -1,19 +1,14 @@
-
-.homemenu{
-
+.homemenu {
   position: relative;
   bottom: 70px;
-  height:70px;
-
+  height: 70px;
 }
 
 .homemenu-container {
   display: flex;
   align-items: stretch;
-
   overflow: scroll;
   -ms-overflow-style: none;
-
 
   width: 100vw;
   box-sizing: border-box;
