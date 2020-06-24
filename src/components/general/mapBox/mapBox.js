@@ -1,11 +1,10 @@
-import "./MapBox.css";
 import React, {useState, useRef} from "react";
 import ReactMapGL, {Marker, GeolocateControl, NavigationControl} from "react-map-gl";
 import Geocoder from 'react-mapbox-gl-geocoder'
-import InfoPanel from './InfoPanel'
 import moment from "moment";
+import "./mapBox.css";
+import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
-import TitleHeader from "../../general/titleHeader";
 
 
 // TODO: What does the reminderButton do?
@@ -14,8 +13,8 @@ import TitleHeader from "../../general/titleHeader";
 // TODO: Refactor some code
 
 
-// Function to Render MapBox Component
-export default function MapBox({arrayOfGeolocationObjects = []}) {
+// Function to Render mapBox Component
+export default function MapBox({arrayOfGeolocationObjects = [], className}) {
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
@@ -39,14 +38,14 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
 
     //show an error message if env file is not set
     if (!process.env.REACT_APP_MAPBOX_PUBLIC)
-        return <MainScreenWrapper style={{display: "flex", justifyContent: "center", alignItems: "center"}}>server
-            error</MainScreenWrapper>
+        return <MainScreenWrapper style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+            server error
+    </MainScreenWrapper>
 
 
     return (
-        <MainScreenWrapper className="mapbox">
+        <div className={`mapbox ${className}` }>
 
-            <TitleHeader title={"title"}/>
 
             {/* map component */}
 
@@ -58,7 +57,7 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                     onClick={() => setSelectedLocation(null)}
                     className="mapBox_map"
                     width={"100%"}
-                    height={`calc(100% - 60px)` }
+                    height={"100%" }
 
                 >
 
@@ -98,10 +97,10 @@ export default function MapBox({arrayOfGeolocationObjects = []}) {
                 </ReactMapGL>
 
             {/*show popup if a location is selected*/}
-            {selectedLocation ? <InfoPanel selectedLocation={selectedLocation}/> : null}
+            {selectedLocation ? <MapInfoPanel selectedLocation={selectedLocation}/> : null}
 
 
-        </MainScreenWrapper>
+        </div>
 
     );
 }

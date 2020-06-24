@@ -1,12 +1,12 @@
-import './InfoPanel.css'
+import './mapInfoPanel.css'
 import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
 import React from 'react';
-import AddToCalendar from './AddToCalendar';
+import AddToCalendar from './addToCalendar';
 
 // TODO: What does the reminderButton do?
 
-function InfoPanel({ selectedLocation }) {
+function MapInfoPanel({ selectedLocation }) {
 
     return (
         <div className="infoPanel">
@@ -28,5 +28,5 @@ function InfoPanel({ selectedLocation }) {
     )
 }
 
-export default InfoPanel
+export default MapInfoPanel
 

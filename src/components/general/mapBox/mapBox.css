@@ -1,6 +1,8 @@
 
 .mapbox {
-    --field-height: 40px
+    --field-height: 40px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .mapBox_marker {
