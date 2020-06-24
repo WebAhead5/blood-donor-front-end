@@ -12,7 +12,7 @@ import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
-import {RecoilRoot} from 'recoil';
+import { RecoilRoot } from "recoil";
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 
 let alerts = [
@@ -95,40 +95,42 @@ function App() {
 
   return (
     <RecoilRoot>
-    <div>
-      <Switch>
-        <Route exact path="/">
-          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
-        </Route>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
+          </Route>
 
-        <Route exact path="/goals">
-          <GoalsScreen />
-        </Route>
+          <Route exact path="/goals">
+            <GoalsScreen />
+          </Route>
 
-        <Route exact path="/map">
-          <MapBox
-            arrayOfGeolocationObjects={geolocationArray}
-            userGeolocation={userGeolocationState}
-          />
-        </Route>
+          <Route exact path="/map">
+            <MapBox
+              arrayOfGeolocationObjects={geolocationArray}
+              userGeolocation={userGeolocationState}
+            />
+          </Route>
 
-        <Route exact path="/personal">
-          <Personal />
-        </Route>
+          <Route exact path="/personal">
+            <Personal />
+          </Route>
 
-        <Route exact path="/settings">
-          <SettingsListScreen />
-        </Route>
+          <Route exact path="/settings">
+            <SettingsListScreen />
+          </Route>
 
-        <Route exact path="/settings/personal" component={PersonalSettingsScreen} />
+          <Route exact path="/settings/personal">
+            <PersonalSettingsScreen />
+          </Route>
 
-        <Route exact path="/settings/reminders">
-          <ReminderSettingsScreen />
-        </Route>
-      </Switch>
+          <Route exact path="/settings/reminders">
+            <ReminderSettingsScreen />
+          </Route>
+        </Switch>
 
-      <NavBar />
-    </div>
+        <NavBar />
+      </div>
     </RecoilRoot>
   );
 }
