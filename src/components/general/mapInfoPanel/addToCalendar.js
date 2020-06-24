@@ -13,7 +13,7 @@ function AddToCalendarComponent({ selectedLocation }) {
     textOnly: 'none'
   };
 
-  return <AddToCalendar event={event} />;
+  return <AddToCalendar event={event} buttonLabel="Set a Reminder" />;
 }
 
 export default AddToCalendarComponent

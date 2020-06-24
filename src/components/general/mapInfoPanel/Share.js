@@ -23,19 +23,19 @@ function Share({ shareButtonState }) {
 
         <div id="shareButtonsContainer">
             <EmailShareButton url={shareButtonState.shareUrl} subject={shareButtonState.title} body="body text here">
-                <EmailIcon size={32} round={true} />
+                <EmailIcon size={50} round={true} />
             </EmailShareButton>
             <FacebookShareButton
               url={shareButtonState.shareUrl}
             quote={shareButtonState.title}
             >
-                <FacebookIcon size={32} round={true} />
+                <FacebookIcon size={50} round={true} />
             </FacebookShareButton>
             <FacebookMessengerShareButton link={shareButtonState.shareUrl}   url={shareButtonState.shareUrl} appId={shareButtonState.appId}>
-                <FacebookMessengerIcon size={32} round={true} />
+                <FacebookMessengerIcon size={50} round={true} />
             </FacebookMessengerShareButton>
             <LinkedinShareButton url={shareButtonState.shareUrl} >
-                <LinkedinIcon size={32} round={true} />
+                <LinkedinIcon size={50} round={true} />
             </LinkedinShareButton>
         </div>
     )

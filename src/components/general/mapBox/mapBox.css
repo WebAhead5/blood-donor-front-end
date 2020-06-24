@@ -1,6 +1,8 @@
 
 .mapbox {
-    --field-height: 40px
+    --field-height: 40px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .mapBox_marker {
@@ -29,6 +31,24 @@
     position: absolute;
     bottom: calc(-1 * var(--field-height));
     height: var(--field-height);
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+.mapBox_zoom{
+    position: absolute !important;
+
+    bottom: calc(-1 * var(--field-height));
+    right:5px;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+
+}
+.mapBox_zoom button{
+    width: var(--field-height);
+    height: var(--field-height);
+    border-radius: 2px !important;
+
 }
 
 
@@ -36,8 +56,8 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding-right: 5px;
     position: relative;
+
 }
 .react-geocoder input {
     width: 100%;
@@ -69,6 +89,7 @@
     width: var(--field-height);
     height: var(--field-height);
     box-sizing: border-box;
+    margin-left: 5px;
 }
 .mapBox_geolocation button {
     width: 100%;
@@ -78,7 +99,7 @@
     /*background-color: none;*/
     border: none;
 }
-.mapboxgl-ctrl-icon {
+.mapBox_geolocation button .mapboxgl-ctrl-icon {
     background: url("/img/icon-map-liveLocation.svg") no-repeat center !important;
     background-size: 50% !important;
 }

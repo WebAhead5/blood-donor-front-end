@@ -6,49 +6,49 @@ const querystring = require('querystring');
 
 
 // Dummy Data:
-let faridObject = [{
-    "DateDonation": "2020-06-18T00:00:00",
-    "FromHour": "16:00",
-    "ToHour": "19:30",
-    "Name": "מתנס ירוחם",
-    "City": "ירוחם",
-    "Street": "",
-    "NumHouse": "",
-    "AccountType": ""
-}]
+// let faridObject = [{
+//     "DateDonation": "2020-06-18T00:00:00",
+//     "FromHour": "16:00",
+//     "ToHour": "19:30",
+//     "Name": "מתנס ירוחם",
+//     "City": "ירוחם",
+//     "Street": "",
+//     "NumHouse": "",
+//     "AccountType": ""
+// }]
 
-let jdObject = [
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "מתנס ירוחם",
-        "City": "ירוחם",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    },
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "Italian hospital",
-        "City": "Haifa",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    },
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "German Colony",
-        "City": "Haifa",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    }
-];
+// let jdObject = [
+//     {
+//         "DateDonation": "2020-06-18T00:00:00",
+//         "FromHour": "16:00",
+//         "ToHour": "19:30",
+//         "Name": "מתנס ירוחם",
+//         "City": "ירוחם",
+//         "Street": "",
+//         "NumHouse": "",
+//         "AccountType": ""
+//     },
+//     {
+//         "DateDonation": "2020-06-18T00:00:00",
+//         "FromHour": "16:00",
+//         "ToHour": "19:30",
+//         "Name": "Italian hospital",
+//         "City": "Haifa",
+//         "Street": "",
+//         "NumHouse": "",
+//         "AccountType": ""
+//     },
+//     {
+//         "DateDonation": "2020-06-18T00:00:00",
+//         "FromHour": "16:00",
+//         "ToHour": "19:30",
+//         "Name": "German Colony",
+//         "City": "Haifa",
+//         "Street": "",
+//         "NumHouse": "",
+//         "AccountType": ""
+//     }
+// ];
 
 
 let getGeolocation = async (arrayOfObjects) => {

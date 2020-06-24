@@ -1,19 +1,26 @@
+
+.titleHeader {
+  --titleHeader-field-height: 60px;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: var(--titleHeader-field-height);
+  width: 100%;
+
+  background-color: var(--color-blue);
+  color: #ffffff;
+}
+
 .titleHeader_title {
+
+
+
   font-family: "Alef", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 19px;
   line-height: 26px;
-}
-
-.titleHeader_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 60px;
-  width: 100%;
-
-  background-color: var(--color-blue);
-  color: #ffffff;
 }
