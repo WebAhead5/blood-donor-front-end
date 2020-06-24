@@ -66,7 +66,6 @@ let getGeolocation = async (arrayOfObjects) => {
         }
         let queryString = querystring.stringify(params);
         let concat = `${urlStart}${queryString}`;
-        console.log("fetching from url:", concat);
 
         const googleResponse = await fetch(concat)
         const data = await googleResponse.json();
@@ -92,7 +91,6 @@ let getGeolocation = async (arrayOfObjects) => {
     }
 
     if (arrayOfReturnedGeolocations.length > 0) {
-        console.log("arrayOfReturnedGeolocations", arrayOfReturnedGeolocations);
         return arrayOfReturnedGeolocations
     }
     else {
