@@ -9,7 +9,7 @@ import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
-import {RecoilRoot} from 'recoil';
+import { RecoilRoot } from "recoil";
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
 
@@ -81,15 +81,15 @@ function App() {
 
   return (
     <RecoilRoot>
-    <div>
-      <Switch>
-        <Route exact path="/">
-          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
-        </Route>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
+          </Route>
 
-        <Route exact path="/goals">
-          <GoalsScreen  />
-        </Route>
+          <Route exact path="/goals">
+            <GoalsScreen />
+          </Route>
 
           <Route exact path="/map">
             <MapScreen arrayOfGeolocationObjects={geolocationArray}/>
@@ -103,9 +103,9 @@ function App() {
           <SettingsListScreen />
         </Route>
 
-        <Route exact path="/settings/personal">
-          <PersonalSettingsScreen />
-        </Route>
+          <Route exact path="/settings/personal">
+            <PersonalSettingsScreen />
+          </Route>
 
         <Route exact path="/settings/reminders">
           <ReminderSettingsScreen />
