@@ -1,11 +1,11 @@
 import React from 'react'
 import './mainScreenWrapper.css'
 
-const MainScreenWrapper = (props) => {
+const MainScreenWrapper = ({className, style,children}) => {
 
     return (
-        <div className={`mainScreenWrapper ${props.className}`}>
-            {props.children}
+        <div className={`mainScreenWrapper ${className}`} style={style}>
+            {children}
         </div>
     )
 

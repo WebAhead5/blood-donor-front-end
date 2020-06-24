@@ -9,9 +9,9 @@
   align-items: stretch;
   overflow: scroll;
   -ms-overflow-style: none;
-
   width: 100vw;
   box-sizing: border-box;
+  scroll-padding: 50px;
 }
 
 .homemenu-container::-webkit-scrollbar {

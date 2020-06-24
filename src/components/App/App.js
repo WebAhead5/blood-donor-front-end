@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import SettingsListScreen from "../screens/settingsListScreen";
-import MapBox from "../screens/MapBox/MapBox";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import SettingsListScreen from '../screens/settingsListScreen'
 import NavBar from "../general/navBar";
-import getGeolocation from "../screens/MapBox/API-Geolocation";
-import getUserGeolocation from "../screens/MapBox/API-UserGeolocation";
+import getGeolocation from "../general/mapBox/API-Geolocation"
 
 import { Switch, Route } from "react-router-dom";
-import SubHeader from "../general/subHeader";
 import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
-import {RecoilRoot} from 'recoil';
+import { RecoilRoot } from "recoil";
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
+import MapScreen from "../screens/mapScreen";
 
 let alerts = [
   { title: "Blood donation needed!", context: "Haifa district" },
@@ -76,41 +74,26 @@ function App() {
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
-      console.log("RESULT IS", result);
-
       setGeolocationArray(result);
     });
   }, []);
 
-  const [userGeolocationState, setUserGeolocationState] = useState();
-  useEffect(() => {
-    getUserGeolocation().then((result) => {
-      console.log("userGeolocation RESULT IS", result);
-
-      setUserGeolocationState(result);
-    });
-  }, []);
-
-  setTimeout(console.log("TIMEOUT", userGeolocationState), 2000);
 
   return (
     <RecoilRoot>
-    <div>
-      <Switch>
-        <Route exact path="/">
-          <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
-        </Route>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
+          </Route>
 
-        <Route exact path="/goals">
-          <GoalsScreen />
-        </Route>
+          <Route exact path="/goals">
+            <GoalsScreen />
+          </Route>
 
-        <Route exact path="/map">
-          <MapBox
-            arrayOfGeolocationObjects={geolocationArray}
-            userGeolocation={userGeolocationState}
-          />
-        </Route>
+          <Route exact path="/map">
+            <MapScreen arrayOfGeolocationObjects={geolocationArray}/>
+          </Route>
 
         <Route exact path="/personal">
           <Personal />
@@ -120,9 +103,9 @@ function App() {
           <SettingsListScreen />
         </Route>
 
-        <Route exact path="/settings/personal">
-          <PersonalSettingsScreen />
-        </Route>
+          <Route exact path="/settings/personal">
+            <PersonalSettingsScreen />
+          </Route>
 
         <Route exact path="/settings/reminders">
           <ReminderSettingsScreen />
