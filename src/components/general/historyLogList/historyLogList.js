@@ -4,25 +4,26 @@ import WhiteBackgroundShadow from '../whiteBackgroundShadow';
 import './historyLogList.css';
 import {useRecoilValue} from 'recoil';
 import {logsState} from '../../../store/logs';
+import { FormattedMessage } from 'react-intl';
 
 
 
 const headerElements = [
     {
         src : "/img/icon-date.svg",
-        title: "Date"
+        title: <FormattedMessage id="Date" />
     },
     {
         src: "/img/icon-pulse.svg",
-        title: "Pulse"
+        title: <FormattedMessage id="Pulse" />
     },
     {
         src: "/img/icon-pressure.svg",
-        title: "Pressure"
+        title: <FormattedMessage id="Pressure" />
     },
     {
         src: "/img/icon-hemoglobin.svg",
-        title: "Hemoglobin"
+        title: <FormattedMessage id="Hemoglobin" />
     },
     {
         src: "",

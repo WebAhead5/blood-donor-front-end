@@ -4,6 +4,10 @@ export default {
     Personal: 'היסטוריה',
     Goals: 'מטרות',
     Settings: 'הגדרות',
-    Map:'מפה'
-    
+    Map:'מפה',
+    Date: "תאריך",
+    Pulse: "דופק",
+    Pressure: "לחץ דם",
+    Hemoglobin: "המוגלובין",
+
 }

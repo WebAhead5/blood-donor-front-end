@@ -9,7 +9,7 @@ import languages from "./languages";
 require ('dotenv').config();
 
 const AppIndex = () => {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("he");
   useEffect(() => setLang(lang), [lang]);
 
   return (
@@ -18,7 +18,7 @@ const AppIndex = () => {
         <Router>
           <div
             style={{
-              direction: lang === "ar" ? "rtl" : "ltr",
+              direction: (lang === "ar" || "he") ? "rtl" : "ltr",
               fontFamily: ['Alef', 'sans-serif'],
             }}
           >
