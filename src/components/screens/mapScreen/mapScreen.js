@@ -2,13 +2,14 @@ import React from 'react';
 import MapBox from "../../general/mapBox/mapBox";
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import TitleHeader from "../../general/titleHeader";
-import "./mapScreen.css"
+import "./mapScreen.css";
+import { FormattedMessage } from 'react-intl';
 
 function MapScreen({ arrayOfGeolocationObjects }) {
     return (
         <MainScreenWrapper className="mapScreen">
-            <TitleHeader title={"Blood Donation Locations"} />
-            <MapBox arrayOfGeolocationObjects={arrayOfGeolocationObjects} />
+            <TitleHeader title={<FormattedMessage id="MapScreenTitle" />}/>
+            <MapBox arrayOfGeolocationObjects={arrayOfGeolocationObjects}/>
             {/* <button
                 className="testShare"
                 onClick={async () => {
@@ -26,6 +27,7 @@ function MapScreen({ arrayOfGeolocationObjects }) {
                     }
                 }}
             ></button> */}
+
         </MainScreenWrapper>
     );
 }
