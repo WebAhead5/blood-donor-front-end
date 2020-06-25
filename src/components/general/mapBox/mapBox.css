@@ -49,7 +49,6 @@
     width: var(--field-height);
     height: var(--field-height);
     border-radius: 2px !important;
-    /* box-shadow: unset; */
     border:none !important;
 }
 
