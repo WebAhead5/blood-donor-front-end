@@ -8,8 +8,7 @@ import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 
 
-// TODO: What does the reminderButton do?
-
+// TODO: Complete Share Function
 // TODO: Get data from API working (or datamining if needs be)
 // TODO: Refactor some code
 
@@ -25,7 +24,7 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
         latitude: parseFloat(process.env.REACT_APP_HAIFA_LAT),
         longitude: parseFloat(process.env.REACT_APP_HAIFA_LON),
 
-        zoom: 13
+        zoom: 11
     });
 
     // set state for calendar date change
@@ -90,12 +89,14 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
                     {/*live location field*/}
                     <GeolocateControl className="mapBox_geolocation"/>
 
-                    {/*date field*/}
-                    <input className="mapBox_dateInput"
-                           type='date'
-                           onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
-                           value={dateState}>
-                    </input>
+                        {/*date field*/}
+                        <input className="mapBox_dateInput"
+                               type='date'
+                               onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
+                               value={dateState}
+                               min={moment().format('YYYY-MM-DD')}
+                               >
+                        </input>
 
                     {/*zoom controls*/}
                     <NavigationControl showZoom={true} showCompass={false} className="mapBox_zoom"/>
