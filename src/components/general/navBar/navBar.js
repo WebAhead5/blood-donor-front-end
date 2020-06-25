@@ -35,34 +35,34 @@ function NavBar({
   data = navBarData,
   className,
   elementClassName,
-  initialPosIndex = 0,
 }) {
   //reference the dom elements
   let container = useRef(null);
-  let selectedItem = useRef(null);
+  let selectionHighlight = useRef(null);
   let history = useHistory();
 
   //add an onClick event that:
   // 1. sets the size of the "selected item div" to equal to the provided dom element
   // 2. set the position of the "selected item div" based on the div child index
   function setSelectedItemDimensions(index, domElement) {
-    selectedItem.current.style.height = `${domElement.offsetHeight}px`;
-    selectedItem.current.style.width = `${domElement.offsetWidth}px`;
-    selectedItem.current.style.left = `${index * domElement.clientWidth}px`;
+    selectionHighlight.current.style.height = `${domElement.offsetHeight}px`;
+    selectionHighlight.current.style.width = `${domElement.offsetWidth}px`;
+    selectionHighlight.current.style.left = `${index * domElement.clientWidth}px`;
   }
 
   useEffect(() => {
     //update the selected item to match the initial route
-    let filterRes = data.filter(
-      (element) => window.location.pathname === element.redirectionLink
-    );
+    let filterRes = data.filter(element => window.location.pathname === element.redirectionLink);
     if (!filterRes.length)
-      filterRes = data.filter(
-        (element) =>
-          element.redirectionLink !== "/" &&
-          window.location.pathname.includes(element.redirectionLink)
-      );
+        filterRes= data.filter(element=> {
+            if(element.redirectionLink ==="/")
+                return false;
+            const regex = new RegExp(`^${element.redirectionLink}`, 'ig')
+            return regex.test(window.location.pathname)
+        })
 
+
+      console.log(filterRes)
     if (filterRes.length) {
       let index = navBarData.indexOf(filterRes[0]);
       setSelectedItemDimensions(index, container.current.children[index]);
@@ -86,7 +86,7 @@ function NavBar({
             }}
           />
         ))}
-        <div ref={selectedItem} className="navBar_selectedItem" />
+        <div ref={selectionHighlight} className="navBar_selectedItem" />
       </nav>
     </header>
   );
