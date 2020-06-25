@@ -10,5 +10,6 @@ export default {
     Pressure: "לחץ דם",
     Hemoglobin: "המוגלובין",
     MapScreenTitle: "תחנות התרמה",
+    PersonalScreenTitle: "היסטורית התרמות",
 
 }

@@ -10,5 +10,6 @@ export default {
     Pressure: "Pressure",
     Hemoglobin: "Hemoglobin",
     MapScreenTitle: "Blood Donation Spots & Centers",
+    PersonalScreenTitle: "History Log",
 
 }
