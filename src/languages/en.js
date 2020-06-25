@@ -9,5 +9,6 @@ export default {
     Pulse: "Pulse",
     Pressure: "Pressure",
     Hemoglobin: "Hemoglobin",
+    MapScreenTitle: "Blood Donation Spots & Centers",
 
 }

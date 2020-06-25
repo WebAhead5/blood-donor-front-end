@@ -9,5 +9,6 @@ export default {
     Pulse: "דופק",
     Pressure: "לחץ דם",
     Hemoglobin: "המוגלובין",
+    MapScreenTitle: "תחנות התרמה",
 
 }
