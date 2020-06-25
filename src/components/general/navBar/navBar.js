@@ -2,30 +2,34 @@ import React, {useEffect, useRef, useState} from "react";
 import { useHistory } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
+import { FormattedMessage } from 'react-intl'
+
+
+
 
 const navBarData = [
   {
-    title: "home",
+    title: <FormattedMessage id="Home" />,
     redirectionLink: "/",
     iconSrc: "/img/icon-nav-home.svg",
   },
   {
-    title: "Goal",
+    title: <FormattedMessage id="Goals" />,
     redirectionLink: "/goals",
     iconSrc: "/img/icon-nav-flag.svg",
   },
   {
-    title: "map",
+    title: <FormattedMessage id="Map" />,
     redirectionLink: "/map",
     iconSrc: "/img/icon-nav-map.svg",
   },
   {
-    title: "personal",
+    title: <FormattedMessage id="Personal" />,
     redirectionLink: "/personal",
     iconSrc: "/img/icon-nav-profile.svg",
   },
   {
-    title: "settings",
+    title: <FormattedMessage id="Settings" />,
     redirectionLink: "/settings",
     iconSrc: "/img/icon-nav-settings.svg",
   },
@@ -87,7 +91,7 @@ function NavBar({
 
   return (
     <header className="navBar">
-      <nav className={`navBar_flexContainer ${className}`} ref={container}>
+      <nav className={`navBar_flexContainer ${className}`} ref={container} >
         {data.map((element, index) => (
           <NavBarItem
             key={index}
