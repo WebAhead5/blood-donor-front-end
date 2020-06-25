@@ -3,6 +3,8 @@ import ReminderSettings from "../../general/reminderSettings";
 import "./reminderSettingsScreen.css";
 import TitleHeader from "../../general/titleHeader";
 import MainScreenWrapper from "../../general/mainScreenWrapper";
+import { FormattedMessage } from 'react-intl';
+
 
 const data = [
   // {
@@ -22,14 +24,14 @@ const data = [
   {
     icon: "/img/bell-icon.svg",
     alt: "bell",
-    description: "Would you like to recieve notifications to your phone?",
+    description: <FormattedMessage id='ReminderSettingsPhoneNotification' />,
   },
 ];
 
 const ReminderSettingsScreen = () => {
   return (
     <MainScreenWrapper className="reminderSettingsScreen_container">
-      <TitleHeader title="Reminders Settings" backButton={true} className='reminderSettingsScreen_titleHeader'/>
+      <TitleHeader title={<FormattedMessage id='RemindersSettings' />} backButton={true} className='reminderSettingsScreen_titleHeader'/>
       {data.map((element, index) => (
         <ReminderSettings
           key={index}

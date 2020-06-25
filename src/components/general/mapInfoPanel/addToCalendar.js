@@ -2,7 +2,7 @@ import React from 'react';
 import AddToCalendar from 'react-add-to-calendar';
 import moment from 'moment'
 
-function AddToCalendarComponent({ selectedLocation }) {
+function AddToCalendarComponent({ selectedLocation, buttonLabel }) {
 
   let event = {
     title: 'Blood Donation',
@@ -13,7 +13,9 @@ function AddToCalendarComponent({ selectedLocation }) {
     textOnly: 'none'
   };
 
-  return <AddToCalendar event={event} buttonLabel="Set a Reminder" />;
+  //   const [addToCalendarState, setAddToCalendarState] = setState(event)
+
+  return <AddToCalendar event={event} buttonLabel={buttonLabel}/>;
 }
 
 export default AddToCalendarComponent

@@ -1,5 +1,23 @@
 export default {
     Alerts: 'התראות',
+    Goal: 'היעד',
+    Current: 'מצב נוכחי',
+    Location: 'מיקום',
+    Opens: 'שעת פתיחה',
+    Closes: 'שעת סיום',
+    OnDate: 'תאריך',
+    Share: 'שתף',
+    AddToCalendar: 'הוספה לקלנדר',
+    SettingsPersonal: 'פרטים אישיים',
+    SettingsReminders: 'תזכורות',
+    SettingsHowToDonate: 'איך להתנדב',
+    SettingsHelpAndSupport: 'עזרה ותמיכה',
+    SettingsContactUs: 'צור קשר',
+    SettingsFAQ: 'שאלות נפוצות',
+    SettingsAbout: 'אודות',
+    ReminderSettingsPhoneNotification: '?האם תרצה לקבל התראות לטלפון שלך',
+    Yes: 'כן',
+    No: 'לא',
     Home: 'דף בית',
     Personal: 'היסטוריה',
     Goals: 'מטרות',
@@ -16,6 +34,6 @@ export default {
     ChooseYourBloodType: "תבחר את סוג הדם שלך",
     PersonalSettings: "הגדרות אישיות",
     HowManyTimesDidYouDonateBlood: "כמה פעמים כבר תרמת דם השנה?",
-    HowManyTimesWouldYouLikeToDonatePerYear: "כמה פעמים אתה מתכנן לתרום דם השנה?"
-
+    HowManyTimesWouldYouLikeToDonatePerYear: "כמה פעמים אתה מתכנן לתרום דם השנה?",
+    RemindersSettings: 'התראות',
 }

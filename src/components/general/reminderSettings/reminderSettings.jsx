@@ -3,6 +3,8 @@ import "./reminderSettings.css";
 import Button from "../button";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
 // import { isValidEmail } from "../../../utils/validator";
+import { FormattedMessage } from 'react-intl';
+
 
 const ReminderSettings = (props) => {
   const [reminderSettings, setReminderSettings] = useState({
@@ -26,14 +28,14 @@ const ReminderSettings = (props) => {
         <div className="reminder_button_container">
           <Button
             className="button"
-            text="Yes"
+            text={<FormattedMessage id='Yes'/>}
             onClick={() =>
               setReminderSettings({ ...reminderSettings, smsReminder: true })
             }
           />
           <Button
             className="button"
-            text="No"
+            text={<FormattedMessage id='No'/>}
             onClick={() =>
               setReminderSettings({ ...reminderSettings, smsReminder: false })
             }

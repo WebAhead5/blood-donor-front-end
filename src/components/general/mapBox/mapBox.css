@@ -45,6 +45,12 @@
     align-items: stretch;
 
 }
+
+.mapBox_zoom_rtl {
+    right:unset;
+    left: 10px;
+}
+
 .mapBox_zoom button{
     width: var(--field-height);
     height: var(--field-height);

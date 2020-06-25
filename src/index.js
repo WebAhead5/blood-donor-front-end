@@ -6,7 +6,8 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import languages from "./languages";
-require ('dotenv').config();
+import { RecoilRoot } from 'recoil'
+require('dotenv').config();
 
 const AppIndex = () => {
   const [lang, setLang] = useState("he");
@@ -14,11 +15,12 @@ const AppIndex = () => {
 
   return (
     <React.StrictMode>
+      <RecoilRoot>
       <IntlProvider locale={lang} messages={languages[lang]}>
         <Router>
-          <div
+          <div id="TextDirection"
             style={{
-              direction: (lang === "ar" || "he") ? "rtl" : "ltr",
+              direction: (lang === "ar" || lang === "he") ? "rtl" : "ltr",
               fontFamily: ['Alef', 'sans-serif'],
             }}
           >
@@ -26,6 +28,7 @@ const AppIndex = () => {
           </div>
         </Router>
       </IntlProvider>
+      </RecoilRoot>
     </React.StrictMode>
   );
 };

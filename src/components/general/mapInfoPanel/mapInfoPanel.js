@@ -3,11 +3,12 @@ import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
 import React, {useState, Fragment} from 'react';
 import AddToCalendar from './addToCalendar';
+import { FormattedMessage, injectIntl } from 'react-intl'
 import Share from './Share'
 
 
 
-function MapInfoPanel({ selectedLocation }) {
+function MapInfoPanel({ selectedLocation, intl }) {
     
     const [shareButtonState, setShareButtonState] = useState({
         open: false,
@@ -17,34 +18,37 @@ function MapInfoPanel({ selectedLocation }) {
         media: "pinterest requires and absolute link to the image that will be pinned"
     })
 
+    const addToCalendarTitle = intl.formatMessage({id: 'AddToCalendar'})
+    
     return (
+
         <Fragment>
-            {console.log(shareButtonState.open)}
             {
             shareButtonState.open? <Share shareButtonState={shareButtonState} />: null}
             <div className="infoPanel">
-                <div id="upperLocation">
-                    <div id="locationDetails">
-                        <p>Location:<br /> {selectedLocation.address}</p>
-                    </div>
-                    <div id="openingHours">
-                        <p>Opens: {selectedLocation.opens}</p>
-                        <p>Closes: {selectedLocation.closes}</p>
-                        <p>On Date: <br />{selectedLocation.dateDonation.toDateString()}</p>
-                    </div>
+            <div id="upperLocation">
+                <div id="locationDetails">
+                    <p><FormattedMessage id='Location'/>:<br/> {selectedLocation.address}</p>
                 </div>
+                <div id="openingHours">
+                    <p><FormattedMessage id='Opens'/>: {selectedLocation.opens}</p>
+                    <p><FormattedMessage id='Closes'/>: {selectedLocation.closes}</p>
+                    <p><FormattedMessage id='OnDate'/>: <br/>{selectedLocation.dateDonation.toDateString()}</p>
+                </div>
+            </div>
                 <div id="locationButtons">
                     <button id="reminderButton"
                      onClick={() => {
                          setShareButtonState({...shareButtonState, open:true})                      
                         }}
-                    >Share</button>
-                    <AddToCalendar selectedLocation={selectedLocation} />
+                    ><FormattedMessage id='Share'/></button>
+                    <AddToCalendar buttonLabel={addToCalendarTitle} selectedLocation={selectedLocation} />
                 </div>
             </div>
         </Fragment>
+
     )
 }
 
-export default MapInfoPanel
+export default injectIntl(MapInfoPanel)
 
