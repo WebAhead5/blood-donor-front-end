@@ -6,7 +6,7 @@ export default {
     Opens: 'Opens',
     Closes: 'Closes',
     OnDate: 'On Date',
-    SetAReminder: 'Set a reminder',
+    Share: 'Share',
     AddToCalendar: 'Add to calendar',
     SettingsPersonal: 'Personal',
     SettingsReminders: 'Reminders',

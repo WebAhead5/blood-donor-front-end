@@ -1,7 +1,6 @@
 import React from 'react';
 import AddToCalendar from 'react-add-to-calendar';
-
-// TODO: pass state into the component
+import moment from 'moment'
 
 function AddToCalendarComponent({ selectedLocation, buttonLabel }) {
 
@@ -9,8 +8,8 @@ function AddToCalendarComponent({ selectedLocation, buttonLabel }) {
     title: 'Blood Donation',
     description: 'Reminder to donate blood',
     location: selectedLocation.address,
-    startTime: selectedLocation.dateDonation,
-    endTime: selectedLocation.dateDonation,
+    startTime: moment(selectedLocation.dateDonation).hours(selectedLocation.opens.slice(0,2)).minutes(selectedLocation.opens.slice(3,5))._d,
+    endTime: moment(selectedLocation.dateDonation).hours(selectedLocation.closes.slice(0,2)).minutes(selectedLocation.closes.slice(3,5))._d,
     textOnly: 'none'
   };
 
@@ -19,7 +18,6 @@ function AddToCalendarComponent({ selectedLocation, buttonLabel }) {
   return <AddToCalendar event={event} buttonLabel={buttonLabel}/>;
 }
 
-// AddToCalendarComponent.displayName = 'Example';
 export default AddToCalendarComponent
 
 

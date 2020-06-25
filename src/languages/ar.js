@@ -6,7 +6,7 @@ export default {
     Opens: 'ساعة البدء',
     Closes: 'ساعة الانتهاء',
     OnDate: 'تاريخ',
-    SetAReminder: 'ضع تذكير',
+    Share: 'مشاركة',
     AddToCalendar: "اضافه الى التقويم",
     SettingsPersonal: 'تفاصيل شخصيه',
     SettingsReminders: 'تذكيرات',

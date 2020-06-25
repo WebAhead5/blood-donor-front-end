@@ -1,56 +1,5 @@
 const querystring = require('querystring');
 
-// Example urls from Google are: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
-
-// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBM3rGm854oa_UAkDLZzGFZO5dcFPucQc8
-
-
-// Dummy Data:
-let faridObject = [{
-    "DateDonation": "2020-06-18T00:00:00",
-    "FromHour": "16:00",
-    "ToHour": "19:30",
-    "Name": "מתנס ירוחם",
-    "City": "ירוחם",
-    "Street": "",
-    "NumHouse": "",
-    "AccountType": ""
-}]
-
-let jdObject = [
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "מתנס ירוחם",
-        "City": "ירוחם",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    },
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "Italian hospital",
-        "City": "Haifa",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    },
-    {
-        "DateDonation": "2020-06-18T00:00:00",
-        "FromHour": "16:00",
-        "ToHour": "19:30",
-        "Name": "German Colony",
-        "City": "Haifa",
-        "Street": "",
-        "NumHouse": "",
-        "AccountType": ""
-    }
-];
-
-
 let getGeolocation = async (arrayOfObjects) => {
     let urlStart = "https://maps.googleapis.com/maps/api/geocode/json?"
     let arrayOfReturnedGeolocations = [];
@@ -83,7 +32,6 @@ let getGeolocation = async (arrayOfObjects) => {
 
             counter++;
             arrayOfReturnedGeolocations = [...arrayOfReturnedGeolocations, newObj]
-            // arrayOfReturnedGeolocations.push(newObj)
         }
         else {
             console.error("error from Google API:", data.error_message)
@@ -95,7 +43,6 @@ let getGeolocation = async (arrayOfObjects) => {
     }
     else {
         console.error("Google API return no results, could be an error with API key");
-        // return {error: "Error message from Google API call for user Geolocation"};
     }
 }
 

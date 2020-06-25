@@ -1,31 +1,35 @@
-import React, {useState, useRef, useEffect} from "react";
-import ReactMapGL, {Marker, GeolocateControl, NavigationControl} from "react-map-gl";
+import React, { useState, useRef, useEffect } from "react";
+import ReactMapGL, { Marker, GeolocateControl, NavigationControl } from "react-map-gl";
 import Geocoder from 'react-mapbox-gl-geocoder'
 import moment from "moment";
 import deepEquals from 'deep-equal'
 import "./mapBox.css";
 import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
+import { useRecoilValue } from 'recoil'
+import { textDirection } from '../../../store/textDirection'
 
 
-// TODO: What does the reminderButton do?
-
+// TODO: Complete Share Function
 // TODO: Get data from API working (or datamining if needs be)
 // TODO: Refactor some code
 
 
 // Function to Render mapBox Component
-export default function MapBox({arrayOfGeolocationObjects = [], className}) {
+export default function MapBox({ arrayOfGeolocationObjects = [], className }) {
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
+
+    // text direction (rtl / ltr)
+    const direction = useRecoilValue(textDirection)
 
     //the state of the viewport
     const [viewport, setViewport] = useState({
         latitude: parseFloat(process.env.REACT_APP_HAIFA_LAT),
         longitude: parseFloat(process.env.REACT_APP_HAIFA_LON),
 
-        zoom: 13
+        zoom: 11
     });
 
     // set state for calendar date change
@@ -40,16 +44,16 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
     //whenever a date is selected, the marks are filtered/updated
     useEffect(() => {
 
-        let filterRes = filterLocationsBasedOnDate(arrayOfGeolocationObjects,dateState)
-        if(deepEquals(marks,filterRes))
+        let filterRes = filterLocationsBasedOnDate(arrayOfGeolocationObjects, dateState)
+        if (deepEquals(marks, filterRes))
             return;
         setMarks(filterRes)
 
-    },[dateState,arrayOfGeolocationObjects])
+    }, [dateState, arrayOfGeolocationObjects])
 
     //show an error message if env file is not set
     if (!process.env.REACT_APP_MAPBOX_PUBLIC)
-        return <MainScreenWrapper style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        return <MainScreenWrapper style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             server error
         </MainScreenWrapper>
 
@@ -82,23 +86,25 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
                         viewport={viewport}
                         hideOnSelect={true}
                         inputComponent={data =>
-                            <input placeholder="search..." {...data} value={data.value || ""}/>
+                            <input placeholder="search..." {...data} value={data.value || ""} />
                         }
                         updateInputOnSelect={true}
                     />
 
                     {/*live location field*/}
-                    <GeolocateControl className="mapBox_geolocation"/>
+                    <GeolocateControl className="mapBox_geolocation" />
 
                     {/*date field*/}
                     <input className="mapBox_dateInput"
-                           type='date'
-                           onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
-                           value={dateState}>
+                        type='date'
+                        onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
+                        value={dateState}
+                        min={moment().format('YYYY-MM-DD')}
+                    >
                     </input>
 
                     {/*zoom controls*/}
-                    <NavigationControl showZoom={true} showCompass={false} className="mapBox_zoom"/>
+                    <NavigationControl showZoom={true} showCompass={false} className={`mapBox_zoom ${direction==='rtl' && 'mapBox_zoom_rtl'}`} />
 
                 </div>
 
@@ -109,7 +115,7 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
             </ReactMapGL>
 
             {/*show popup if a location is selected*/}
-            {selectedLocation ? <MapInfoPanel selectedLocation={selectedLocation}/> : null}
+            {selectedLocation ? <MapInfoPanel selectedLocation={selectedLocation} /> : null}
 
 
         </div>
@@ -125,13 +131,13 @@ function getMarkers(locationsArr, onClick) {
             latitude={location.lat}
             longitude={location.lon}>
             <button className="mapBox_marker" alt="Bloodbank Location Icon"
-                    onClick={() => onClick && onClick(location)}/>
+                onClick={() => onClick && onClick(location)} />
         </Marker>
     )
 }
 
 function filterLocationsBasedOnDate(locationsArr, date) {
     let filteringDate = moment(date).format("YYYY-MM-DD")
-    let returnVal = locationsArr?.filter(location => filteringDate  === moment(location.dateDonation).format("YYYY-MM-DD"));
+    let returnVal = locationsArr?.filter(location => filteringDate === moment(location.dateDonation).format("YYYY-MM-DD"));
     return returnVal || [];
 }

@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
 import { FormattedMessage } from 'react-intl'
-
+import { useRecoilValue } from 'recoil'
+import { textDirection } from '../../../store/textDirection'
 
 
 
@@ -46,12 +47,19 @@ function NavBar({
   const [refresh,setRefresh] = useState(false)
   let history = useHistory();
 
+  // text direction (rtl / ltr)
+  const direction = useRecoilValue(textDirection)
+
   //set the dimensions + position of the highlighted item
   function setSelectedItemDimensions(index) {
     let domElement= container.current.children[index];
     selectionHighlight.current.style.height = `${domElement.offsetHeight}px`;
     selectionHighlight.current.style.width = `${domElement.offsetWidth}px`;
+    if(direction === 'ltr') {
     selectionHighlight.current.style.left = `${index * domElement.clientWidth}px`;
+    } else {
+    selectionHighlight.current.style.right = `${index * domElement.clientWidth}px`;
+    }
   }
 
   //get the url, match it with the routes of the nav bar items

@@ -6,7 +6,7 @@ export default {
     Opens: 'שעת פתיחה',
     Closes: 'שעת סיום',
     OnDate: 'תאריך',
-    SetAReminder: 'קבע תזכורת',
+    Share: 'שתף',
     AddToCalendar: 'הוספה לקלנדר',
     SettingsPersonal: 'פרטים אישיים',
     SettingsReminders: 'תזכורות',
