@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { useHistory } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
@@ -39,35 +39,51 @@ function NavBar({
   //reference the dom elements
   let container = useRef(null);
   let selectionHighlight = useRef(null);
+  const [refresh,setRefresh] = useState(false)
   let history = useHistory();
 
-  //add an onClick event that:
-  // 1. sets the size of the "selected item div" to equal to the provided dom element
-  // 2. set the position of the "selected item div" based on the div child index
-  function setSelectedItemDimensions(index, domElement) {
+  //set the dimensions + position of the highlighted item
+  function setSelectedItemDimensions(index) {
+    let domElement= container.current.children[index];
     selectionHighlight.current.style.height = `${domElement.offsetHeight}px`;
     selectionHighlight.current.style.width = `${domElement.offsetWidth}px`;
     selectionHighlight.current.style.left = `${index * domElement.clientWidth}px`;
   }
 
-  useEffect(() => {
+  //get the url, match it with the routes of the nav bar items
+  function setSelectedItemBasedOnUrl(){
     //update the selected item to match the initial route
     let filterRes = data.filter(element => window.location.pathname === element.redirectionLink);
+
+
     if (!filterRes.length)
-        filterRes= data.filter(element=> {
-            if(element.redirectionLink ==="/")
-                return false;
-            const regex = new RegExp(`^${element.redirectionLink}`, 'ig')
-            return regex.test(window.location.pathname)
-        })
+      filterRes= data.filter(element=> {
+        if(element.redirectionLink ==="/")
+          return false;
+        const regex = new RegExp(`^${element.redirectionLink}`, 'ig')
+        return regex.test(window.location.pathname)
+      })
 
 
-      console.log(filterRes)
     if (filterRes.length) {
       let index = navBarData.indexOf(filterRes[0]);
-      setSelectedItemDimensions(index, container.current.children[index]);
+      setSelectedItemDimensions(index)
     }
-  });
+  }
+
+  useEffect(() => {
+    setSelectedItemBasedOnUrl()
+
+    let onResize = ()=>   setSelectedItemBasedOnUrl();
+
+    window.addEventListener("resize",onResize)
+    return ()=>   window.removeEventListener("resize",onResize)
+  },[]);
+
+  useEffect(()=>{
+    setSelectedItemBasedOnUrl()
+  },[refresh])
+
 
   return (
     <header className="navBar">
@@ -79,8 +95,8 @@ function NavBar({
             title={element.title}
             className={`navBar_item ${elementClassName}`}
             onClick={(e) => {
-              //add on click event to every child of the nav bar that sets the visuals
-              setSelectedItemDimensions(index, e.currentTarget);
+              //store selected item index
+              setRefresh(!refresh)
               //redirect the user to the given route
               history.push(element.redirectionLink);
             }}
