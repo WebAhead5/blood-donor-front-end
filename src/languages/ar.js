@@ -18,4 +18,6 @@ export default {
     ReminderSettingsPhoneNotification: 'هل ترعب في تلقي اشعارات على هاتفك؟',
     Yes: 'نعم',
     No: 'كلا',
+    Settings: 'أعدادات',
+    RemindersSettings: 'اشعارات'
 }

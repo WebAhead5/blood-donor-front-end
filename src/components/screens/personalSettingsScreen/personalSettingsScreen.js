@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
-import './personalSettingsScreen.css'
+import './personalSettingsScreen.css';
+import { FormattedMessage,  injectIntl } from 'react-intl';
 
-const PersonalSettingsScreen = () => {
-
-
+const PersonalSettingsScreen = ({intl}) => {
+    const WhatIYourNamesPlaceholder = intl.formatMessage({id: 'WhatIYourNames'});
+    const ChooseYourBloodTypePlaceholder = intl.formatMessage({id: 'ChooseYourBloodType'});
 
     const [userSettings, setUserSettings] = useState({
         name: '',
@@ -24,26 +25,27 @@ const PersonalSettingsScreen = () => {
         <MainScreenWrapper className='personalSettingsScreen_container'>
 
             {/* Header */}
-            <TitleHeader title='Personal Settings' backButton={true} className='personalSettingsScreen_titleHeader' />
+    <TitleHeader title={<FormattedMessage id="PersonalSettings" />}PersonalSettings backButton={true} className='personalSettingsScreen_titleHeader' />
 
 
             {/* Name Input */}
             <PersonalSettingsInput icon="/img/icon-user-name.svg" alt="enter your name" >
 
-                <label htmlFor='name' />What is your name?<label />
+                <label htmlFor='name' /><FormattedMessage id="WhatIYourNames" /><label />
                 <input type="text" value={userSettings.name} onChange={(e) => {
                     setUserSettings({ ...userSettings, name: e.target.value })
-                }} placeholder="Enter your name" className='personalSettingsInput_textContainer' />
+                }} placeholder={WhatIYourNamesPlaceholder} className='personalSettingsInput_textContainer' />
             </PersonalSettingsInput >
 
             {/* Blood Type select input */}
             <PersonalSettingsInput icon="/img/icon-blood-type.svg" alt="blodo type">
-                <label htmlFor="blood-type">What is your blood type?</label>
+                <label htmlFor="blood-type"><FormattedMessage id="WhatIYourBloodType" /></label>
 
                 <select className="personalSettingsScreen_select_blood_type" onChange={(e) => {
                     setUserSettings({ ...userSettings, bloodType: e.target.value })
-                }}>
-                    <option value="Choose your Blood Type" >Choose your Blood Type</option>
+                }}>injectIntl
+                
+                    <option value="Choose your Blood Type" >{ChooseYourBloodTypePlaceholder}</option>
 
                     {/* Populates blood types options from the Array */}
                     {bloodTypes.map((type, index) => (
@@ -54,13 +56,14 @@ const PersonalSettingsScreen = () => {
 
             {/* Blood donation count input */}
             <PersonalSettingsInput icon="/img/icon-blood-donation-count.svg" alt="donation count" contentClassName="personalSettingsScreen_donation_count">
-                <label>How many times did you donate blood?</label>
+                <label><FormattedMessage id="HowManyTimesDidYouDonateBlood" /></label>
                 <input value={userSettings.donationCount} type='number' onChange={(e) => setUserSettings({ ...userSettings, donationCount: Math.max(0, e.target.value) })}></input>
             </PersonalSettingsInput >
 
             {/* Donation reminder input */}
             <PersonalSettingsInput className='personalSettingsScreen_double_blood_drops' icon="/img/icon-double-drops.svg" alt="donation reminder" >
-                <span>How many times would you like to donate per year?</span>
+            
+                <span><FormattedMessage id="HowManyTimesWouldYouLikeToDonatePerYear" /></span>
                 <form className="personalSettingsScreen_donation_reminder_radios">
 
 
@@ -79,4 +82,4 @@ const PersonalSettingsScreen = () => {
     )
 }
 
-export default PersonalSettingsScreen
+export default injectIntl(PersonalSettingsScreen)

@@ -10,13 +10,8 @@ import { RecoilRoot } from 'recoil'
 require('dotenv').config();
 
 const AppIndex = () => {
-
-  const [lang, setLang] = useState("ar");
-
-
-  useEffect(() => {
-    setLang(lang)
-  }, [lang])
+  const [lang, setLang] = useState("he");
+  useEffect(() => setLang(lang), [lang]);
 
   return (
     <React.StrictMode>
@@ -25,7 +20,7 @@ const AppIndex = () => {
         <Router>
           <div id="TextDirection"
             style={{
-              direction: lang === "ar" ? "rtl" : "ltr",
+              direction: (lang === "ar" || lang === "he") ? "rtl" : "ltr",
               fontFamily: ['Alef', 'sans-serif'],
             }}
           >

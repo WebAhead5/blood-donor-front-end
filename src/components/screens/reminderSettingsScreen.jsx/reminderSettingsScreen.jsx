@@ -31,7 +31,7 @@ const data = [
 const ReminderSettingsScreen = () => {
   return (
     <MainScreenWrapper className="reminderSettingsScreen_container">
-      <TitleHeader title="Reminders Settings" backButton={true} className='reminderSettingsScreen_titleHeader'/>
+      <TitleHeader title={<FormattedMessage id='RemindersSettings' />} backButton={true} className='reminderSettingsScreen_titleHeader'/>
       {data.map((element, index) => (
         <ReminderSettings
           key={index}

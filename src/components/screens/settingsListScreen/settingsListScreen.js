@@ -47,7 +47,7 @@ const SettingsListScreen = () => {
 
     return (
        <MainScreenWrapper className='settingsListScreen_container'>
-           <TitleHeader title='Settings' />
+           <TitleHeader title={<FormattedMessage id='Settings'/>} />
             <SettingsList>
                 {data.map((element,index)=>
                     <SettingsListItem
