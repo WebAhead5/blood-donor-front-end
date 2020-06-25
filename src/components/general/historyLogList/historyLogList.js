@@ -5,6 +5,7 @@ import './historyLogList.css';
 import {useRecoilValue} from 'recoil';
 import {logsState} from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
+import { textDirection } from '../../../store/textDirection';
 
 
 
@@ -32,18 +33,20 @@ const headerElements = [
 ]
 
 const ListHeaderElement = (props) => {
+
     return (
         <div className='historyLogListHeaderElement'>
-            <img className='historyLogListHeaderIcon' src={props.src} alt="" />
+            <img className={'historyLogListHeaderIcon'} src={props.src} alt="" />
             {props.title}
         </div>
     )
 }
 
 const ListHeader = (props) => {
+    const direction = useRecoilValue(textDirection)
     return (
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
-            <div className='historyLogListHeader'>
+            <div className={`historyLogListHeader ${direction === "rtl" && 'historyLogListHeaderRtl'}`}>
             {headerElements.map((element, index) => (
                 <ListHeaderElement key={index} src={element.src} title={element.title} />
             ))}
