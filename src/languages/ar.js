@@ -1,4 +1,21 @@
 export default {
     Alerts: 'اشعارات',
-    
+    Goal: "الهدف",
+    Current: 'الحالي',
+    Location: 'موقع',
+    Opens: 'ساعة البدء',
+    Closes: 'ساعة الانتهاء',
+    OnDate: 'تاريخ',
+    SetAReminder: 'ضع تذكير',
+    AddToCalendar: "اضافه الى التقويم",
+    SettingsPersonal: 'تفاصيل شخصيه',
+    SettingsReminders: 'تذكيرات',
+    SettingsHowToDonate: 'كيف تتطوع',
+    SettingsHelpAndSupport: 'مساعده ودعم',
+    SettingsContactUs: 'تواصل معنا',
+    SettingsFAQ: 'الأسله الشائعه',
+    SettingsAbout: 'حولنا',
+    ReminderSettingsPhoneNotification: 'هل ترعب في تلقي اشعارات على هاتفك؟',
+    Yes: 'نعم',
+    No: 'كلا',
 }

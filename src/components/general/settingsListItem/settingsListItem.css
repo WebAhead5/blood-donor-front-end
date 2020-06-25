@@ -13,11 +13,22 @@
   box-sizing: border-box;
 }
 
+.settingsListItem_container_rtl {
+  padding-right: 25%;
+  padding-left: unset;
+}
+
 .settingsListItem_goArrow {
   width: 20px;
   height: 20px;
   position: absolute;
   right: 20px;
+}
+
+.settingsListItem_goArrow_rtl {
+  left: 20px;
+  right: unset;
+  transform: rotate(180deg);
 }
 
 .settingsListItem_userIcon {
@@ -26,3 +37,9 @@
   position: absolute;
   left: 20px;
 }
+
+.settingsListItem_userIcon_rtl {
+  right: 20px;
+  left: unset;
+}
+

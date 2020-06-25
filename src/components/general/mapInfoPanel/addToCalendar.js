@@ -3,7 +3,7 @@ import AddToCalendar from 'react-add-to-calendar';
 
 // TODO: pass state into the component
 
-function AddToCalendarComponent({ selectedLocation }) {
+function AddToCalendarComponent({ selectedLocation, buttonLabel }) {
 
   let event = {
     title: 'Blood Donation',
@@ -16,7 +16,7 @@ function AddToCalendarComponent({ selectedLocation }) {
 
   //   const [addToCalendarState, setAddToCalendarState] = setState(event)
 
-  return <AddToCalendar event={event} />;
+  return <AddToCalendar event={event} buttonLabel={buttonLabel}/>;
 }
 
 // AddToCalendarComponent.displayName = 'Example';

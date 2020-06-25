@@ -1,4 +1,21 @@
 export default {
     Alerts: 'התראות',
-    
+    Goal: 'היעד',
+    Current: 'מצב נוכחי',
+    Location: 'מיקום',
+    Opens: 'שעת פתיחה',
+    Closes: 'שעת סיום',
+    OnDate: 'תאריך',
+    SetAReminder: 'קבע תזכורת',
+    AddToCalendar: 'הוספה לקלנדר',
+    SettingsPersonal: 'פרטים אישיים',
+    SettingsReminders: 'תזכורות',
+    SettingsHowToDonate: 'איך להתנדב',
+    SettingsHelpAndSupport: 'עזרה ותמיכה',
+    SettingsContactUs: 'צור קשר',
+    SettingsFAQ: 'שאלות נפוצות',
+    SettingsAbout: 'אודות',
+    ReminderSettingsPhoneNotification: '?האם תרצה לקבל התראות לטלפון שלך',
+    Yes: 'כן',
+    No: 'לא',
 }

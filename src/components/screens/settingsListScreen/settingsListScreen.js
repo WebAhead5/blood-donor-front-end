@@ -5,35 +5,37 @@ import './settingsListScreen.css'
 import { useHistory } from 'react-router-dom'
 import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
+import { FormattedMessage } from 'react-intl';
+
 
 
 const data=[
     {
-        title:"Personal",
+        title:<FormattedMessage id='SettingsPersonal'/> ,
         redirectionLink:"/settings/personal",
         iconSrc:"/img/icon-user.svg"
     },{
-        title:"Reminders",
+        title:<FormattedMessage id='SettingsReminders'/> ,
         redirectionLink:"/settings/reminders",
         iconSrc:"/img/icon-notification.svg"
     },{
-        title:"How-To-Donate",
+        title:<FormattedMessage id='SettingsHowToDonate'/>,
         redirectionLink:"/settings/how-to-donate",
         iconSrc:"/img/icon-how-to-donate.svg"
     },{
-        title:"Help & Support",
+        title:<FormattedMessage id='SettingsHelpAndSupport'/>,
         redirectionLink:"/settings/help-support",
         iconSrc:"/img/icon-help-support.svg"
     },{
-        title:"Contact Us",
+        title:<FormattedMessage id='SettingsContactUs'/>,
         redirectionLink:"/settings/contact-us",
         iconSrc:"/img/icon-contact-us.svg"
     },{
-        title:"FAQ",
+        title:<FormattedMessage id='SettingsFAQ'/>,
         redirectionLink:"/settings/faq",
         iconSrc:"/img/icon-FAQ.svg"
     },{
-        title:"About",
+        title:<FormattedMessage id='SettingsAbout'/>,
         redirectionLink:"/settings/about",
         iconSrc:"/img/icon-about.svg"
     },

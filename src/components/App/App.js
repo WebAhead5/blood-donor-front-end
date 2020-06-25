@@ -9,7 +9,7 @@ import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
-import { RecoilRoot } from "recoil";
+import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
 
@@ -88,9 +88,13 @@ function App() {
     });
   }, []);
 
+  const setTextDirection = useSetTextDirection(); 
+
+  useEffect(() => {
+    setTextDirection(document.getElementById('TextDirection').style.direction)
+  }, [])
 
   return (
-    <RecoilRoot>
       <div>
         <Switch>
           <Route exact path="/">
@@ -124,7 +128,6 @@ function App() {
 
       <NavBar />
     </div>
-    </RecoilRoot>
   );
 }
 

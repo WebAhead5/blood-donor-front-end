@@ -3,6 +3,8 @@ import ReminderSettings from "../../general/reminderSettings";
 import "./reminderSettingsScreen.css";
 import TitleHeader from "../../general/titleHeader";
 import MainScreenWrapper from "../../general/mainScreenWrapper";
+import { FormattedMessage } from 'react-intl';
+
 
 const data = [
   // {
@@ -22,7 +24,7 @@ const data = [
   {
     icon: "/img/bell-icon.svg",
     alt: "bell",
-    description: "Would you like to recieve notifications to your phone?",
+    description: <FormattedMessage id='ReminderSettingsPhoneNotification' />,
   },
 ];
 
