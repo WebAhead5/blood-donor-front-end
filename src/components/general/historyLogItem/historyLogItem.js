@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./historyLogItem.css";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
+import { useRecoilValue } from 'recoil';
+import { logsState, useClearEmptyValuesLogsState,useAddLogItemToLogsState } from '../../../store/logs';
 import {
   isValidDate,
   isValidPulse,
@@ -9,8 +11,16 @@ import {
 } from "../../../utils/validator";
 
 const HistoryLogItem = (props) => {
+
+  //Local states
   const [icon, setIcon] = useState("/img/icon-edit-log.svg");
   const [readOnly, setReadOnly] = useState(true);
+
+
+  //States and hooks for updating the relevant states
+  const logsItemsState = useRecoilValue(logsState);
+  const clearEmptyLogsFromLogsState = useClearEmptyValuesLogsState();
+  const addLogToState = useAddLogItemToLogsState();
 
   //If all the fields is empty this means this is a new entry and fields should
   //apper in edit mood
@@ -64,8 +74,32 @@ const HistoryLogItem = (props) => {
       setIcon("/img/icon-edit-log.svg");
       changeAllStyles("historyLogItemDateInputNotEditable");
       setReadOnly(true);
+      if (allFieldsEmpty()) {
+        clearEmptyLogsFromLogsState(logsItemsState);
+      } else{
+        addLogToState ({
+              id:props.id,
+              date: inputs.date.value,
+              pulse: inputs.pulse.value,
+              pressure: inputs.pressure.value,
+              hemoglobin: inputs.hemoglobin.value
+            }
+          )
+      }
     }
   };
+
+  const allFieldsEmpty = () => {
+    let empty = true;
+    let editInputs = Object.assign({}, inputs);
+    for (let key of Object.keys(editInputs)) {
+      if (editInputs[`${key}`].value !== "") {
+        empty = false;
+        break;
+      }
+    }
+    return empty;
+  }
 
   const change = ({ target }) => {
     if (!inputs[target.id].validate(target.value)) {
@@ -94,8 +128,10 @@ const HistoryLogItem = (props) => {
       <div className="historyLogItemRow">
         <input
           id="date"
+          type="date"
           value={inputs.date.value}
           className={inputs.date.style}
+          style={{width:"100px"}}
           onChange={change}
           readOnly={readOnly}
         />
@@ -103,6 +139,7 @@ const HistoryLogItem = (props) => {
           id="pulse"
           value={inputs.pulse.value}
           className={inputs.pulse.style}
+          style= {{width:"20px",paddingLeft:"5px"}}
           onChange={change}
           readOnly={readOnly}
         />
@@ -110,6 +147,7 @@ const HistoryLogItem = (props) => {
           id="pressure"
           value={inputs.pressure.value}
           className={inputs.pressure.style}
+          style = {{paddingLeft:"50px"}}
           onChange={change}
           readOnly={readOnly}
         />

@@ -1,10 +1,7 @@
-<svg id="Layer_1" data-name="Layer 1" width="1000px" height="103px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 103">
-    <defs>
-        <style>
-            .wave{fill:#4e0404;}
-        </style>
-    </defs>
-    <title>Untitled-1</title>
-    <path class="wave"
-          d="M1000,103H0V0C51,0,88.4,38.56,157.5,47.89c170.41,23,230.19-58.76,408-42.23,101.92,9.47,109.9,38.9,213,39.14C872.83,45,938,0,1000,0Z"/>
+<svg  width="1000px" height="103px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 1000 103" style="enable-background:new 0 0 1000 103;" xml:space="preserve">
+<style type="text/css">
+	.wave{fill:#390303;}
+</style>
+<path class="wave" d="M-1.4,103h1002.7V0C864.6,0,696.8,51.5,499.9,51.5C362.6,51.5,196,0-1.4,0C-1.4,34.3-1.4,68.7-1.4,103z"/>
 </svg>

@@ -5,19 +5,23 @@ import './personalScreen.css'
 import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 import {useRecoilValue} from 'recoil';
-import {logsState, useSetLogsState} from '../../../store/logs';
+import {logsState ,useClearEmptyValuesLogsState,useAddLogItemToLogsState} from '../../../store/logs';
 
 
 
 
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
-    const setLogsItemsState = useSetLogsState();
-
+    const addLogToState = useAddLogItemToLogsState();
+    const clearEmptyLogs= useClearEmptyValuesLogsState();
 
 
     const includeEmptyItem = (arr) => {
         let empty = false
+
+        if(!arr){
+            return;
+        }
         //I use the try catch to throw exception and stop the forEach loop
         try {
             arr.forEach(element => {
@@ -40,9 +44,11 @@ const PersonalScreen = () => {
     const onAddClick = () => {
         //if one element is empty ignore the click
         if (includeEmptyItem(logsItemsState)) {
+            clearEmptyLogs(logsItemsState);
             return;
         }
-        setLogsItemsState(logsItemsState.concat({ date: "", pulse: "", pressure: "", hemoglobin: "" }))
+        
+        addLogToState ({ date: "", pulse: "", pressure: "", hemoglobin: "" })
     }
 
 
