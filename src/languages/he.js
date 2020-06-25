@@ -11,5 +11,11 @@ export default {
     Hemoglobin: "המוגלובין",
     MapScreenTitle: "תחנות התרמה",
     PersonalScreenTitle: "היסטורית התרמות",
+    WhatIYourNames:"הכנס את השם שלך",
+    WhatIYourBloodType:"סוג הגדם",
+    ChooseYourBloodType: "תבחר את סוג הדם שלך",
+    PersonalSettings: "הגדרות אישיות",
+    HowManyTimesDidYouDonateBlood: "כמה פעמים כבר תרמת דם השנה?",
+    HowManyTimesWouldYouLikeToDonatePerYear: "כמה פעמים אתה מתכנן לתרום דם השנה?"
 
 }
