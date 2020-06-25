@@ -33,6 +33,7 @@
     height: var(--field-height);
     padding: 5px 0;
     box-sizing: border-box;
+
 }
 .mapBox_zoom{
     position: absolute !important;
@@ -65,7 +66,22 @@
     margin: 0;
     padding: 0 10px;
     box-sizing: border-box;
+    border: 0;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.1);
 }
+
+.mapBox_dateInput, .react-geocoder input, div.mapBox_geolocation, div.mapBox_zoom {
+    border: 0;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+    border-radius:4px;
+}
+
+.react-geocoder input, input.mapBox_dateInput  {
+    font-family: 'Alef', sans-serif;
+    padding-left: 5px;
+    
+}
+
 .react-geocoder-results {
     width: 100%;
     z-index: 20;

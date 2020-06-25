@@ -39,7 +39,7 @@ const homeBarData = [
 
 let jdObject = [
   {
-    DateDonation: "2020-06-18T00:00:00",
+    DateDonation: "2020-06-24T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "מתנס ירוחם",
@@ -49,7 +49,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-18T00:00:00",
+    DateDonation: "2020-06-24T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "Italian hospital",
@@ -59,7 +59,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-18T00:00:00",
+    DateDonation: "2020-06-25T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "German Colony",
@@ -68,6 +68,26 @@ let jdObject = [
     NumHouse: "",
     AccountType: "",
   },
+  {
+    DateDonation: "2020-06-25T00:00:00",
+    FromHour: "16:00",
+    ToHour: "19:30",
+    Name: "One Stop",
+    City: "Holywell",
+    Street: "",
+    NumHouse: "",
+    AccountType: "",
+  },
+  {
+    DateDonation: "2020-06-24T00:00:00",
+    FromHour: "16:00",
+    ToHour: "19:30",
+    Name: "Tesco",
+    City: "Holywell",
+    Street: "",
+    NumHouse: "",
+    AccountType: "",
+  }
 ];
 
 function App() {

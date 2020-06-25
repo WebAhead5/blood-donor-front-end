@@ -83,7 +83,9 @@ export default function MapBox({arrayOfGeolocationObjects = [], className}) {
                         <input className="mapBox_dateInput"
                                type='date'
                                onChange={(e) => setDateState(moment(e.target.value).format("YYYY-MM-DD"))}
-                               value={dateState}>
+                               value={dateState}
+                               min={moment().format('YYYY-MM-DD')}
+                               >
                         </input>
 
                         <NavigationControl showZoom={true} showCompass={false} className="mapBox_zoom"/>
