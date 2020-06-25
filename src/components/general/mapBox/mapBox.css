@@ -58,7 +58,7 @@
     height: 100%;
     box-sizing: border-box;
     position: relative;
-
+z-index:99;
 }
 .react-geocoder input {
     width: 100%;
