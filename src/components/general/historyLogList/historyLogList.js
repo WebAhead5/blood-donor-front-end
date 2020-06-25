@@ -57,7 +57,7 @@ const HistoryLogList = (props) => {
         <div className='historyLogListContainer'>
             <ListHeader />
             {logs.map((element, index) => (
-                <HistoryLogItem key={index} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+                <HistoryLogItem key={index} id= {element.id} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
             ))}
        
         </div>

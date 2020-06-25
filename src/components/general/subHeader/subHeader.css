@@ -21,8 +21,8 @@
   box-sizing: border-box;
   height: 200px;
   width: 150px;
-  padding: 5px;
-  background-color: black;
+  padding: 7px;
+  background-color: var(--color-gray);
   -webkit-mask-box-image: url("/img/icon-goal-drop.svg") stretch;
   mask-border: url("/img/icon-goal-drop.svg") stretch;
   display: flex;
@@ -56,10 +56,10 @@
   position: absolute;
   top: -10px;
 
-  animation: sineMove 15s linear infinite;
+  animation: sineMove 8s linear infinite;
   animation-delay: 0s;
 
-  background: url("/img/img-goal-wave-red.svg") repeat-x;
+  background: url("/img/img-goal-wave-red.svg") repeat-x ;
   background-size: contain;
 
   z-index: 5;
@@ -67,7 +67,7 @@
 
 .subHeader_wave2 {
   background-image: url("/img/img-goal-wave-darkRed.svg");
-  animation: sineMove 20s linear infinite;
+  animation: sineMove 16s linear infinite;
 
   top: -15px;
   z-index: 4;
