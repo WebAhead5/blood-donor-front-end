@@ -59,7 +59,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-25T00:00:00",
+    DateDonation: "2020-06-26T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "German Colony",
@@ -79,7 +79,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-24T00:00:00",
+    DateDonation: "2020-06-27T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "Tesco",

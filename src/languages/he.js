@@ -4,7 +4,7 @@ export default {
     Current: 'מצב נוכחי',
     Location: 'מיקום',
     Opens: 'שעת פתיחה',
-    Closes: 'שעת סיום',
+    Closes: 'שעת סגירה',
     OnDate: 'תאריך',
     Share: 'שתף',
     AddToCalendar: 'הוספה לקלנדר',

@@ -18,35 +18,39 @@ function MapInfoPanel({ selectedLocation, intl }) {
         media: "pinterest requires and absolute link to the image that will be pinned"
     })
 
-    const addToCalendarTitle = intl.formatMessage({id: 'AddToCalendar'})
     
     return (
 
-        <Fragment>
-            {
-            shareButtonState.open? <Share shareButtonState={shareButtonState} />: null}
             <div className="infoPanel">
-            <div id="upperLocation">
-                <div id="locationDetails">
+            <div className="infoPanel_detailsContainer">
+                <div className="infoPanel_details">
                     <p><FormattedMessage id='Location'/>:<br/> {selectedLocation.address}</p>
-                </div>
-                <div id="openingHours">
-                    <p><FormattedMessage id='Opens'/>: {selectedLocation.opens}</p>
-                    <p><FormattedMessage id='Closes'/>: {selectedLocation.closes}</p>
                     <p><FormattedMessage id='OnDate'/>: <br/>{selectedLocation.dateDonation.toDateString()}</p>
-                </div>
-            </div>
-                <div id="locationButtons">
-                    <button id="reminderButton"
-                     onClick={() => {
-                         setShareButtonState({...shareButtonState, open:true})                      
-                        }}
-                    ><FormattedMessage id='Share'/></button>
-                    <AddToCalendar buttonLabel={addToCalendarTitle} selectedLocation={selectedLocation} />
-                </div>
-            </div>
-        </Fragment>
 
+                </div>
+                <div className="infoPanel_details">
+                    <p><FormattedMessage id='Opens'/>:<br/>  {selectedLocation.opens}</p>
+                    <p><FormattedMessage id='Closes'/>:<br/>  {selectedLocation.closes}</p>
+                </div>
+
+            </div>
+                <div className="infoPanel_buttons">
+
+                    <button className="infoPanel_button infoPanel_shareButton" onClick={() => setShareButtonState({...shareButtonState, open:true})}>
+                        <FormattedMessage id='Share'/>
+                    </button>
+                    <AddToCalendar
+                        buttonLabel={ intl.formatMessage({id: 'AddToCalendar'})}
+                        selectedLocation={selectedLocation}
+                        rootClass="infoPanel_button infoPanel_addToCalender"
+                        dropdownClass="infoPanel_addToCalender_dropDown"
+                        buttonWrapperClass="infoPanel_addToCalender_wrapper"
+                    />
+                </div>
+
+                {/*{ shareButtonState.open? <Share shareButtonState={shareButtonState} />: null}*/}
+
+            </div>
     )
 }
 
