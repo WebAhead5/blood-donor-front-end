@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import './settingsListItem.css';
 import { textDirection } from '../../../store/textDirection';
 import { useRecoilValue } from 'recoil';
