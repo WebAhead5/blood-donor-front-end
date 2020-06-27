@@ -1,27 +1,18 @@
 import React from 'react';
 import AddToCalendar from 'react-add-to-calendar';
-import moment from 'moment'
+import "./addToCalender.css"
+import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
-function AddToCalendarComponent({ selectedLocation, buttonLabel, buttonWrapperClass,rootClass ,dropdownClass }) {
+function AddToCalendarComponent({ event:{title,description,location,startTime,endTime}, buttonLabel, className}) {
 
-  let event = {
-    title: 'Blood Donation',
-    description: 'Reminder to donate blood',
-    location: selectedLocation.address,
-    startTime: moment(selectedLocation.dateDonation).hours(selectedLocation.opens.slice(0,2)).minutes(selectedLocation.opens.slice(3,5)).toDate(),
-    endTime: moment(selectedLocation.dateDonation).hours(selectedLocation.closes.slice(0,2)).minutes(selectedLocation.closes.slice(3,5)).toDate(),
-  };
 
-  // console.log(moment().)
-  //   const [addToCalendarState, setAddToCalendarState] = setState(event)
-
-  return <AddToCalendar event={event}
+  return <AddToCalendar event={{title,description,location,startTime,endTime}}
                         buttonLabel={buttonLabel}
-                        buttonWrapperClass={buttonWrapperClass}
+                        buttonWrapperClass="addToCalender_wrapper"
                         buttonClassClosed = ""
                         buttonClassOpen=""
-                        dropdownClass={dropdownClass}
-                        rootClass={rootClass}/>;
+                        dropdownClass="addToCalender_dropDown"
+                        rootClass={`addToCalender_button addToCalender ${className}`}/>;
 }
 
 export default AddToCalendarComponent
