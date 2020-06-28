@@ -7,7 +7,7 @@ export default {
     Closes: 'שעת סגירה',
     OnDate: 'תאריך',
     Share: 'שתף',
-    AddToCalendar: 'הוספה לקלנדר',
+    AddToCalendar: 'הוספה ליומן',
     SettingsPersonal: 'פרטים אישיים',
     SettingsReminders: 'תזכורות',
     SettingsHowToDonate: 'איך להתנדב',
