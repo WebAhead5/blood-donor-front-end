@@ -129,13 +129,13 @@ const HistoryLogItem = (props) => {
 
   return (
     <WhiteBackgroundShadow className="historyLogItemContanier">
-      <div className="historyLogItemRow">
+      <div className={`historyLogItemRow ${direction === "rtl" && 'historyLogItemRowRtl'}`}>
         <input
           id="date"
           type="date"
           value={inputs.date.value}
           className={inputs.date.style}
-          style={{width:"100px"}}
+          style={{width:"100px",flexDirection:direction === "ltr" ?  "unset":"row-reverse"}}
           onChange={change}
           readOnly={readOnly}
         />
