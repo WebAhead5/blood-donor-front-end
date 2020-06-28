@@ -10,24 +10,24 @@ import { RecoilRoot } from 'recoil'
 require('dotenv').config();
 
 const AppIndex = () => {
-  const [lang, setLang] = useState("he");
+  const [lang, setLang] = useState("ar");
   useEffect(() => setLang(lang), [lang]);
 
   return (
     <React.StrictMode>
       <RecoilRoot>
-      <IntlProvider locale={lang} messages={languages[lang]}>
-        <Router>
-          <div id="TextDirection"
-            style={{
-              direction: (lang === "ar" || lang === "he") ? "rtl" : "ltr",
-              fontFamily: ['Alef', 'sans-serif'],
-            }}
-          >
-            <App setLang={setLang} lang={lang} />
-          </div>
-        </Router>
-      </IntlProvider>
+        <IntlProvider locale={lang} messages={languages[lang]}>
+          <Router>
+            <div id="TextDirection"
+              style={{
+                direction: (lang === "ar" || lang === "he") ? "rtl" : "ltr",
+                fontFamily: ['Alef', 'sans-serif'],
+              }}
+            >
+              <App setLang={setLang} lang={lang} />
+            </div>
+          </Router>
+        </IntlProvider>
       </RecoilRoot>
     </React.StrictMode>
   );

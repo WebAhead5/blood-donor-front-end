@@ -21,10 +21,12 @@
     "react-scripts": "3.4.1",
     "react-share": "^4.2.0",
     "react-slick": "^0.26.1",
-    "recoil": "0.0.10"
+    "recoil": "0.0.10",
+    "cross-env": "^7.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
+    "startSecure": "cross-env HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -18,12 +18,12 @@ export const HomeMenu = ({ data }) => {
 
       <div className="homemenu-container" ref={myScrollBar} >
 
-        {data.map((element, index) =>
+        {data.map(({src,title,redirectionLink}, index) =>
           <HomeMenuItem
             key={index}
-            onClick={() => history.push(element.redirectionLink)}
-            icon={element.src}
-            text={element.title}
+            onClick={() => redirectionLink && history.push(redirectionLink)}
+            icon={src}
+            text={title}
           />
 
 

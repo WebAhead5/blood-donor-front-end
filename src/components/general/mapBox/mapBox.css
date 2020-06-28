@@ -66,9 +66,9 @@
 z-index:99;
 }
 .react-geocoder input {
-    width: 100%;
+    width: 98%;
     height: var(--field-height);
-    margin: 0;
+    margin: 0 ;
     padding: 0 10px;
     box-sizing: border-box;
     border: 0;
