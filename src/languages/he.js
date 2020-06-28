@@ -36,4 +36,7 @@ export default {
     HowManyTimesDidYouDonateBlood: "כמה פעמים כבר תרמת דם השנה?",
     HowManyTimesWouldYouLikeToDonatePerYear: "כמה פעמים אתה מתכנן לתרום דם השנה?",
     RemindersSettings: 'התראות',
+    SearchPlaceholder: 'חיפוש...',
+
 }
+

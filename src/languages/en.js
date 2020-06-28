@@ -36,5 +36,5 @@ export default {
     HowManyTimesDidYouDonateBlood: "How many times did you donate blood?",
     HowManyTimesWouldYouLikeToDonatePerYear: "How many times would you like to donate per year?",
     RemindersSettings: 'Reminders',
-
+    SearchPlaceholder: 'Search...',
 }
