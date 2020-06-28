@@ -10,7 +10,7 @@ import { RecoilRoot } from 'recoil'
 require('dotenv').config();
 
 const AppIndex = () => {
-  const [lang, setLang] = useState("ar");
+  const [lang, setLang] = useState("en");
   useEffect(() => setLang(lang), [lang]);
 
   return (
