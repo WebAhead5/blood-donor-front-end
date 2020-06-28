@@ -4,10 +4,10 @@ export default {
     Current: 'מצב נוכחי',
     Location: 'מיקום',
     Opens: 'שעת פתיחה',
-    Closes: 'שעת סיום',
+    Closes: 'שעת סגירה',
     OnDate: 'תאריך',
     Share: 'שתף',
-    AddToCalendar: 'הוספה לקלנדר',
+    AddToCalendar: 'הוספה ליומן',
     SettingsPersonal: 'פרטים אישיים',
     SettingsReminders: 'תזכורות',
     SettingsHowToDonate: 'איך להתנדב',
@@ -39,3 +39,4 @@ export default {
     SearchPlaceholder: 'חיפוש...',
 
 }
+

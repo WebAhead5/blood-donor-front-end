@@ -1,17 +1,17 @@
 import { useRecoilState } from "recoil";
 import { logsState } from './atoms';
-import { useSetRecoilState } from "recoil";
+// import { useSetRecoilState } from "recoil";
 
 
 export const useSetLogsState = () => {
-  const [items, setItems] = useRecoilState(logsState);
+  const [, setItems] = useRecoilState(logsState);
   return (data) => {
     setItems(data);
   };
 };
 
 export const useClearEmptyValuesLogsState = () => {
-  const [items, setItems] = useRecoilState(logsState);
+  const [, setItems] = useRecoilState(logsState);
   return (data) => {
     setItems(clearEmptyItems(data));
   };

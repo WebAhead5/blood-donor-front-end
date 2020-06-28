@@ -87,7 +87,7 @@ function NavBar({
   useEffect(() => {
     setSelectedItemBasedOnUrl()
 
-    let onResize = ()=>   setSelectedItemBasedOnUrl();
+    let onResize = ()=> setSelectedItemBasedOnUrl();
 
     window.addEventListener("resize",onResize)
     return ()=>   window.removeEventListener("resize",onResize)
