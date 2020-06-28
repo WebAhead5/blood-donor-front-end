@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, componentDidMount } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactMapGL, { Marker, GeolocateControl, NavigationControl } from "react-map-gl";
 import Geocoder from 'react-mapbox-gl-geocoder'
 import moment from "moment";
@@ -10,20 +10,10 @@ import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
 import { injectIntl } from 'react-intl' 
 
-
-// TODO: Complete Share Function
-// TODO: Get data from API working (or datamining if needs be)
-// TODO: Refactor some code
-
-
 // Function to Render mapBox Component
 function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
 
-    // TODO: Use State
     const [searchInputState, setSearchInputState] = useState(false);
-
-    // TODO: What's the typical workaround for a 'this' keyword in a functional component?
-    // TODO: What's the problem with what I'm doing here?:
     let searchInput = useRef()
 
     function focusInput() {
