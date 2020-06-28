@@ -91,10 +91,12 @@ function NavBar({
 
     window.addEventListener("resize",onResize)
     return ()=>   window.removeEventListener("resize",onResize)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   useEffect(()=>{
     setSelectedItemBasedOnUrl()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[refresh])
 
 
