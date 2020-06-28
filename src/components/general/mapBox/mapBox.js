@@ -10,14 +10,29 @@ import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
 import { injectIntl } from 'react-intl' 
 
-
-// TODO: Complete Share Function
-// TODO: Get data from API working (or datamining if needs be)
-// TODO: Refactor some code
-
-
 // Function to Render mapBox Component
 function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
+
+    const [searchInputState, setSearchInputState] = useState(false);
+    let searchInput = useRef()
+
+    function focusInput() {
+        if (searchInput.current) {
+            searchInput.current.focus()
+        };
+    }
+
+    React.useLayoutEffect(() => {
+        if (searchInputState) focusInput();
+    })
+
+    React.useEffect(()=>{
+        function screenPressed(event){
+                setSearchInputState(event.target.id === "searchInput")            
+        }
+        document.addEventListener('click', screenPressed )
+        return ()=>{document.removeEventListener('click', screenPressed)}
+    },[])
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
@@ -55,14 +70,13 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
 
     //show an error message if env file is not set
     if (!process.env.REACT_APP_MAPBOX_PUBLIC)
-        return <MainScreenWrapper style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        return (<MainScreenWrapper style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             server error
-        </MainScreenWrapper>
+        </MainScreenWrapper>)
 
     // Search placeholder translated text.
 
-    const searchPlaceholder = intl.formatMessage({id: 'SearchPlaceholder'})
-
+    const searchPlaceholder = intl.formatMessage({ id: 'SearchPlaceholder' })
 
     return (
         <div className={`mapbox ${className}`}>
@@ -88,11 +102,14 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
                     {/*search field*/}
                     <Geocoder
                         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_PUBLIC}
-                        onSelected={(viewport) => setViewport(viewport)}
+                        onSelected={(viewport) => {
+                            setViewport(viewport)
+
+                        }}
                         viewport={viewport}
                         hideOnSelect={true}
                         inputComponent={data =>
-                            <input placeholder={searchPlaceholder} {...data} value={data.value || ""} />
+                            <input id="searchInput" placeholder={searchPlaceholder} {...data} value={data.value || ""} ref={searchInput} />
                         }
                         updateInputOnSelect={true}
                     />
@@ -110,7 +127,7 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
                     </input>
 
                     {/*zoom controls*/}
-                    <NavigationControl showZoom={true} showCompass={false} className={`mapBox_zoom ${direction==='rtl' && 'mapBox_zoom_rtl'}`} />
+                    <NavigationControl showZoom={true} showCompass={false} className={`mapBox_zoom ${direction === 'rtl' && 'mapBox_zoom_rtl'}`} />
 
                 </div>
 
