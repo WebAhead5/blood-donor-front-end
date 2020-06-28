@@ -6,6 +6,7 @@
   --color-darkred: #7E1212;
   --color-gray: #F5F5F5;
   --color-white: white;
+  --box-uppershadow: 0px -8px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -19,3 +20,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

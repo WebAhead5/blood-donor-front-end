@@ -7,6 +7,7 @@ import MainScreenWrapper from '../../general/mainScreenWrapper'
 import {useRecoilValue} from 'recoil';
 import {logsState ,useClearEmptyValuesLogsState,useAddLogItemToLogsState} from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
+import HistoryLogFooter from '../../general/historyLogFooter';
 
 
 
@@ -57,6 +58,7 @@ const PersonalScreen = () => {
             <TitleHeader title={<FormattedMessage id="PersonalScreenTitle" />} />
             <HistoryLogList />
             <Image src="/img/icon-add.svg" className="personalScreenContainerAddBtn" alt="Add button" onClick={onAddClick} />
+            <HistoryLogFooter />
         </MainScreenWrapper>
 
     )
