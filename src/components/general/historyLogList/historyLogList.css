@@ -40,6 +40,14 @@
     align-items:center;
 }
 
+.historyLogListHeaderElementRtl {
+    display:flex;
+    flex-direction:column;
+    margin-block-start: 10px;
+    padding-right:20px;
+    align-items:center;
+}
+
 .historyLogListHeartIconElement{
     padding-left:50px;
 }

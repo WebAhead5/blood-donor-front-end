@@ -8,34 +8,10 @@ import { FormattedMessage } from 'react-intl';
 import { textDirection } from '../../../store/textDirection';
 
 
-
-const headerElements = [
-    {
-        src : "/img/icon-date.svg",
-        title: <FormattedMessage id="Date" />
-    },
-    {
-        src: "/img/icon-pulse.svg",
-        title: <FormattedMessage id="Pulse" />
-    },
-    {
-        src: "/img/icon-pressure.svg",
-        title: <FormattedMessage id="Pressure" />
-    },
-    {
-        src: "/img/icon-hemoglobin.svg",
-        title: <FormattedMessage id="Hemoglobin" />
-    },
-    {
-        src: "",
-        title: ""
-    },
-]
-
 const ListHeaderElement = (props) => {
 
     return (
-        <div className='historyLogListHeaderElement'>
+        <div className={props.className}>
             <img className={'historyLogListHeaderIcon'} src={props.src} alt="" />
             {props.title}
         </div>
@@ -44,11 +20,40 @@ const ListHeaderElement = (props) => {
 
 const ListHeader = (props) => {
     const direction = useRecoilValue(textDirection)
+    const headerElements = [
+        {
+            src : "/img/icon-date.svg",
+            title: <FormattedMessage id="Date" />,
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+        },
+        {
+            src: "/img/icon-pulse.svg",
+            title: <FormattedMessage id="Pulse" />,
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+        },
+        {
+            src: "/img/icon-pressure.svg",
+            title: <FormattedMessage id="Pressure" />,
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+        },
+        {
+            src: "/img/icon-hemoglobin.svg",
+            title: <FormattedMessage id="Hemoglobin" />,
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+        },
+        {
+            src: "",
+            title: "",
+            className: ''
+        },
+    ]
+
+    
     return (
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
             <div className={`historyLogListHeader ${direction === "rtl" && 'historyLogListHeaderRtl'}`}>
             {headerElements.map((element, index) => (
-                <ListHeaderElement key={index} src={element.src} title={element.title} />
+                <ListHeaderElement className={element.className} key={index} src={element.src} title={element.title} />
             ))}
             </div>
         </WhiteBackgroundShadow>
@@ -56,6 +61,7 @@ const ListHeader = (props) => {
 }
 
 const HistoryLogList = (props) => {
+    
     const logs = useRecoilValue(logsState);
     return (
         <div className='historyLogListContainer'>
