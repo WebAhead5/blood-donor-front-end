@@ -8,7 +8,7 @@ import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
-import { FormattedMessage, injectIntl } from 'react-intl' 
+import { injectIntl } from 'react-intl' 
 
 
 // TODO: Complete Share Function
