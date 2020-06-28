@@ -8,7 +8,7 @@ import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { injectIntl } from 'react-intl' 
 
 
 // TODO: Complete Share Function
@@ -75,6 +75,7 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
             return;
         setMarks(filterRes)
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateState, arrayOfGeolocationObjects])
 
     //show an error message if env file is not set

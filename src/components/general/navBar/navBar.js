@@ -89,13 +89,15 @@ function NavBar({
 
     let onResize = () => setSelectedItemBasedOnUrl();
 
-    window.addEventListener("resize", onResize)
-    return () => window.removeEventListener("resize", onResize)
-  }, []);
+    window.addEventListener("resize",onResize)
+    return ()=>   window.removeEventListener("resize",onResize)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   useEffect(() => {
     setSelectedItemBasedOnUrl()
-  }, [refresh])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[refresh])
 
 
   return (
