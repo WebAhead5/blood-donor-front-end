@@ -67,7 +67,7 @@ function Share({
             </WhatsappShareButton>
 
 
-            <ViberShareButton url={url} title={SharedString}>
+            <ViberShareButton  url={url} title={SharedString}>
                 <ViberIcon size={60} round={true}/>
             </ViberShareButton>
 

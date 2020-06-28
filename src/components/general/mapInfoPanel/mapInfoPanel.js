@@ -1,9 +1,9 @@
 import './mapInfoPanel.css'
 import moment from 'moment'
 import React, {useState} from 'react';
-import AddToCalendar from './addToCalendar';
+import AddToCalendar from '../addToCalendar';
 import {FormattedMessage, injectIntl} from 'react-intl'
-import Share from './share'
+import Share from '../share'
 
 
 function MapInfoPanel({selectedLocation: {address, dateDonation, opens, closes}={}, intl}) {

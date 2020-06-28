@@ -1,12 +1,12 @@
 import React from 'react';
-import AddToCalendar from 'react-add-to-calendar';
+import AddToCalendarComp from 'react-add-to-calendar';
 import "./addToCalender.css"
 import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
-function AddToCalendarComponent({ event:{title,description,location,startTime,endTime}, buttonLabel, className}) {
+function AddToCalendar({ event:{title,description,location,startTime,endTime}, buttonLabel, className}) {
 
 
-  return <AddToCalendar event={{title,description,location,startTime,endTime}}
+  return <AddToCalendarComp event={{title,description,location,startTime,endTime}}
                         buttonLabel={buttonLabel}
                         buttonWrapperClass="addToCalender_wrapper"
                         buttonClassClosed = ""
@@ -15,7 +15,7 @@ function AddToCalendarComponent({ event:{title,description,location,startTime,en
                         rootClass={`addToCalender_button addToCalender ${className}`}/>;
 }
 
-export default AddToCalendarComponent
+export default AddToCalendar
 
 
 
