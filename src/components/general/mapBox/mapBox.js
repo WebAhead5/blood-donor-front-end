@@ -8,6 +8,7 @@ import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
+import { FormattedMessage, injectIntl } from 'react-intl' 
 
 
 // TODO: Complete Share Function
@@ -16,7 +17,7 @@ import { textDirection } from '../../../store/textDirection'
 
 
 // Function to Render mapBox Component
-export default function MapBox({ arrayOfGeolocationObjects = [], className }) {
+function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
@@ -57,6 +58,10 @@ export default function MapBox({ arrayOfGeolocationObjects = [], className }) {
             server error
         </MainScreenWrapper>
 
+    // Search placeholder translated text.
+
+    const searchPlaceholder = intl.formatMessage({id: 'SearchPlaceholder'})
+
 
     return (
         <div className={`mapbox ${className}`}>
@@ -86,7 +91,7 @@ export default function MapBox({ arrayOfGeolocationObjects = [], className }) {
                         viewport={viewport}
                         hideOnSelect={true}
                         inputComponent={data =>
-                            <input placeholder="search..." {...data} value={data.value || ""} />
+                            <input placeholder={searchPlaceholder} {...data} value={data.value || ""} />
                         }
                         updateInputOnSelect={true}
                     />
@@ -123,6 +128,7 @@ export default function MapBox({ arrayOfGeolocationObjects = [], className }) {
     );
 }
 
+
 function getMarkers(locationsArr, onClick) {
 
     return locationsArr?.map(location =>
@@ -141,3 +147,5 @@ function filterLocationsBasedOnDate(locationsArr, date) {
     let returnVal = locationsArr?.filter(location => filteringDate === moment(location.dateDonation).format("YYYY-MM-DD"));
     return returnVal || [];
 }
+
+export default injectIntl(MapBox)

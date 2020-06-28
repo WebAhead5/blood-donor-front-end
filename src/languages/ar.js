@@ -19,5 +19,7 @@ export default {
     Yes: 'نعم',
     No: 'كلا',
     Settings: 'أعدادات',
-    RemindersSettings: 'اشعارات'
+    RemindersSettings: 'اشعارات',
+    SearchPlaceholder: 'بحث...',
+
 }
