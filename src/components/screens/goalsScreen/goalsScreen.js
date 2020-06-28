@@ -13,6 +13,7 @@ function GoalsScreen({ totalGoal, currentBloodCount }) {
                     <MainHeader />
                     <SubHeader className="goalsScreen_dropSection"
                         current={currentBloodCount}
+                               dropScale={1.2}
                         total={totalGoal} />
                 </div>
 

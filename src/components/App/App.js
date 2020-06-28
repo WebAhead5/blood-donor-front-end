@@ -12,6 +12,7 @@ import HomeScreen from "../screens/homeScreen";
 import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
+import {routes} from "../../constants";
 
 let alerts = [
   { title: "Blood donation needed!", context: "Haifa district" },
@@ -23,23 +24,23 @@ const homeBarData = [
   {
     title: "support us financially",
     src: "/img/dollar-icon.svg",
-    redirectionLink: "/settings/support",
+    redirectionLink: routes.settings_support,
   },
   {
     title: "How To Donate Blood",
     src: "/img/icon3.svg",
-    redirectionLink: "/settings/how-to-donate",
+    redirectionLink: routes.settings_howToDonate,
   },
   {
     title: "ways you could contribute",
     src: "/img/icon2.svg",
-    redirectionLink: "/settings/contribute",
+    redirectionLink:routes.settings_contribute,
   },
 ];
 
 let jdObject = [
   {
-    DateDonation: "2020-06-24T00:00:00",
+    DateDonation: "2020-06-29T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "מתנס ירוחם",
@@ -49,7 +50,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-24T00:00:00",
+    DateDonation: "2020-06-28T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "Italian hospital",
@@ -59,7 +60,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-25T00:00:00",
+    DateDonation: "2020-06-27T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "German Colony",
@@ -69,7 +70,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-25T00:00:00",
+    DateDonation: "2020-06-28T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "One Stop",
@@ -79,7 +80,7 @@ let jdObject = [
     AccountType: "",
   },
   {
-    DateDonation: "2020-06-24T00:00:00",
+    DateDonation: "2020-06-28T00:00:00",
     FromHour: "16:00",
     ToHour: "19:30",
     Name: "Tesco",
@@ -107,31 +108,31 @@ function App() {
   return (
       <div>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={routes.home}>
             <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
           </Route>
 
-          <Route exact path="/goals">
+          <Route exact path={routes.goals}>
             <GoalsScreen />
           </Route>
 
-          <Route exact path="/map">
+          <Route exact path={routes.map}>
             <MapScreen arrayOfGeolocationObjects={geolocationArray}/>
           </Route>
 
-        <Route exact path="/personal">
+        <Route exact path={routes.personal}>
           <Personal />
         </Route>
 
-        <Route exact path="/settings">
+        <Route exact path={routes.settings}>
           <SettingsListScreen />
         </Route>
 
-          <Route exact path="/settings/personal">
+          <Route exact path={routes.settings_personal}>
             <PersonalSettingsScreen />
           </Route>
 
-        <Route exact path="/settings/reminders">
+        <Route exact path={routes.settings_reminders}>
           <ReminderSettingsScreen />
         </Route>
       </Switch>

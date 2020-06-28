@@ -1,52 +1,62 @@
 import './mapInfoPanel.css'
-import 'react-add-to-calendar/dist/react-add-to-calendar.css'
-
-import React, {useState, Fragment} from 'react';
-import AddToCalendar from './addToCalendar';
-import { FormattedMessage, injectIntl } from 'react-intl'
-import Share from './Share'
-
+import moment from 'moment'
+import React, {useState} from 'react';
+import AddToCalendar from '../addToCalendar';
+import {FormattedMessage, injectIntl} from 'react-intl'
+import Share from '../share'
 
 
-function MapInfoPanel({ selectedLocation, intl }) {
-    
-    const [shareButtonState, setShareButtonState] = useState({
-        open: false,
-        shareUrl: "https://sad-pare-c4309e.netlify.app/",
-        title: "This text needs to be changed to the text that will be shared.",
-        appId: null,
-        media: "pinterest requires and absolute link to the image that will be pinned"
-    })
+function MapInfoPanel({selectedLocation: {address, dateDonation, opens, closes}={}, intl}) {
 
-    const addToCalendarTitle = intl.formatMessage({id: 'AddToCalendar'})
-    
+    const textToShare = {
+        title: "come donate blood at...",
+        body: "....."
+    }
+    const addToCalenderEvent = {
+        title: "Blood Donation",
+        description: "Reminder to donate blood",
+        location: address,
+        startTime: moment(dateDonation).hours(opens.slice(0,2)).minutes(opens.slice(3,5)).toDate(),
+        endTime: moment(dateDonation).hours(closes.slice(0,2)).minutes(closes.slice(3,5)).toDate(),
+    }
+
+    const [shareHidden, setShareHidden] = useState(true)
+
+
     return (
 
-        <Fragment>
-            {
-            shareButtonState.open? <Share shareButtonState={shareButtonState} />: null}
-            <div className="infoPanel">
-            <div id="upperLocation">
-                <div id="locationDetails">
-                    <p><FormattedMessage id='Location'/>:<br/> {selectedLocation.address}</p>
-                </div>
-                <div id="openingHours">
-                    <p><FormattedMessage id='Opens'/>: {selectedLocation.opens}</p>
-                    <p><FormattedMessage id='Closes'/>: {selectedLocation.closes}</p>
-                    <p><FormattedMessage id='OnDate'/>: <br/>{selectedLocation.dateDonation.toDateString()}</p>
-                </div>
-            </div>
-                <div id="locationButtons">
-                    <button id="reminderButton"
-                     onClick={() => {
-                         setShareButtonState({...shareButtonState, open:true})                      
-                        }}
-                    ><FormattedMessage id='Share'/></button>
-                    <AddToCalendar buttonLabel={addToCalendarTitle} selectedLocation={selectedLocation} />
-                </div>
-            </div>
-        </Fragment>
+        <div className="infoPanel">
+            <div className="infoPanel_detailsContainer">
+                <div className="infoPanel_details">
+                    <p><FormattedMessage id='Location'/>:<br/> {address}</p>
+                    <p><FormattedMessage id='OnDate'/>: <br/>{dateDonation?.toDateString()}</p>
 
+                </div>
+                <div className="infoPanel_details">
+                    <p><FormattedMessage id='Opens'/>:<br/> {opens}</p>
+                    <p><FormattedMessage id='Closes'/>:<br/> {closes}</p>
+                </div>
+
+            </div>
+            <div className="infoPanel_buttons">
+
+                <button className="infoPanel_button infoPanel_shareButton" onClick={() => setShareHidden(false)}>
+                    <FormattedMessage id='Share'/>
+                </button>
+
+
+                <AddToCalendar
+                    buttonLabel={intl.formatMessage({id: 'AddToCalendar'})}
+                    event={addToCalenderEvent}
+                    className="infoPanel_button infoPanel_shareButton"
+                />
+
+
+            </div>
+
+            {!shareHidden ? <Share shareData={textToShare} onCloseClick={() => setShareHidden(true)}/> : null}
+
+        </div>
     )
 }
 

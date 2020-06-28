@@ -6,37 +6,38 @@ import { useHistory } from 'react-router-dom'
 import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 import { FormattedMessage } from 'react-intl';
+import {routes} from "../../../constants";
 
 
 
 const data=[
     {
         title:<FormattedMessage id='SettingsPersonal'/> ,
-        redirectionLink:"/settings/personal",
+        redirectionLink:routes.settings_personal,
         iconSrc:"/img/icon-user.svg"
     },{
         title:<FormattedMessage id='SettingsReminders'/> ,
-        redirectionLink:"/settings/reminders",
+        redirectionLink:routes.settings_reminders,
         iconSrc:"/img/icon-notification.svg"
     },{
         title:<FormattedMessage id='SettingsHowToDonate'/>,
-        redirectionLink:"/settings/how-to-donate",
+        redirectionLink:routes.settings_howToDonate,
         iconSrc:"/img/icon-how-to-donate.svg"
     },{
         title:<FormattedMessage id='SettingsHelpAndSupport'/>,
-        redirectionLink:"/settings/help-support",
+        redirectionLink:routes.settings_support,
         iconSrc:"/img/icon-help-support.svg"
     },{
         title:<FormattedMessage id='SettingsContactUs'/>,
-        redirectionLink:"/settings/contact-us",
+        redirectionLink:routes.settings_contact,
         iconSrc:"/img/icon-contact-us.svg"
     },{
         title:<FormattedMessage id='SettingsFAQ'/>,
-        redirectionLink:"/settings/faq",
+        redirectionLink:routes.settings_faq,
         iconSrc:"/img/icon-FAQ.svg"
     },{
         title:<FormattedMessage id='SettingsAbout'/>,
-        redirectionLink:"/settings/about",
+        redirectionLink:routes.settings_about,
         iconSrc:"/img/icon-about.svg"
     },
 ]

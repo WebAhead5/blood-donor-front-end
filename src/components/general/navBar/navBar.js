@@ -5,33 +5,34 @@ import "./navBar.css";
 import { FormattedMessage } from 'react-intl'
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
+import {routes} from "../../../constants";
 
 
 
 const navBarData = [
   {
     title: <FormattedMessage id="Home" />,
-    redirectionLink: "/",
+    redirectionLink: routes.home,
     iconSrc: "/img/icon-nav-home.svg",
   },
   {
     title: <FormattedMessage id="Goals" />,
-    redirectionLink: "/goals",
+    redirectionLink: routes.goals,
     iconSrc: "/img/icon-nav-flag.svg",
   },
   {
     title: <FormattedMessage id="Map" />,
-    redirectionLink: "/map",
+    redirectionLink: routes.map,
     iconSrc: "/img/icon-nav-map.svg",
   },
   {
     title: <FormattedMessage id="Personal" />,
-    redirectionLink: "/personal",
+    redirectionLink: routes.personal,
     iconSrc: "/img/icon-nav-profile.svg",
   },
   {
     title: <FormattedMessage id="Settings" />,
-    redirectionLink: "/settings",
+    redirectionLink: routes.settings,
     iconSrc: "/img/icon-nav-settings.svg",
   },
 ];
@@ -86,7 +87,7 @@ function NavBar({
   useEffect(() => {
     setSelectedItemBasedOnUrl()
 
-    let onResize = ()=>   setSelectedItemBasedOnUrl();
+    let onResize = ()=> setSelectedItemBasedOnUrl();
 
     window.addEventListener("resize",onResize)
     return ()=>   window.removeEventListener("resize",onResize)
