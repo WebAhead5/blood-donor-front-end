@@ -13,6 +13,11 @@
 
 }
 
+.historyLogItemRowRtl{
+    padding-left: unset;
+    padding-right: 10px;
+}
+
 .historyLogItemEditIcon{
     width: 20px;
     height: 20px;
