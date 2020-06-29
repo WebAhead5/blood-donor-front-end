@@ -15,7 +15,7 @@ export default {
     SettingsContactUs: 'צור קשר',
     SettingsFAQ: 'שאלות נפוצות',
     SettingsAbout: 'אודות',
-    ReminderSettingsPhoneNotification: '?האם תרצה לקבל התראות לטלפון שלך',
+    ReminderSettingsPhoneNotification: 'האם תרצה לקבל התראות לטלפון שלך?',
     Yes: 'כן',
     No: 'לא',
     Home: 'דף בית',
