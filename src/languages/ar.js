@@ -36,6 +36,8 @@ export default {
     Settings: 'أعدادات',
     RemindersSettings: 'اشعارات',
     SearchPlaceholder: 'بحث...',
-    Goals: 'اهداف'
+    Goals: 'اهداف',
+    Donations: 'تبرعات',
+
 
 }

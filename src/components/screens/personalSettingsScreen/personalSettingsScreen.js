@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
 import './personalSettingsScreen.css';
 import { FormattedMessage,  injectIntl } from 'react-intl';
+import { personalSettings } from '../../../store/personalSettings'
+import { useRecoilValue } from 'recoil';
+import { useSetPersonalSettings } from '../../../store/personalSettings'
+
+
 
 const PersonalSettingsScreen = ({intl}) => {
     const WhatIYourNamesPlaceholder = intl.formatMessage({id: 'WhatIYourNames'});
     const ChooseYourBloodTypePlaceholder = intl.formatMessage({id: 'ChooseYourBloodType'});
 
-    const [userSettings, setUserSettings] = useState({
-        name: '',
-        bloodType: '',
-        donationCount: 0,
-        reminderCount: 2
-    })
+    const userSettings = useRecoilValue(personalSettings)
+    const setUserSettings = useSetPersonalSettings()
 
+        
     // Array to populate radioButtons from
     const radioButton = [1, 2, 3, 4]
     // Array to populate bloodTypes select option
