@@ -103,6 +103,7 @@ function App() {
 
   useEffect(() => {
     setTextDirection(document.getElementById('TextDirection').style.direction)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
