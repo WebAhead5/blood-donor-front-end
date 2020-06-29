@@ -1,32 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
 import './personalSettingsScreen.css';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { personalSettings } from '../../../store/personalSettings'
+import { useRecoilValue } from 'recoil';
+import { useSetPersonalSettings } from '../../../store/personalSettings'
+
+
 
 const PersonalSettingsScreen = ({ intl }) => {
     const WhatIYourNamesPlaceholder = intl.formatMessage({ id: 'WhatIYourNames' });
     const ChooseYourBloodTypePlaceholder = intl.formatMessage({ id: 'ChooseYourBloodType' });
 
-    const [userSettings, setUserSettings] = useState({
-        name: localStorage.getItem('username') || '',
-        bloodType: localStorage.getItem('bloodType') || '',
-        donationCount: localStorage.getItem('donationCount') || '',
-        reminderCount: +localStorage.getItem('reminderCount') || 1,
-    })
+    const userSettings = useRecoilValue(personalSettings)
+    const setUserSettings = useSetPersonalSettings()
 
     // Save user input to localStorage
+
+
+
+    useEffect(() => {
+        let cachedState = {
+            name: localStorage.getItem('username') || '',
+            bloodType: localStorage.getItem('bloodType') || '',
+            donationCount: localStorage.getItem('donationCount') || '',
+            reminderCount: +localStorage.getItem('reminderCount') || 1,
+        }
+        setUserSettings(cachedState)
+    }, [])
+
     useEffect(() => {
         localStorage.setItem('username', userSettings.name)
         localStorage.setItem('bloodType', userSettings.bloodType)
         localStorage.setItem('donationCount', userSettings.donationCount)
         localStorage.setItem('reminderCount', userSettings.reminderCount)
     },
-        [userSettings],
-    )
-
-
+        [userSettings])
 
     // Array to populate radioButtons from
     const radioButton = [1, 2, 3, 4]
