@@ -3,6 +3,7 @@ import './historyLogFooter.css'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { personalSettings } from '../../../store/personalSettings'
 import { useRecoilValue } from 'recoil';
+import { FormattedMessage } from 'react-intl'
 
 
 
@@ -43,7 +44,7 @@ const HistoryLogFooter = () => {
                 <CircularProgressbar value={(count - (secondImg?.goal || 0)) / (firstImg?.goal - (secondImg?.goal || 0)) * 100} background={true} />
                 <span>{`${count}/${firstImg.goal}`}</span>
                 <br/>
-                <div>Donations</div>
+                <div><FormattedMessage id='Donations' /></div>
                 
             </div>
             {/* next goal */}

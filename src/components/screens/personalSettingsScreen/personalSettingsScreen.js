@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
