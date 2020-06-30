@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
 import { FormattedMessage } from 'react-intl'
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
-import {routes} from "../../../constants";
+import { routes } from "../../../constants";
 
 
 
@@ -45,7 +45,7 @@ function NavBar({
   //reference the dom elements
   let container = useRef(null);
   let selectionHighlight = useRef(null);
-  const [refresh,setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false)
   let history = useHistory();
 
   // text direction (rtl / ltr)
@@ -53,25 +53,25 @@ function NavBar({
 
   //set the dimensions + position of the highlighted item
   function setSelectedItemDimensions(index) {
-    let domElement= container.current.children[index];
+    let domElement = container.current.children[index];
     selectionHighlight.current.style.height = `${domElement.offsetHeight}px`;
     selectionHighlight.current.style.width = `${domElement.offsetWidth}px`;
-    if(direction === 'ltr') {
-    selectionHighlight.current.style.left = `${index * domElement.clientWidth}px`;
+    if (direction === 'ltr') {
+      selectionHighlight.current.style.left = `${index * domElement.clientWidth}px`;
     } else {
-    selectionHighlight.current.style.right = `${index * domElement.clientWidth}px`;
+      selectionHighlight.current.style.right = `${index * domElement.clientWidth}px`;
     }
   }
 
   //get the url, match it with the routes of the nav bar items
-  function setSelectedItemBasedOnUrl(){
+  function setSelectedItemBasedOnUrl() {
     //update the selected item to match the initial route
     let filterRes = data.filter(element => window.location.pathname === element.redirectionLink);
 
 
     if (!filterRes.length)
-      filterRes= data.filter(element=> {
-        if(element.redirectionLink ==="/")
+      filterRes = data.filter(element => {
+        if (element.redirectionLink === "/")
           return false;
         const regex = new RegExp(`^${element.redirectionLink}`, 'ig')
         return regex.test(window.location.pathname)
@@ -87,14 +87,16 @@ function NavBar({
   useEffect(() => {
     setSelectedItemBasedOnUrl()
 
-    let onResize = ()=>   setSelectedItemBasedOnUrl();
+    let onResize = () => setSelectedItemBasedOnUrl();
 
     window.addEventListener("resize",onResize)
     return ()=>   window.removeEventListener("resize",onResize)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelectedItemBasedOnUrl()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[refresh])
 
 

@@ -24,5 +24,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
-!/.env
-!/.env
+
+.idea/$CACHE_FILE$
+.idea/.gitignore
+.idea/blood-donor-front-end.iml
+.idea/jsLibraryMappings.xml
+.idea/markdown-navigator-enh.xml
+.idea/markdown-navigator.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml

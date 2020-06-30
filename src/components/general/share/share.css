@@ -1,0 +1,32 @@
+.share {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    padding-top: 30px;
+
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+
+    background-color:var(--color-white);
+    box-shadow: 0px -8px 8px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px 20px 0 0;
+
+
+}
+.share_close{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    cursor: pointer ;
+}

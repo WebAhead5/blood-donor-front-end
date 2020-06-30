@@ -1,6 +1,4 @@
-.personalScreenContainer{
-   
-}
+
 
 .personalScreenContainerAddBtn {
     background-size: cover;
@@ -8,8 +6,13 @@
     height: 50px;
     border: none;
     position: absolute;
-    bottom:80px;
+    bottom:172px;
     right: 20px;
+}
+
+.personalScreenContainerAddBtnRtl {
+    right: unset;
+    left: 20px;
 }
 
 .personalScreenMainWrapper{

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./historyLogItem.css";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
+import { textDirection } from '../../../store/textDirection';
 import { useRecoilValue } from 'recoil';
 import { logsState, useClearEmptyValuesLogsState,useAddLogItemToLogsState } from '../../../store/logs';
 import {
@@ -21,6 +22,9 @@ const HistoryLogItem = (props) => {
   const logsItemsState = useRecoilValue(logsState);
   const clearEmptyLogsFromLogsState = useClearEmptyValuesLogsState();
   const addLogToState = useAddLogItemToLogsState();
+
+  const direction = useRecoilValue(textDirection)
+
 
   //If all the fields is empty this means this is a new entry and fields should
   //apper in edit mood
@@ -125,13 +129,13 @@ const HistoryLogItem = (props) => {
 
   return (
     <WhiteBackgroundShadow className="historyLogItemContanier">
-      <div className="historyLogItemRow">
+      <div className={`historyLogItemRow ${direction === "rtl" && 'historyLogItemRowRtl'}`}>
         <input
           id="date"
           type="date"
           value={inputs.date.value}
           className={inputs.date.style}
-          style={{width:"100px"}}
+          style={{width:"100px",flexDirection:direction === "ltr" ?  "unset":"row-reverse"}}
           onChange={change}
           readOnly={readOnly}
         />
@@ -139,7 +143,7 @@ const HistoryLogItem = (props) => {
           id="pulse"
           value={inputs.pulse.value}
           className={inputs.pulse.style}
-          style= {{width:"20px",paddingLeft:"5px"}}
+          style= {{width:"20px",paddingLeft:direction === "ltr" ? "5px":"unset",paddingRight:direction === "rtl" ? "5px":"unset"  }}
           onChange={change}
           readOnly={readOnly}
         />
@@ -147,7 +151,7 @@ const HistoryLogItem = (props) => {
           id="pressure"
           value={inputs.pressure.value}
           className={inputs.pressure.style}
-          style = {{paddingLeft:"50px"}}
+          style = {{paddingLeft:direction === "ltr" ? "50px":"unset",paddingRight:direction === "rtl" ? "50px":"unset"  }}
           onChange={change}
           readOnly={readOnly}
         />
