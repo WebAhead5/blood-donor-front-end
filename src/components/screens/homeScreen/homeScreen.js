@@ -3,11 +3,8 @@ import MainHeader from "../../general/mainHeader";
 import AlertList from "../../general/alertList";
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import HomeMenu from "../../general/homeMenu";
-import {callApi} from "../../../utils/api"
 
-function HomeScreen({ alertsData, homeHeaderData }) {
-  callApi("GET","/api/locations",null,()=>{console.log("done");
-  })
+function HomeScreen({ alertsData, homeHeaderData }) {  
   return (
     <MainScreenWrapper>
       <MainHeader />
