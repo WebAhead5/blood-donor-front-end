@@ -4,10 +4,9 @@ import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
 import './personalSettingsScreen.css';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { personalSettings } from '../../../store/personalSettings'
+import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 import { useRecoilValue } from 'recoil';
-import { useSetPersonalSettings } from '../../../store/personalSettings'
-
+import moment from 'moment';
 
 
 const PersonalSettingsScreen = ({ intl }) => {
@@ -19,14 +18,13 @@ const PersonalSettingsScreen = ({ intl }) => {
 
     // Save user input to localStorage
 
-
-
     useEffect(() => {
         let cachedState = {
             name: localStorage.getItem('username') || '',
             bloodType: localStorage.getItem('bloodType') || '',
             donationCount: localStorage.getItem('donationCount') || '',
             reminderCount: +localStorage.getItem('reminderCount') || 1,
+            mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
         }
         setUserSettings(cachedState)
     }, [])
@@ -36,6 +34,7 @@ const PersonalSettingsScreen = ({ intl }) => {
         localStorage.setItem('bloodType', userSettings.bloodType)
         localStorage.setItem('donationCount', userSettings.donationCount)
         localStorage.setItem('reminderCount', userSettings.reminderCount)
+        localStorage.setItem('mostRecentDonation', userSettings.mostRecentDonation)
     },
         [userSettings])
 
@@ -50,6 +49,19 @@ const PersonalSettingsScreen = ({ intl }) => {
             {/* Header */}
             <TitleHeader title={<FormattedMessage id="PersonalSettings" />} PersonalSettings backButton={true} className='personalSettingsScreen_titleHeader' />
 
+            {/* Last Donation Input */}
+            <PersonalSettingsInput icon="/img/icon-date.svg" alt="input the last date of your most recent donation" >
+                <label htmlFor='date-of-most-recent-donation' /><FormattedMessage id="date-of-most-recent-donation" /><label />
+                <input
+                    type="date"
+                    onChange={(e) => setUserSettings(
+                        { ...userSettings, mostRecentDonation:moment(e.target.value).format("YYYY-MM-DD")}
+                        )}
+                    value={userSettings.mostRecentDonation}
+                    max={moment().format('YYYY-MM-DD')}
+                    className='personalSettingsInput_mostRecentDonation personalSettingsInput_textContainer' />
+
+            </PersonalSettingsInput >
 
             {/* Name Input */}
             <PersonalSettingsInput icon="/img/icon-user-name.svg" alt="enter your name" >

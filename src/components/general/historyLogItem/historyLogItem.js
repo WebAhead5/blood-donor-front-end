@@ -3,7 +3,7 @@ import "./historyLogItem.css";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
 import { textDirection } from '../../../store/textDirection';
 import { useRecoilValue } from 'recoil';
-import { logsState, useClearEmptyValuesLogsState,useAddLogItemToLogsState } from '../../../store/logs';
+import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState } from '../../../store/logs';
 import {
   isValidDate,
   isValidPulse,
@@ -80,15 +80,15 @@ const HistoryLogItem = (props) => {
       setReadOnly(true);
       if (allFieldsEmpty()) {
         clearEmptyLogsFromLogsState(logsItemsState);
-      } else{
-        addLogToState ({
-              id:props.id,
-              date: inputs.date.value,
-              pulse: inputs.pulse.value,
-              pressure: inputs.pressure.value,
-              hemoglobin: inputs.hemoglobin.value
-            }
-          )
+      } else {
+        addLogToState({
+          id: props.id,
+          date: inputs.date.value,
+          pulse: inputs.pulse.value,
+          pressure: inputs.pressure.value,
+          hemoglobin: inputs.hemoglobin.value
+        })
+        localStorage.setItem('mostRecentDonation',  inputs.date.value)
       }
     }
   };
@@ -135,7 +135,7 @@ const HistoryLogItem = (props) => {
           type="date"
           value={inputs.date.value}
           className={inputs.date.style}
-          style={{width:"100px",flexDirection:direction === "ltr" ?  "unset":"row-reverse"}}
+          style={{ width: "100px", flexDirection: direction === "ltr" ? "unset" : "row-reverse" }}
           onChange={change}
           readOnly={readOnly}
         />
@@ -143,7 +143,7 @@ const HistoryLogItem = (props) => {
           id="pulse"
           value={inputs.pulse.value}
           className={inputs.pulse.style}
-          style= {{width:"20px",paddingLeft:direction === "ltr" ? "5px":"unset",paddingRight:direction === "rtl" ? "5px":"unset"  }}
+          style={{ width: "20px", paddingLeft: direction === "ltr" ? "5px" : "unset", paddingRight: direction === "rtl" ? "5px" : "unset" }}
           onChange={change}
           readOnly={readOnly}
         />
@@ -151,7 +151,7 @@ const HistoryLogItem = (props) => {
           id="pressure"
           value={inputs.pressure.value}
           className={inputs.pressure.style}
-          style = {{paddingLeft:direction === "ltr" ? "50px":"unset",paddingRight:direction === "rtl" ? "50px":"unset"  }}
+          style={{ paddingLeft: direction === "ltr" ? "50px" : "unset", paddingRight: direction === "rtl" ? "50px" : "unset" }}
           onChange={change}
           readOnly={readOnly}
         />
