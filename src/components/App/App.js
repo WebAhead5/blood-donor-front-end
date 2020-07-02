@@ -12,8 +12,9 @@ import HomeScreen from "../screens/homeScreen";
 import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
-import { routes } from "../../constants";
-import callApi from "../../utils/api";
+import {routes} from "../../constants";
+import {callApi} from "../../utils/api"
+
 
 
 const homeBarData = [
@@ -34,58 +35,6 @@ const homeBarData = [
   },
 ];
 
-let jdObject = [
-  {
-    DateDonation: "2020-06-29T00:00:00",
-    FromHour: "16:00",
-    ToHour: "19:30",
-    Name: "מתנס ירוחם",
-    City: "ירוחם",
-    Street: "",
-    NumHouse: "",
-    AccountType: "",
-  },
-  {
-    DateDonation: "2020-06-30T00:00:00",
-    FromHour: "16:00",
-    ToHour: "19:30",
-    Name: "Italian hospital",
-    City: "Haifa",
-    Street: "",
-    NumHouse: "",
-    AccountType: "",
-  },
-  {
-    DateDonation: "2020-06-27T00:00:00",
-    FromHour: "16:00",
-    ToHour: "19:30",
-    Name: "German Colony",
-    City: "Haifa",
-    Street: "",
-    NumHouse: "",
-    AccountType: "",
-  },
-  {
-    DateDonation: "2020-06-28T00:00:00",
-    FromHour: "16:00",
-    ToHour: "19:30",
-    Name: "One Stop",
-    City: "Holywell",
-    Street: "",
-    NumHouse: "",
-    AccountType: "",
-  },
-  {
-    DateDonation: "2020-06-28T00:00:00",
-    FromHour: "16:00",
-    ToHour: "19:30",
-    Name: "Tesco",
-    City: "Holywell",
-    Street: "",
-    NumHouse: "",
-    AccountType: "",
-  }
-];
 
 
 
@@ -95,27 +44,33 @@ function App() {
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-  useEffect(() => {
+
+
+
+  const [jdObject,setJdObject] = useState([]);
+ 
+  function parseLocations(err,result){
+    setJdObject(result.data)
+  }
+
+  const setTextDirection = useSetTextDirection();
+  useEffect(()=> {
     callApi('GET', '/api/alerts', null, (err, res) => {
       if (err) console.log(err);
       else setAlertData(res.data)
     })
-  }, [])
-
-
+    setTextDirection(document.getElementById('TextDirection').style.direction)
+    callApi("GET","/api/locations",null,parseLocations)
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
       setGeolocationArray(result);
     });
-  }, []);
-
-  const setTextDirection = useSetTextDirection();
-
-  useEffect(() => {
-    setTextDirection(document.getElementById('TextDirection').style.direction)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [jdObject]);
 
   return (
     <div>
