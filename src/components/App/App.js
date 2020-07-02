@@ -46,11 +46,15 @@ function App() {
   const [jdObject,setJdObject] = useState([]);
  
   function parseLocations(err,result){
-    setJdObject(result.result)
+    setJdObject(result.data)
   }
 
+  const setTextDirection = useSetTextDirection();
   useEffect(()=> {
+    setTextDirection(document.getElementById('TextDirection').style.direction)
     callApi("GET","/api/locations",null,parseLocations)
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   const [geolocationArray, setGeolocationArray] = useState();
@@ -60,12 +64,8 @@ function App() {
     });
   }, [jdObject]);
 
-  const setTextDirection = useSetTextDirection(); 
+   
 
-  useEffect(() => {
-    setTextDirection(document.getElementById('TextDirection').style.direction)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
       <div>
