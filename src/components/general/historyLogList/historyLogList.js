@@ -2,11 +2,11 @@ import React from 'react';
 import HistoryLogItem from '../historyLogItem';
 import WhiteBackgroundShadow from '../whiteBackgroundShadow';
 import './historyLogList.css';
-import {useRecoilValue} from 'recoil';
-import {logsState} from '../../../store/logs';
+import { useRecoilValue } from 'recoil';
+import { logsState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import { textDirection } from '../../../store/textDirection';
-
+import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 
 const ListHeaderElement = (props) => {
 
@@ -22,24 +22,24 @@ const ListHeader = (props) => {
     const direction = useRecoilValue(textDirection)
     const headerElements = [
         {
-            src : "/img/icon-date.svg",
+            src: "/img/icon-date.svg",
             title: <FormattedMessage id="Date" />,
-            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`
         },
         {
             src: "/img/icon-pulse.svg",
             title: <FormattedMessage id="Pulse" />,
-            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`
         },
         {
             src: "/img/icon-pressure.svg",
             title: <FormattedMessage id="Pressure" />,
-            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`
         },
         {
             src: "/img/icon-hemoglobin.svg",
             title: <FormattedMessage id="Hemoglobin" />,
-            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl':'historyLogListHeaderElement'}`
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`
         },
         {
             src: "",
@@ -48,28 +48,42 @@ const ListHeader = (props) => {
         },
     ]
 
-    
+
     return (
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
             <div className={`historyLogListHeader ${direction === "rtl" && 'historyLogListHeaderRtl'}`}>
-            {headerElements.map((element, index) => (
-                <ListHeaderElement className={element.className} key={index} src={element.src} title={element.title} />
-            ))}
+                {headerElements.map((element, index) => (
+                    <ListHeaderElement className={element.className} key={index} src={element.src} title={element.title} />
+                ))}
             </div>
         </WhiteBackgroundShadow>
     )
 }
 
 const HistoryLogList = (props) => {
-    
+
     const logs = useRecoilValue(logsState);
+
+    // Update localStorage and state with most recent blood donation date
+    let [mostRecentDateState, setMostRecentDateState] = React.useState('')
+
+    React.useEffect(() => {
+        const mostRecentDonationStorage = localStorage.getItem('mostRecentDonation') || ''
+        setMostRecentDateState(mostRecentDonationStorage)
+    }, [])
+
+    React.useEffect(() => {
+        let latestDonationCompared = logs.map(row => row.date).concat(mostRecentDateState).sort().reverse()[0]
+        setMostRecentDateState(latestDonationCompared)
+    }, [mostRecentDateState])
+
     return (
         <div className='historyLogListContainer'>
             <ListHeader />
             {logs.map((element, index) => (
-                <HistoryLogItem key={index} id= {element.id} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
+                <HistoryLogItem key={index} id={element.id} date={element.date} pulse={element.pulse} pressure={element.pressure} hemoglobin={element.hemoglobin} />
             ))}
-       
+
         </div>
     )
 }

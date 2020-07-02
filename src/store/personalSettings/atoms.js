@@ -6,6 +6,7 @@ export const personalSettings = atom ({
         name: '',
         bloodType: '',
         donationCount: 10,
-        reminderCount: 2
+        reminderCount: 2,
+        mostRecentDonation: ''
     }
 })

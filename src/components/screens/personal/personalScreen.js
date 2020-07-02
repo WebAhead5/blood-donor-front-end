@@ -10,15 +10,12 @@ import {logsState ,useClearEmptyValuesLogsState,useAddLogItemToLogsState} from '
 import { FormattedMessage } from 'react-intl';
 import HistoryLogFooter from '../../general/historyLogFooter';
 
-
-
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
     const addLogToState = useAddLogItemToLogsState();
     const clearEmptyLogs= useClearEmptyValuesLogsState();
 
     const direction = useRecoilValue(textDirection)
-
 
     const includeEmptyItem = (arr) => {
         let empty = false
