@@ -1,4 +1,5 @@
 export const API_MDA_HOST = 'https://www.mdais.org';
+export const API_HOST = 'http://localhost:4000'
 
 export const routes = {
     home: "/",
