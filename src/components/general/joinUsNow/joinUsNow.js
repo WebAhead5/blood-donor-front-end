@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import './joinUsNow.css'
 
-function JoinUsNow(){
+function JoinUsNow() {
 
 
     return (
-        <div className="joinUsNow">
-            <p>Join Us <span>NOW</span>! Donate <span>BLOOD</span> &amp; Save Lives</p>
-            <div className="triangleContainer">
-                <div>Triangle</div>
+        <Fragment>
+            <div className="joinUsNow">
+                <p>Join Us <span>NOW</span>!</p>
+                <p>Donate <span>BLOOD</span> &amp; Save Lives</p>
             </div>
-        </div>
+            <div className="triangleContainer">
+                <div></div>
+            </div>
+        </Fragment>
     )
 }
 
