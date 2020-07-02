@@ -88,7 +88,9 @@ const HistoryLogItem = (props) => {
           pressure: inputs.pressure.value,
           hemoglobin: inputs.hemoglobin.value
         })
-        localStorage.setItem('mostRecentDonation',  inputs.date.value)
+        let existingLatestDonation = localStorage.getItem('mostRecentDonation')
+        let latestDonationCompared = [existingLatestDonation,inputs.date.value].sort().reverse()[0]
+        localStorage.setItem('mostRecentDonation',  latestDonationCompared)
       }
     }
   };
