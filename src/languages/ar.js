@@ -18,7 +18,7 @@ export default {
     ReminderSettingsPhoneNotification: 'هل ترغب في تلقي اشعارات على هاتفك؟',
     Yes: 'نعم',
     No: 'كلا',
-    Home: 'الصفحة الرئيسية',
+    Home: 'الرئيسية',
     Personal: 'سجل',
     Map: 'خارطة',
     Date: 'تاريخ',

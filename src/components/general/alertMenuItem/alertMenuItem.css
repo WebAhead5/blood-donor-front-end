@@ -7,8 +7,8 @@
 }
 
 .alertMenuItem_notification-icon-container {
-    width: fit-content;
-    margin-right: 13px;
+  width: fit-content;
+  margin-right: 13px;
 }
 
 .alertMenuItem_container {
@@ -36,5 +36,10 @@
 }
 
 .alertMenuItem_whiteBackgroundShadow {
-    display: flex;
+  display: flex;
+}
+
+.alertMenuItem_addedDate {
+  color: rgb(128, 119, 119);
+  position: relative;
 }

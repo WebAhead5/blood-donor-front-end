@@ -9,9 +9,6 @@ import { textDirection } from '../../../store/textDirection';
 import {logsState ,useClearEmptyValuesLogsState,useAddLogItemToLogsState} from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import HistoryLogFooter from '../../general/historyLogFooter';
-import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
-
-
 
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
@@ -19,7 +16,6 @@ const PersonalScreen = () => {
     const clearEmptyLogs= useClearEmptyValuesLogsState();
 
     const direction = useRecoilValue(textDirection)
-
 
     const includeEmptyItem = (arr) => {
         let empty = false
