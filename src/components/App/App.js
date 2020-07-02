@@ -17,12 +17,6 @@ import {callApi} from "../../utils/api"
 
 
 
-let alerts = [
-  { title: "Blood donation needed!", context: "Haifa district" },
-  { title: "Blood donation needed!", context: "jerusalem district" },
-  { title: "Blood donation needed!", context: "holululu district" },
-];
-
 const homeBarData = [
   {
     title: "support us financially",
@@ -37,12 +31,22 @@ const homeBarData = [
   {
     title: "ways you could contribute",
     src: "/img/icon2.svg",
-    redirectionLink:routes.settings_contribute,
+    redirectionLink: routes.settings_contribute,
   },
 ];
 
 
+
+
+
+
 function App() {
+
+  //Alert States : 
+  const [alertData, setAlertData] = useState([])
+
+
+
   const [jdObject,setJdObject] = useState([]);
  
   function parseLocations(err,result){
@@ -51,6 +55,10 @@ function App() {
 
   const setTextDirection = useSetTextDirection();
   useEffect(()=> {
+    callApi('GET', '/api/alerts', null, (err, res) => {
+      if (err) console.log(err);
+      else setAlertData(res.data)
+    })
     setTextDirection(document.getElementById('TextDirection').style.direction)
     callApi("GET","/api/locations",null,parseLocations)
   
@@ -64,23 +72,20 @@ function App() {
     });
   }, [jdObject]);
 
-   
-
-
   return (
-      <div>
-        <Switch>
-          <Route exact path={routes.home}>
-            <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
-          </Route>
+    <div>
+      <Switch>
+        <Route exact path={routes.home}>
+          <HomeScreen alertsData={alertData} homeHeaderData={homeBarData} />
+        </Route>
 
-          <Route exact path={routes.goals}>
-            <GoalsScreen />
-          </Route>
+        <Route exact path={routes.goals}>
+          <GoalsScreen />
+        </Route>
 
-          <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={geolocationArray}/>
-          </Route>
+        <Route exact path={routes.map}>
+          <MapScreen arrayOfGeolocationObjects={geolocationArray} />
+        </Route>
 
         <Route exact path={routes.personal}>
           <Personal />
@@ -90,9 +95,9 @@ function App() {
           <SettingsListScreen />
         </Route>
 
-          <Route exact path={routes.settings_personal}>
-            <PersonalSettingsScreen />
-          </Route>
+        <Route exact path={routes.settings_personal}>
+          <PersonalSettingsScreen />
+        </Route>
 
         <Route exact path={routes.settings_reminders}>
           <ReminderSettingsScreen />

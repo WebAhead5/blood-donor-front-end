@@ -2,14 +2,15 @@ import { API_HOST } from '../constants'
 
 
 function getCode(json) {
-    return (json.code || (json.header && json.header.code) || 9000);
+  return (json.code || (json.header && json.header.code) || 9000);
 }
 
 function getMessage(json) {
-    return (json.message || (json.header && json.header.message) || 'Unknown error');
+  return (json.message || (json.header && json.header.message) || 'Unknown error');
 }
 
 function fail(message, cb) {
+
     if (cb) {
         cb(message, null);
     }
@@ -51,3 +52,4 @@ export function callApi( method, path, body,  cb) {
        });
    }
    
+
