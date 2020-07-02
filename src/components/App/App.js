@@ -12,13 +12,9 @@ import HomeScreen from "../screens/homeScreen";
 import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
-import {routes} from "../../constants";
+import { routes } from "../../constants";
+import callApi from "../../utils/api";
 
-let alerts = [
-  { title: "Blood donation needed!", context: "Haifa district" },
-  { title: "Blood donation needed!", context: "jerusalem district" },
-  { title: "Blood donation needed!", context: "holululu district" },
-];
 
 const homeBarData = [
   {
@@ -34,7 +30,7 @@ const homeBarData = [
   {
     title: "ways you could contribute",
     src: "/img/icon2.svg",
-    redirectionLink:routes.settings_contribute,
+    redirectionLink: routes.settings_contribute,
   },
 ];
 
@@ -91,7 +87,22 @@ let jdObject = [
   }
 ];
 
+
+
+
+
 function App() {
+
+  //Alert States : 
+  const [alertData, setAlertData] = useState([])
+  useEffect(() => {
+    callApi('GET', '/api/alerts', null, (err, res) => {
+      if (err) console.log(err);
+      else setAlertData(res.data)
+    })
+  }, [])
+
+
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
@@ -99,27 +110,27 @@ function App() {
     });
   }, []);
 
-  const setTextDirection = useSetTextDirection(); 
+  const setTextDirection = useSetTextDirection();
 
   useEffect(() => {
     setTextDirection(document.getElementById('TextDirection').style.direction)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-      <div>
-        <Switch>
-          <Route exact path={routes.home}>
-            <HomeScreen alertsData={alerts} homeHeaderData={homeBarData} />
-          </Route>
+    <div>
+      <Switch>
+        <Route exact path={routes.home}>
+          <HomeScreen alertsData={alertData} homeHeaderData={homeBarData} />
+        </Route>
 
-          <Route exact path={routes.goals}>
-            <GoalsScreen />
-          </Route>
+        <Route exact path={routes.goals}>
+          <GoalsScreen />
+        </Route>
 
-          <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={geolocationArray}/>
-          </Route>
+        <Route exact path={routes.map}>
+          <MapScreen arrayOfGeolocationObjects={geolocationArray} />
+        </Route>
 
         <Route exact path={routes.personal}>
           <Personal />
@@ -129,9 +140,9 @@ function App() {
           <SettingsListScreen />
         </Route>
 
-          <Route exact path={routes.settings_personal}>
-            <PersonalSettingsScreen />
-          </Route>
+        <Route exact path={routes.settings_personal}>
+          <PersonalSettingsScreen />
+        </Route>
 
         <Route exact path={routes.settings_reminders}>
           <ReminderSettingsScreen />
