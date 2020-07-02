@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  height: 35px;
+}
+
+.general_button_shodow_container {
+  width: 48%;
 }
 
 .reminderSettings_icon_container {
@@ -14,7 +18,7 @@
 .reminderSettings_icon {
   width: 35px;
   height: 35px;
-  padding: 5px;
+  padding: 15px;
 }
 
 .input_container {
@@ -36,16 +40,14 @@ input[type="text"] {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 165px;
+  height: 130px;
   width: 90% !important;
   margin: 10px;
 }
 
 .reminderSettings_vertical_line {
   border: 1px solid #707070;
-  height: 165px !important;
-  margin-right: 10px;
-  margin: 20px;
+  height: 130px !important;
 }
 
 .button:hover {
@@ -69,4 +71,8 @@ input[type="text"] {
   width: 20%;
   border: green solid 3px;
   margin-right: 5px;
+}
+
+.border_container {
+  padding: 10px;
 }
