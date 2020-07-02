@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
 import './personalSettingsScreen.css';
-import { FormattedMessage,  injectIntl } from 'react-intl';
-import { personalSettings } from '../../../store/personalSettings'
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 import { useRecoilValue } from 'recoil';
-import { useSetPersonalSettings } from '../../../store/personalSettings'
+import moment from 'moment';
 
 
-
-const PersonalSettingsScreen = ({intl}) => {
-    const WhatIYourNamesPlaceholder = intl.formatMessage({id: 'WhatIYourNames'});
-    const ChooseYourBloodTypePlaceholder = intl.formatMessage({id: 'ChooseYourBloodType'});
+const PersonalSettingsScreen = ({ intl }) => {
+    const WhatIYourNamesPlaceholder = intl.formatMessage({ id: 'WhatIYourNames' });
+    const ChooseYourBloodTypePlaceholder = intl.formatMessage({ id: 'ChooseYourBloodType' });
 
     const userSettings = useRecoilValue(personalSettings)
     const setUserSettings = useSetPersonalSettings()
 
-        
+    // Save user input to localStorage
+
+    useEffect(() => {
+        let cachedState = {
+            name: localStorage.getItem('username') || '',
+            bloodType: localStorage.getItem('bloodType') || '',
+            donationCount: localStorage.getItem('donationCount') || '',
+            reminderCount: +localStorage.getItem('reminderCount') || 1,
+            mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+        }
+        setUserSettings(cachedState)
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('username', userSettings.name)
+        localStorage.setItem('bloodType', userSettings.bloodType)
+        localStorage.setItem('donationCount', userSettings.donationCount)
+        localStorage.setItem('reminderCount', userSettings.reminderCount)
+        localStorage.setItem('mostRecentDonation', userSettings.mostRecentDonation)
+    },
+        [userSettings])
+
     // Array to populate radioButtons from
     const radioButton = [1, 2, 3, 4]
     // Array to populate bloodTypes select option
@@ -27,8 +47,21 @@ const PersonalSettingsScreen = ({intl}) => {
         <MainScreenWrapper className='personalSettingsScreen_container'>
 
             {/* Header */}
-    <TitleHeader title={<FormattedMessage id="PersonalSettings" />}PersonalSettings backButton={true} className='personalSettingsScreen_titleHeader' />
+            <TitleHeader title={<FormattedMessage id="PersonalSettings" />} PersonalSettings backButton={true} className='personalSettingsScreen_titleHeader' />
 
+            {/* Last Donation Input */}
+            <PersonalSettingsInput icon="/img/icon-date.svg" alt="input the last date of your most recent donation" >
+                <label htmlFor='date-of-most-recent-donation' /><FormattedMessage id="date-of-most-recent-donation" /><label />
+                <input
+                    type="date"
+                    onChange={(e) => setUserSettings(
+                        { ...userSettings, mostRecentDonation:moment(e.target.value).format("YYYY-MM-DD")}
+                        )}
+                    value={userSettings.mostRecentDonation}
+                    max={moment().format('YYYY-MM-DD')}
+                    className='personalSettingsInput_mostRecentDonation personalSettingsInput_textContainer' />
+
+            </PersonalSettingsInput >
 
             {/* Name Input */}
             <PersonalSettingsInput icon="/img/icon-user-name.svg" alt="enter your name" >
@@ -45,8 +78,8 @@ const PersonalSettingsScreen = ({intl}) => {
 
                 <select className="personalSettingsScreen_select_blood_type" onChange={(e) => {
                     setUserSettings({ ...userSettings, bloodType: e.target.value })
-                }}>injectIntl
-                
+                }} value={userSettings.bloodType}>
+
                     <option value="Choose your Blood Type" >{ChooseYourBloodTypePlaceholder}</option>
 
                     {/* Populates blood types options from the Array */}
@@ -64,7 +97,7 @@ const PersonalSettingsScreen = ({intl}) => {
 
             {/* Donation reminder input */}
             <PersonalSettingsInput className='personalSettingsScreen_double_blood_drops' icon="/img/icon-double-drops.svg" alt="donation reminder" >
-            
+
                 <span><FormattedMessage id="HowManyTimesWouldYouLikeToDonatePerYear" /></span>
                 <form className="personalSettingsScreen_donation_reminder_radios">
 
