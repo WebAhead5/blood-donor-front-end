@@ -1,4 +1,4 @@
-const getLocaleLang = () =>  navigator.languages? navigator.languages[0] : navigator.language? navigator.language : 'he';
+const getLocaleLang = () =>  navigator.languages? navigator.languages[0].split('-')[0] : navigator.language.split('-')[0]? navigator.language : 'he';
 
 
 export default getLocaleLang;

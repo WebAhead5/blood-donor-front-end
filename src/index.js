@@ -16,7 +16,7 @@ const AppIndex = () => {
   const [lang, setLang] = useState("en");
   const localeLanguage = getLocaleLang()
 
-  useEffect(() => setLang(localeLanguage.split('-')[0]), [lang]);
+  useEffect(() => setLang(localeLanguage), [lang]);
   
   
   return (
