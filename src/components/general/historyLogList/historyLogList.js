@@ -6,7 +6,6 @@ import { useRecoilValue } from 'recoil';
 import { logsState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import { textDirection } from '../../../store/textDirection';
-import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 
 const ListHeaderElement = (props) => {
 
