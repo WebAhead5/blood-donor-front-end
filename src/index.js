@@ -7,12 +7,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import languages from "./languages";
 import { RecoilRoot } from 'recoil'
+import getLocaleLang from './utils/getLocaleLanguage'
 require('dotenv').config();
 
 const AppIndex = () => {
-  const [lang, setLang] = useState("en");
-  useEffect(() => setLang(lang), [lang]);
 
+  
+  const [lang, setLang] = useState("en");
+  const localeLanguage = getLocaleLang()
+
+  useEffect(() => setLang(localeLanguage.split('-')[0]), [lang]);
+  
+  
   return (
     <React.StrictMode>
       <RecoilRoot>
