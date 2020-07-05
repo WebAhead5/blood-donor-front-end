@@ -55,10 +55,10 @@ function App() {
 
   const setTextDirection = useSetTextDirection();
   useEffect(()=> {
-    callApi('GET', '/api/alerts', null, (err, res) => {
-      if (err) console.log(err);
-      else setAlertData(res.data)
-    })
+    // callApi('GET', '/api/alerts', null, (err, res) => {
+    //   if (err) console.log(err);
+    //   else setAlertData(res.data)
+    // })
     setTextDirection(document.getElementById('TextDirection').style.direction)
     callApi("GET","/api/locations",null,parseLocations)
   
