@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { IntlProvider } from "react-intl";
+import languages from "../../languages";
 import SettingsListScreen from '../screens/settingsListScreen'
 import NavBar from "../general/navBar";
 import getGeolocation from "../general/mapBox/API-Geolocation"
-
 import { Switch, Route } from "react-router-dom";
 import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
 import GoalsScreen from "../screens/goalsScreen";
 import HomeScreen from "../screens/homeScreen";
-import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
-import {routes} from "../../constants";
-import {callApi} from "../../utils/api"
+import { routes } from "../../constants";
+import { callApi } from "../../utils/api"
+import { useRecoilValue } from 'recoil'
+import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
+import getLocaleLanguage from '../../utils/getLocaleLanguage'
 
 
 
@@ -42,29 +45,37 @@ const homeBarData = [
 
 function App() {
 
+
+  const userLanguage = useRecoilValue(userLanguageState)
+  const setUserLanguage = useSetUserLanguage()
+  
+
   //Alert States : 
   const [alertData, setAlertData] = useState([])
 
 
+  const [jdObject, setJdObject] = useState([]);
 
-  const [jdObject,setJdObject] = useState([]);
- 
-  function parseLocations(err,result){
+  function parseLocations(err, result) {
     setJdObject(result.data)
   }
 
-  const setTextDirection = useSetTextDirection();
-  useEffect(()=> {
+  useEffect(() => {
     // callApi('GET', '/api/alerts', null, (err, res) => {
     //   if (err) console.log(err);
     //   else setAlertData(res.data)
     // })
-    setTextDirection(document.getElementById('TextDirection').style.direction)
-    callApi("GET","/api/locations",null,parseLocations)
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    callApi("GET", "/api/locations", null, parseLocations)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  useEffect(() => {
+    setUserLanguage(getLocaleLanguage())
   },[])
-  
+
+
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
@@ -73,7 +84,13 @@ function App() {
   }, [jdObject]);
 
   return (
-    <div>
+    <IntlProvider locale={userLanguage} messages={languages[userLanguage]}>
+    <div id="TextDirection"
+              style={{
+                direction: (userLanguage === "ar" || userLanguage === "he") ? "rtl" : "ltr",
+                fontFamily: ['Alef', 'sans-serif'],
+              }}
+            >
       <Switch>
         <Route exact path={routes.home}>
           <HomeScreen alertsData={alertData} homeHeaderData={homeBarData} />
@@ -106,6 +123,7 @@ function App() {
 
       <NavBar />
     </div>
+    </IntlProvider>
   );
 }
 
