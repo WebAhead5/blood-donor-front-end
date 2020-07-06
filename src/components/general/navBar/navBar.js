@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
 import { FormattedMessage } from 'react-intl'
@@ -48,6 +48,13 @@ function NavBar({
   const [refresh, setRefresh] = useState(false)
   let history = useHistory();
 
+  const location = useLocation()
+
+  //Fixes the highlighted item, when clicking back/forward button
+  useEffect(() => {
+    setSelectedItemBasedOnUrl()
+  }, [location])
+
   // text direction (rtl / ltr)
   const direction = useRecoilValue(textDirection)
 
@@ -89,15 +96,15 @@ function NavBar({
 
     let onResize = () => setSelectedItemBasedOnUrl();
 
-    window.addEventListener("resize",onResize)
-    return ()=>   window.removeEventListener("resize",onResize)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [direction]);
 
   useEffect(() => {
     setSelectedItemBasedOnUrl()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[refresh])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh])
 
 
   return (
