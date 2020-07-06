@@ -1,30 +1,36 @@
-.homeMenuItem{
-    margin: 25px 0px 10px 10px;
-    padding: 15px 0 5px 0;
+.homeMenuItem {
+  margin: 30px 0px 10px 10px;
+  padding: 15px 0 5px 0;
 
-    min-width:  200px;
-    min-height: 80px;
-    max-height: 100px;
-    height: auto !important;
+  min-width: 200px;
+  min-height: 80px;
+  max-height: 100px;
+  height: auto !important;
 
-    border-radius: 9px;
+  border-radius: 9px;
 
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .homeMenuItem img {
-    position: absolute;
-    top: -20px;
-    width: 50px;
-    left: calc(50% - 25px);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  /* background-position: center; */
+  background-size: contain;
+  border-radius: 50%;
+  border: white 3px solid;
+  position: absolute;
+  top: -30px;
+  width: 50px;
+  height: 50px;
+  left: calc(50% - 25px);
 }
 
 .homeMenuItem p {
-    text-align: center;
-    word-break: break-word;
-    text-overflow: ellipsis;
+  text-align: center;
+  word-break: break-word;
+  text-overflow: ellipsis;
 }

@@ -10,7 +10,7 @@ import { textDirection } from '../../../store/textDirection';
 const ListHeaderElement = (props) => {
 
     return (
-        <div className={props.className}>
+        <div className={props.className} style={props.style}>
             <img className={'historyLogListHeaderIcon'} src={props.src} alt="" />
             {props.title}
         </div>
@@ -23,7 +23,8 @@ const ListHeader = (props) => {
         {
             src: "/img/icon-date.svg",
             title: <FormattedMessage id="Date" />,
-            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`
+            className: `${direction === "rtl" ? 'historyLogListHeaderElementRtl' : 'historyLogListHeaderElement'}`,
+            style: { marginLeft: '10px' }
         },
         {
             src: "/img/icon-pulse.svg",
@@ -52,7 +53,7 @@ const ListHeader = (props) => {
         <WhiteBackgroundShadow className='historyLogListHeaderContainer'>
             <div className={`historyLogListHeader ${direction === "rtl" && 'historyLogListHeaderRtl'}`}>
                 {headerElements.map((element, index) => (
-                    <ListHeaderElement className={element.className} key={index} src={element.src} title={element.title} />
+                    <ListHeaderElement key={index} {...element} />
                 ))}
             </div>
         </WhiteBackgroundShadow>

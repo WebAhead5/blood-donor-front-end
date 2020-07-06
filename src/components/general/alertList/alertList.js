@@ -1,11 +1,14 @@
-
 import React from 'react';
 import './alertList.css'
 import { FormattedMessage } from 'react-intl'
 import AlertMenuItem from "../alertMenuItem";
+import { useRecoilValue } from 'recoil'
+import { userLanguageState } from '../../../store/userLanguage'
+
 
 const AlertList = ({ data }) => {
 
+    const language = useRecoilValue(userLanguageState);
 
     return (
         <div className="alertList_title_container" >
@@ -13,8 +16,8 @@ const AlertList = ({ data }) => {
             <h3><FormattedMessage id="Alerts" /></h3>
             <div className="alertList_container">
 
-                {data?.map(({ title, context, addedDate }, index) =>
-                    <AlertMenuItem title={title.he} context={context.he} addedDate={addedDate} key={index} />
+                {data?.map(({ title, context }, index) =>
+                    <AlertMenuItem title={title[language]} context={context[language]} key={index} />
                 )}
             </div>
         </div>
