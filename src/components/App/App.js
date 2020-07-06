@@ -43,20 +43,19 @@ function App() {
   useEffect(() => {
 
     callApi('GET', '/api/alerts', null, (err, res) => {
-      if (err) console.log(err);
+      if (err) console.error(err);
       else setAlertData(res.data)
     })
 
     // HomeMenu Effects :
     callApi('GET', '/api/homeMenu', null, (err, res) => {
-      if (err) console.log(err);
+      if (err) console.error(err);
       else setHomeMenuData(res.data);
     })
 
     callApi('GET', '/api/goals', null, (err, res) => {
-      if (err) console.log(err);
+      if (err) console.error(err);
       else setGoalsData(res.data);
-      console.log(res.data)
     })
 
 
