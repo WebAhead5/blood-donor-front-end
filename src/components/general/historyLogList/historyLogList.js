@@ -6,7 +6,6 @@ import { useRecoilValue } from 'recoil';
 import { logsState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import { textDirection } from '../../../store/textDirection';
-import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 
 const ListHeaderElement = (props) => {
 
@@ -75,6 +74,8 @@ const HistoryLogList = (props) => {
     React.useEffect(() => {
         let latestDonationCompared = logs.map(row => row.date).concat(mostRecentDateState).sort().reverse()[0]
         setMostRecentDateState(latestDonationCompared)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mostRecentDateState])
 
     return (

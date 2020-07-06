@@ -27,6 +27,8 @@ const PersonalSettingsScreen = ({ intl }) => {
             mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
         }
         setUserSettings(cachedState)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
