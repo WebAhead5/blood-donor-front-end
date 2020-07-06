@@ -38,6 +38,6 @@ export default {
     SearchPlaceholder: 'بحث...',
     Goals: 'اهداف',
     Donations: 'تبرعات',
-
+    Language: 'اللغه'
 
 }

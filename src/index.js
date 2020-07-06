@@ -4,30 +4,18 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-import { IntlProvider } from "react-intl";
-import languages from "./languages";
 import { RecoilRoot } from 'recoil'
 require('dotenv').config();
 
 const AppIndex = () => {
-  const [lang, setLang] = useState("en");
-  useEffect(() => setLang(lang), [lang]);
 
+    
   return (
     <React.StrictMode>
-      <RecoilRoot>
-        <IntlProvider locale={lang} messages={languages[lang]}>
-          <Router>
-            <div id="TextDirection"
-              style={{
-                direction: (lang === "ar" || lang === "he") ? "rtl" : "ltr",
-                fontFamily: ['Alef', 'sans-serif'],
-              }}
-            >
-              <App setLang={setLang} lang={lang} />
-            </div>
-          </Router>
-        </IntlProvider>
+      <RecoilRoot>       
+          <Router>       
+              <App />          
+          </Router>      
       </RecoilRoot>
     </React.StrictMode>
   );

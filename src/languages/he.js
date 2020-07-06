@@ -38,6 +38,6 @@ export default {
     RemindersSettings: 'התראות',
     SearchPlaceholder: 'חיפוש...',
     Donations: 'תרומות',
-
+    Language: 'שפה',
 }
 
