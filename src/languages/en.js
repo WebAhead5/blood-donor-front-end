@@ -38,4 +38,6 @@ export default {
     RemindersSettings: 'Reminders',
     SearchPlaceholder: 'Search...',
     Donations: 'Donations',
+    Language: 'Language'
+
 }

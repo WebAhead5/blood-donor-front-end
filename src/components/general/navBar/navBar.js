@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import NavBarItem from "../navBarItem";
 import "./navBar.css";
 import { FormattedMessage } from 'react-intl'
@@ -47,6 +47,13 @@ function NavBar({
   let selectionHighlight = useRef(null);
   const [refresh, setRefresh] = useState(false)
   let history = useHistory();
+
+  const location = useLocation()
+
+  //Fixes the highlighted item, when clicking back/forward button
+  useEffect(() => {
+    setSelectedItemBasedOnUrl()
+  }, [location])
 
   // text direction (rtl / ltr)
   const direction = useRecoilValue(textDirection)

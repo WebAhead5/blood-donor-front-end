@@ -13,13 +13,13 @@ const HistoryLogFooter = () => {
 
     let count = userSettings.donationCount;
 
-    const levels = [{ title: 'Beginner', goal: 10, imgSrc: '/img/icon-frog.svg', alt: 'Novice level' },
-    { title: 'Intermediate', goal: 20, imgSrc: '/img/icon-prince.svg', alt: 'Intermediate level' },
-    { title: 'Expert', goal: 30, imgSrc: '/img/icon-king.svg', alt: 'Expert level' },
-    { title: 'Expert', goal: 50, imgSrc: '/img/icon-king.svg', alt: 'Expert level' },
-    { title: 'Expert', goal: 100, imgSrc: '/img/icon-king.svg', alt: 'Expert level' },
-    { title: 'Expert', goal: 150, imgSrc: '/img/icon-king.svg', alt: 'Expert level' },
-    { title: 'Expert', goal: 200, imgSrc: '/img/icon-king.svg', alt: 'Expert level' },
+    const levels = [{ title: 'Soldier', goal: 10, imgSrc: '/img/icon-frog.svg', alt: 'Soldier level' },
+    { title: 'Veteran', goal: 20, imgSrc: '/img/icon-prince.svg', alt: 'Veteran level' },
+    { title: 'Hero', goal: 30, imgSrc: '/img/icon-king.svg', alt: 'Hero level' },
+    { title: 'King', goal: 50, imgSrc: '/img/icon-king.svg', alt: 'King level' },
+    { title: 'Legend', goal: 100, imgSrc: '/img/icon-king.svg', alt: 'Legend level' },
+    { title: 'Mythic', goal: 150, imgSrc: '/img/icon-king.svg', alt: 'Mythic level' },
+    { title: 'Immortal', goal: 200, imgSrc: '/img/icon-king.svg', alt: 'Immortal level' },
     ]
 
     const firstIndex = levels.findIndex(level => level.goal > count);

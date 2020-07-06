@@ -2,11 +2,15 @@ import React, { useRef, useEffect } from "react";
 import "./homeMenu.css";
 import { useHistory } from "react-router-dom";
 import HomeMenuItem from "../homeMenuitem";
+import { useRecoilValue } from 'recoil'
+import { userLanguageState } from '../../../store/userLanguage'
+
 
 
 export const HomeMenu = ({ data }) => {
   const history = useHistory();
   const myScrollBar = useRef();
+  const language = useRecoilValue(userLanguageState);
 
   useEffect(() => {
     const scrollWidth = 215 * data.length;
@@ -24,7 +28,7 @@ export const HomeMenu = ({ data }) => {
             key={index}
             onClick={() => window.open(redirectionLink)}
             icon={src}
-            text={title.he}
+            text={title[language]}
           />
 
 
