@@ -7,12 +7,12 @@ const getLocaleLang = () =>  {
 
     if(selectedLang && langOptions.includes(selectedLang)) return selectedLang
     if(navigator.languages){ 
-        const osLang = navigator.languages[0].match(firstTwoLettersRegex).toLowerCase()
+        const osLang = navigator.languages[0].match(firstTwoLettersRegex)[0].toLowerCase()
         if(langOptions.includes(osLang))
         return osLang
     }
     if(navigator.language){ 
-        const osLang = navigator.language.match(firstTwoLettersRegex).toLowerCase()
+        const osLang = navigator.language.match(firstTwoLettersRegex)[0].toLowerCase()
         if(langOptions.includes(osLang))
         return osLang
     }
