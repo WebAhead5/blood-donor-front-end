@@ -12,15 +12,10 @@ const AppIndex = () => {
     
   return (
     <React.StrictMode>
-      <RecoilRoot>
-        
-          <Router>
-            
-             
-              <App />
-            
-          </Router>
-        
+      <RecoilRoot>       
+          <Router>       
+              <App />          
+          </Router>      
       </RecoilRoot>
     </React.StrictMode>
   );
