@@ -58,9 +58,9 @@ function App() {
     callApi('GET', '/api/alerts', null, (err, res) => {
       if (err) console.log(err);
       else setAlertData(res.data)
-    })
+    }).catch()
     setTextDirection(document.getElementById('TextDirection').style.direction)
-    callApi("GET","/api/locations",null,parseLocations)
+    callApi("GET","/api/locations",null,parseLocations).catch()
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])

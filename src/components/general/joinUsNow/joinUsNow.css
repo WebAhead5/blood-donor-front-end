@@ -33,6 +33,7 @@ div.triangleContainer {
     flex-direction: column;
     align-items: center;
     margin: auto;
+    transform: translateY(-4px)
 }
 
 .triangleContainer>div {
