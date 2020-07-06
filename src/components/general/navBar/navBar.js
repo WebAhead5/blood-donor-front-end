@@ -89,15 +89,15 @@ function NavBar({
 
     let onResize = () => setSelectedItemBasedOnUrl();
 
-    window.addEventListener("resize",onResize)
-    return ()=>   window.removeEventListener("resize",onResize)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [direction]);
 
   useEffect(() => {
     setSelectedItemBasedOnUrl()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[refresh])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh])
 
 
   return (

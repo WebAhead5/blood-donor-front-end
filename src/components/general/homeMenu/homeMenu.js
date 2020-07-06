@@ -11,7 +11,7 @@ export const HomeMenu = ({ data }) => {
   useEffect(() => {
     const scrollWidth = 215 * data.length;
     myScrollBar.current.scrollLeft = (scrollWidth - window.innerWidth) / 2
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -19,12 +19,12 @@ export const HomeMenu = ({ data }) => {
 
       <div className="homemenu-container" ref={myScrollBar} >
 
-        {data.map(({src,title,redirectionLink}, index) =>
+        {data.map(({ src, title, redirectionLink }, index) =>
           <HomeMenuItem
             key={index}
-            onClick={() => redirectionLink && history.push(redirectionLink)}
+            onClick={() => window.open(redirectionLink)}
             icon={src}
-            text={title}
+            text={title.he}
           />
 
 

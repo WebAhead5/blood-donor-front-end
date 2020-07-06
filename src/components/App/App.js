@@ -12,59 +12,45 @@ import HomeScreen from "../screens/homeScreen";
 import { useSetTextDirection } from '../../store/textDirection';
 import ReminderSettingsScreen from "../screens/reminderSettingsScreen.jsx";
 import MapScreen from "../screens/mapScreen";
-import {routes} from "../../constants";
-import {callApi} from "../../utils/api"
-
-
-
-const homeBarData = [
-  {
-    title: "support us financially",
-    src: "/img/dollar-icon.svg",
-    redirectionLink: routes.settings_support,
-  },
-  {
-    title: "How To Donate Blood",
-    src: "/img/icon3.svg",
-    redirectionLink: routes.settings_howToDonate,
-  },
-  {
-    title: "ways you could contribute",
-    src: "/img/icon2.svg",
-    redirectionLink: routes.settings_contribute,
-  },
-];
-
-
-
+import { routes } from "../../constants";
+import { callApi } from "../../utils/api"
 
 
 
 function App() {
 
-  //Alert States : 
+  //States : 
   const [alertData, setAlertData] = useState([])
+  const [jdObject, setJdObject] = useState([]);
+  const [homeMenuData, setHomeMenuData] = useState([])
 
-
-
-  const [jdObject,setJdObject] = useState([]);
- 
-  function parseLocations(err,result){
+  function parseLocations(err, result) {
     setJdObject(result.data)
   }
 
   const setTextDirection = useSetTextDirection();
-  useEffect(()=> {
+
+  // Alert Effects :
+  useEffect(() => {
+
     callApi('GET', '/api/alerts', null, (err, res) => {
       if (err) console.log(err);
       else setAlertData(res.data)
     })
+
+    // HomeMenu Effects :
+    callApi('GET', '/api/homeMenu', null, (err, res) => {
+      if (err) console.log(err);
+      else setHomeMenuData(res.data);
+    })
+
+
     setTextDirection(document.getElementById('TextDirection').style.direction)
-    callApi("GET","/api/locations",null,parseLocations)
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-  
+    callApi("GET", "/api/locations", null, parseLocations)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const [geolocationArray, setGeolocationArray] = useState();
   useEffect(() => {
     getGeolocation(jdObject).then((result) => {
@@ -76,7 +62,7 @@ function App() {
     <div>
       <Switch>
         <Route exact path={routes.home}>
-          <HomeScreen alertsData={alertData} homeHeaderData={homeBarData} />
+          <HomeScreen alertsData={alertData} homeHeaderData={homeMenuData} />
         </Route>
 
         <Route exact path={routes.goals}>
