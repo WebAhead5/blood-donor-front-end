@@ -2,8 +2,8 @@ import React from 'react';
 import "./subHeader.css";
 import { FormattedMessage } from 'react-intl';
 
-function SubHeader({total = 1000,
-                       current = 600,
+function SubHeader({total = 100,
+                       current = 0,
                        titlePosPx=100 ,
                        dropScale = 1,
                         className
@@ -27,7 +27,7 @@ function SubHeader({total = 1000,
                 <div className="subHeader_drop">
 
                     {/*percentage*/}
-                    <div className="subHeader_percentage">{`${current / total * 100}%`}</div>
+                    <div className="subHeader_percentage">{`${(current / total * 100).toFixed(1) }%`}</div>
 
                     {/*the fill of the drop*/}
                     <div className="subHeader_dropFill" style={{height: `${current / total * 100}%`}}>
