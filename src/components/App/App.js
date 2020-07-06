@@ -26,6 +26,7 @@ function App() {
 
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
+  const [goalsData, setGoalsData] = useState([])
 
 
   //Alert States : 
@@ -42,14 +43,19 @@ function App() {
   useEffect(() => {
 
     callApi('GET', '/api/alerts', null, (err, res) => {
-      if (err) console.log(err);
+      if (err) console.error(err);
       else setAlertData(res.data)
     })
 
     // HomeMenu Effects :
     callApi('GET', '/api/homeMenu', null, (err, res) => {
-      if (err) console.log(err);
+      if (err) console.error(err);
       else setHomeMenuData(res.data);
+    })
+
+    callApi('GET', '/api/goals', null, (err, res) => {
+      if (err) console.error(err);
+      else setGoalsData(res.data);
     })
 
 
@@ -85,7 +91,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.goals}>
-            <GoalsScreen />
+            <GoalsScreen totalGoal={goalsData.goal} currentBloodCount={goalsData.current} />
           </Route>
 
           <Route exact path={routes.map}>
