@@ -39,7 +39,7 @@ export default {
     Goals: 'اهداف',
     Donations: 'تبرعات',
     Language: 'اللغه',
-    MostRecentDonation: 'متى اخر مره قمت بتربع الدم؟'
+    MostRecentDonation: 'متى قمت باخر تبرع بالدم '
 
 
 }
