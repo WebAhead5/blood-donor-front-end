@@ -155,9 +155,9 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
 
 function getMarkers(locationsArr, onClick) {
     
-    return locationsArr?.map(location =>
+    return locationsArr?.map((location,index) =>
         <Marker
-            key={location.id}
+            key={index}
             latitude={location.lat}
             longitude={location.lon}>
             <button className="mapBox_marker" alt="Bloodbank Location Icon"

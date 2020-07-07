@@ -31,13 +31,9 @@ function App() {
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-  const [jdObject, setJdObject] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
   const [settingsMenuData, setSettingsMenuData] = useState([])
-
-  function parseLocations(err, result) {
-    setJdObject(result.data)
-  }
 
 
   // Alert Effects :
@@ -64,7 +60,10 @@ function App() {
       else setSettingsMenuData(res.data);
     })
 
-    callApi("GET", "/api/locations", null, parseLocations)
+    callApi("GET", "/api/locations", null, (err, res)=>{
+      if (err) console.error(err);
+      else setLocations(res.data);
+    })
 
     setUserLanguage(getLocaleLanguage())
 
@@ -90,7 +89,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={jdObject} />
+            <MapScreen arrayOfGeolocationObjects={locations} />
           </Route>
 
           <Route exact path={routes.personal}>
