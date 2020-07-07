@@ -8,10 +8,13 @@ import MapInfoPanel from '../mapInfoPanel'
 import MainScreenWrapper from "../../general/mainScreenWrapper";
 import { useRecoilValue } from 'recoil'
 import { textDirection } from '../../../store/textDirection'
-import { injectIntl } from 'react-intl' 
+import { injectIntl } from 'react-intl'
 
 // Function to Render mapBox Component
 function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
+
+
+
 
     const [searchInputState, setSearchInputState] = useState(false);
     let searchInput = useRef()
@@ -26,13 +29,15 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
         if (searchInputState) focusInput();
     })
 
-    React.useEffect(()=>{
-        function screenPressed(event){
-                setSearchInputState(event.target.id === "searchInput")            
+    React.useEffect(() => {
+        console.log(arrayOfGeolocationObjects);
+        function screenPressed(event) {
+            setSearchInputState(event.target.id === "searchInput")
         }
-        document.addEventListener('click', screenPressed )
-        return ()=>{document.removeEventListener('click', screenPressed)}
-    },[])
+        document.addEventListener('click', screenPressed)
+        return () => { document.removeEventListener('click', screenPressed) }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     // Searchbar requirement. Geocoder component needs to access ReactMapGl component. 
     let myMap = useRef();
@@ -60,12 +65,14 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
     //whenever a date is selected, the marks are filtered/updated
     useEffect(() => {
 
-        let filterRes = filterLocationsBasedOnDate(arrayOfGeolocationObjects, dateState)
-        if (deepEquals(marks, filterRes))
-            return;
-        setMarks(filterRes)
+        if (arrayOfGeolocationObjects.length > 0) {
+            let filterRes = filterLocationsBasedOnDate(arrayOfGeolocationObjects, dateState)
+            if (deepEquals(marks, filterRes))
+                return;
+            setMarks(filterRes)
+        }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateState, arrayOfGeolocationObjects])
 
     //show an error message if env file is not set
@@ -132,7 +139,7 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
                 </div>
 
                 {/*map marks*/}
-                {getMarkers(marks, (location) => setSelectedLocation(location))}
+                {marks.length !== 0 && getMarkers(marks, (location) => setSelectedLocation(location))}
 
 
             </ReactMapGL>
@@ -148,7 +155,7 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
 
 
 function getMarkers(locationsArr, onClick) {
-
+    
     return locationsArr?.map(location =>
         <Marker
             key={location.id}
@@ -162,7 +169,7 @@ function getMarkers(locationsArr, onClick) {
 
 function filterLocationsBasedOnDate(locationsArr, date) {
     let filteringDate = moment(date).format("YYYY-MM-DD")
-    let returnVal = locationsArr?.filter(location => filteringDate === moment(location.dateDonation).format("YYYY-MM-DD"));
+    let returnVal = locationsArr?.filter(location => filteringDate === moment(location.DateDonation).format("YYYY-MM-DD"));
     return returnVal || [];
 }
 
