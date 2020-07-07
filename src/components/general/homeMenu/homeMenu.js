@@ -13,7 +13,7 @@ export const HomeMenu = ({ data }) => {
   const language = useRecoilValue(userLanguageState);
 
   useEffect(() => {
-    const scrollWidth = 215 * data.length;
+    const scrollWidth = 207 * data.length;
     myScrollBar.current.scrollLeft = (scrollWidth - window.innerWidth) / 2
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
