@@ -59,7 +59,7 @@ function App() {
     })
 
 
-    // callApi("GET", "/api/locations", null, parseLocations)
+    callApi("GET", "/api/locations", null, parseLocations)
 
     setUserLanguage(getLocaleLanguage())
 
