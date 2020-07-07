@@ -53,7 +53,7 @@ const PersonalSettingsScreen = ({ intl }) => {
 
             {/* Last Donation Input */}
             <PersonalSettingsInput icon="/img/icon-date.svg" alt="input the last date of your most recent donation" >
-                <label htmlFor='date-of-most-recent-donation' /><FormattedMessage id="date-of-most-recent-donation" /><label />
+                <label htmlFor='date-of-most-recent-donation' /><FormattedMessage id="MostRecentDonation" /><label />
                 <input
                     type="date"
                     onChange={(e) => setUserSettings(

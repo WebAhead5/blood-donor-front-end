@@ -1,6 +1,6 @@
 export default {
     Alerts: 'התראות',
-    Goal: 'היעד',
+    Goal: 'יעד שנתי',
     Current: 'מצב נוכחי',
     Location: 'מיקום',
     Opens: 'שעת פתיחה',
@@ -20,7 +20,7 @@ export default {
     No: 'לא',
     Home: 'דף בית',
     Personal: 'היסטוריה',
-    Goals: 'מטרות',
+    Goals: 'יעדים',
     Settings: 'הגדרות',
     Map: 'מפה',
     Date: "תאריך",
@@ -39,5 +39,7 @@ export default {
     SearchPlaceholder: 'חיפוש...',
     Donations: 'תרומות',
     Language: 'שפה',
+    MostRecentDonation: 'מתי הייתה תרומת הדם האחרונה שלך?'
+
 }
 

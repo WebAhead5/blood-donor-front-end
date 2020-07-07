@@ -38,6 +38,7 @@ export default {
     RemindersSettings: 'Reminders',
     SearchPlaceholder: 'Search...',
     Donations: 'Donations',
-    Language: 'Language'
+    Language: 'Language',
+    MostRecentDonation: 'When was your most recent donation?'
 
 }
