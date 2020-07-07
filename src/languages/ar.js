@@ -38,6 +38,8 @@ export default {
     SearchPlaceholder: 'بحث...',
     Goals: 'اهداف',
     Donations: 'تبرعات',
-    Language: 'اللغه'
+    Language: 'اللغه',
+    MostRecentDonation: 'متى اخر مره قمت بتربع الدم؟'
+
 
 }

@@ -4,8 +4,6 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
-    overflow-y: scroll;
-
 }
 .settingsList_horizental-line {
     border: 0.5px solid #c6c6c6;

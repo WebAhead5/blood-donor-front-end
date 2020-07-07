@@ -39,5 +39,7 @@ export default {
     SearchPlaceholder: 'חיפוש...',
     Donations: 'תרומות',
     Language: 'שפה',
+    MostRecentDonation: 'מתי הייתה תרומת הדם האחרונה שלך?'
+
 }
 
