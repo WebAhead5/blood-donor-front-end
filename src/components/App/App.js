@@ -21,51 +21,44 @@ import getLocaleLanguage from '../../utils/getLocaleLanguage'
 
 
 
-const homeBarData = [
-  {
-    title: "support us financially",
-    src: "/img/dollar-icon.svg",
-    redirectionLink: routes.settings_support,
-  },
-  {
-    title: "How To Donate Blood",
-    src: "/img/icon3.svg",
-    redirectionLink: routes.settings_howToDonate,
-  },
-  {
-    title: "ways you could contribute",
-    src: "/img/icon2.svg",
-    redirectionLink: routes.settings_contribute,
-  },
-];
-
-
-
-
-
-
 function App() {
 
 
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
-  
+  const [goalsData, setGoalsData] = useState([])
+
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-
-
   const [jdObject, setJdObject] = useState([]);
+  const [homeMenuData, setHomeMenuData] = useState([])
 
   function parseLocations(err, result) {
     setJdObject(result.data)
   }
 
+
+  // Alert Effects :
   useEffect(() => {
-    // callApi('GET', '/api/alerts', null, (err, res) => {
-    //   if (err) console.log(err);
-    //   else setAlertData(res.data)
-    // })
+
+    callApi('GET', '/api/alerts', null, (err, res) => {
+      if (err) console.error(err);
+      else setAlertData(res.data)
+    })
+
+    // HomeMenu Effects :
+    callApi('GET', '/api/homeMenu', null, (err, res) => {
+      if (err) console.error(err);
+      else setHomeMenuData(res.data);
+    })
+
+    callApi('GET', '/api/goals', null, (err, res) => {
+      if (err) console.error(err);
+      else setGoalsData(res.data);
+    })
+
+
     callApi("GET", "/api/locations", null, parseLocations)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,7 +67,7 @@ function App() {
 
   useEffect(() => {
     setUserLanguage(getLocaleLanguage())
-  },[])
+  }, [])
 
 
   const [geolocationArray, setGeolocationArray] = useState();
@@ -86,44 +79,44 @@ function App() {
 
   return (
     <IntlProvider locale={userLanguage} messages={languages[userLanguage]}>
-    <div id="TextDirection"
-              style={{
-                direction: (userLanguage === "ar" || userLanguage === "he") ? "rtl" : "ltr",
-                fontFamily: ['Alef', 'sans-serif'],
-              }}
-            >
-      <Switch>
-        <Route exact path={routes.home}>
-          <HomeScreen alertsData={alertData} homeHeaderData={homeBarData} />
-        </Route>
+      <div id="TextDirection"
+        style={{
+          direction: (userLanguage === "ar" || userLanguage === "he") ? "rtl" : "ltr",
+          fontFamily: ['Alef', 'sans-serif'],
+        }}
+      >
+        <Switch>
+          <Route exact path={routes.home}>
+            <HomeScreen alertsData={alertData} homeHeaderData={homeMenuData} />
+          </Route>
 
-        <Route exact path={routes.goals}>
-          <GoalsScreen />
-        </Route>
+          <Route exact path={routes.goals}>
+            <GoalsScreen totalGoal={goalsData.goal} currentBloodCount={goalsData.current} />
+          </Route>
 
-        <Route exact path={routes.map}>
-          <MapScreen arrayOfGeolocationObjects={geolocationArray} />
-        </Route>
+          <Route exact path={routes.map}>
+            <MapScreen arrayOfGeolocationObjects={geolocationArray} />
+          </Route>
 
-        <Route exact path={routes.personal}>
-          <Personal />
-        </Route>
+          <Route exact path={routes.personal}>
+            <Personal />
+          </Route>
 
-        <Route exact path={routes.settings}>
-          <SettingsListScreen />
-        </Route>
+          <Route exact path={routes.settings}>
+            <SettingsListScreen />
+          </Route>
 
-        <Route exact path={routes.settings_personal}>
-          <PersonalSettingsScreen />
-        </Route>
+          <Route exact path={routes.settings_personal}>
+            <PersonalSettingsScreen />
+          </Route>
 
-        <Route exact path={routes.settings_reminders}>
-          <ReminderSettingsScreen />
-        </Route>
-      </Switch>
+          <Route exact path={routes.settings_reminders}>
+            <ReminderSettingsScreen />
+          </Route>
+        </Switch>
 
-      <NavBar />
-    </div>
+        <NavBar />
+      </div>
     </IntlProvider>
   );
 }

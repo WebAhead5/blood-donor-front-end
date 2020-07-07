@@ -1,12 +1,15 @@
 import React from "react";
 import "./homeMenuItem.css";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
-function HomeMenuItem(props) {
+
+function HomeMenuItem({ icon, text, onClick }) {
+
   return (
-    <WhiteBackgroundShadow className="homeMenuItem" onClick={props.onClick}>
-        <img src={props.icon} alt="icon" />
-        <p>{props.text}</p>
+    <WhiteBackgroundShadow className="homeMenuItem" onClick={onClick}>
+      <img src={icon} alt="icon" />
+      <p>{text}</p>
     </WhiteBackgroundShadow>
   );
 }
+
 export default HomeMenuItem;
