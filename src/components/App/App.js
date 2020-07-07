@@ -33,6 +33,7 @@ function App() {
   const [alertData, setAlertData] = useState([])
   const [jdObject, setJdObject] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
+  const [settingsMenuData, setSettingsMenuData] = useState([])
 
   function parseLocations(err, result) {
     setJdObject(result.data)
@@ -58,6 +59,10 @@ function App() {
       else setGoalsData(res.data);
     })
 
+    callApi('GET', '/api/settingsMenu', null, (err, res) => {
+      if (err) console.error(err);
+      else setSettingsMenuData(res.data);
+    })
 
     callApi("GET", "/api/locations", null, parseLocations)
 
@@ -93,7 +98,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.settings}>
-            <SettingsListScreen />
+            <SettingsListScreen data={settingsMenuData}/>
           </Route>
 
           <Route exact path={routes.settings_personal}>
