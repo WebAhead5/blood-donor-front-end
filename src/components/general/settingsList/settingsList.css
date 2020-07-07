@@ -4,6 +4,7 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
+    overflow-y: scroll;
 
 }
 .settingsList_horizental-line {
