@@ -7,6 +7,7 @@ export default {
     Closes: 'שעת סגירה',
     OnDate: 'תאריך',
     Share: 'שתף',
+    mapGO: 'סע',
     AddToCalendar: 'הוספה ליומן',
     SettingsPersonal: 'פרטים אישיים',
     SettingsReminders: 'תזכורות',

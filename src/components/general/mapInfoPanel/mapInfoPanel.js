@@ -30,13 +30,13 @@ function MapInfoPanel({selectedLocation: {Name, City, DateDonation, FromHour, To
     function navigationButton() {
 
         if (isBrowser)
-            return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(address)}`)}>go</button>
+            return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURI(address)}`)}>{intl.formatMessage({id: 'mapGO'})}</button>
 
         else if (isMobile)
             if (isAndroid)
-                return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`geo:?q=${encodeURI(address)}`)}>Go</button>
+                return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`geo:?q=${encodeURI(address)}`)}>{intl.formatMessage({id: 'mapGO'})}</button>
             else if (isIOS)
-                return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`http://maps.apple.com/?q=${encodeURI(address)}&sll=${long},${lat}`)}>go</button>
+                return <button className="infoPanel_button infoPanel_go" onClick={()=>window.open(`http://maps.apple.com/?q=${encodeURI(address)}&sll=${long},${lat}`)}>{intl.formatMessage({id: 'mapGO'})}</button>
 
     }
 
