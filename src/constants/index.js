@@ -1,5 +1,5 @@
 export const API_MDA_HOST = 'https://www.mdais.org';
-export const API_HOST = 'http://localhost:4000'
+export const API_HOST = 'https://blood-donor-webahead.herokuapp.com'
 
 export const routes = {
     home: "/",

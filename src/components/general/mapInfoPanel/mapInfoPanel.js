@@ -6,8 +6,8 @@ import {FormattedMessage, injectIntl} from 'react-intl'
 import Share from '../share'
 
 
-function MapInfoPanel({selectedLocation: {address, dateDonation, opens, closes}={}, intl}) {
-
+function MapInfoPanel({selectedLocation: {Name, City, DateDonation, FromHour, ToHour}={}, intl}) {
+    const address =  Name + " " + City;
     const textToShare = {
         title: "come donate blood at...",
         body: "....."
@@ -16,25 +16,25 @@ function MapInfoPanel({selectedLocation: {address, dateDonation, opens, closes}=
         title: "Blood Donation",
         description: "Reminder to donate blood",
         location: address,
-        startTime: moment(dateDonation).hours(opens.slice(0,2)).minutes(opens.slice(3,5)).toDate(),
-        endTime: moment(dateDonation).hours(closes.slice(0,2)).minutes(closes.slice(3,5)).toDate(),
+        startTime: moment(DateDonation).hours(FromHour.slice(0,2)).minutes(FromHour.slice(3,5)).toDate(),
+        endTime: moment(DateDonation).hours(ToHour.slice(0,2)).minutes(ToHour.slice(3,5)).toDate(),
     }
 
     const [shareHidden, setShareHidden] = useState(true)
 
-
+    
     return (
 
         <div className="infoPanel">
             <div className="infoPanel_detailsContainer">
                 <div className="infoPanel_details">
                     <p><FormattedMessage id='Location'/>:<br/> {address}</p>
-                    <p><FormattedMessage id='OnDate'/>: <br/>{dateDonation?.toDateString()}</p>
+                    <p><FormattedMessage id='OnDate'/>: <br/>{new Date(DateDonation)?.toDateString()}</p>
 
                 </div>
                 <div className="infoPanel_details">
-                    <p><FormattedMessage id='Opens'/>:<br/> {opens}</p>
-                    <p><FormattedMessage id='Closes'/>:<br/> {closes}</p>
+                    <p><FormattedMessage id='Opens'/>:<br/> {FromHour}</p>
+                    <p><FormattedMessage id='Closes'/>:<br/> {ToHour}</p>
                 </div>
 
             </div>
