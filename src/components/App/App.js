@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { IntlProvider } from "react-intl";
 import languages from "../../languages";
 import SettingsListScreen from '../screens/settingsListScreen'
 import NavBar from "../general/navBar";
-import getGeolocation from "../general/mapBox/API-Geolocation"
 import { Switch, Route } from "react-router-dom";
 import PersonalSettingsScreen from "../screens/personalSettingsScreen";
 import Personal from "../screens/personal";
@@ -61,21 +61,11 @@ function App() {
 
     // callApi("GET", "/api/locations", null, parseLocations)
 
+    setUserLanguage(getLocaleLanguage())
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
-  useEffect(() => {
-    setUserLanguage(getLocaleLanguage())
-  }, [])
-
-
-  const [geolocationArray, setGeolocationArray] = useState();
-  useEffect(() => {
-    getGeolocation(jdObject).then((result) => {
-      setGeolocationArray(result);
-    });
-  }, [jdObject]);
 
   return (
     <IntlProvider locale={userLanguage} messages={languages[userLanguage]}>
@@ -95,7 +85,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={geolocationArray} />
+            <MapScreen arrayOfGeolocationObjects={jdObject} />
           </Route>
 
           <Route exact path={routes.personal}>
