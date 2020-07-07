@@ -16,8 +16,9 @@ import { routes } from "../../constants";
 import { callApi } from "../../utils/api"
 import { useRecoilValue } from 'recoil'
 import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
+import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-
+import deepEqual from 'deep-equal'
 
 
 
@@ -26,10 +27,14 @@ function App() {
 
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
+
+  const userSettings = useRecoilValue(personalSettings)
+  const setUserSettings = useSetPersonalSettings()
+
   const [goalsData, setGoalsData] = useState([])
 
 
-  //Alert States : 
+  //Alert States :
   const [alertData, setAlertData] = useState([])
   const [jdObject, setJdObject] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
@@ -39,12 +44,29 @@ function App() {
   }
 
 
-  // Alert Effects :
+  // load user settings from local storage
+  useEffect(() => {
+    let cachedState = {
+      name: localStorage.getItem('username') || '',
+      bloodType: localStorage.getItem('bloodType') || '',
+      donationCount: localStorage.getItem('donationCount') || '',
+      reminderCount: +localStorage.getItem('reminderCount') || 1,
+      mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+      loaded:true
+    }
+    setUserSettings(cachedState)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  // api calls to the back end
   useEffect(() => {
 
     callApi('GET', '/api/alerts', null, (err, res) => {
       if (err) console.error(err);
       else setAlertData(res.data)
+
     })
 
     // HomeMenu Effects :
@@ -65,6 +87,17 @@ function App() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+useEffect(()=>{
+  if(userSettings.loaded && alertData.length)
+  {
+    let filteredRes = alertData.filter(alert=>alert.bloodType.includes(userSettings.bloodType))
+    if(!deepEqual(filteredRes,alertData))
+      setAlertData(filteredRes)
+  }
+
+
+},[userSettings,alertData])
 
 
   return (
