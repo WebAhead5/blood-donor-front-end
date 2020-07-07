@@ -30,7 +30,6 @@ function MapBox({ arrayOfGeolocationObjects = [], className, intl }) {
     })
 
     React.useEffect(() => {
-        console.log(arrayOfGeolocationObjects);
         function screenPressed(event) {
             setSearchInputState(event.target.id === "searchInput")
         }
