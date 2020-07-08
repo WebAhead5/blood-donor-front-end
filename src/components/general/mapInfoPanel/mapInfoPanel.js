@@ -12,14 +12,15 @@ import {
 } from "react-device-detect";
 
 function MapInfoPanel({selectedLocation: {Name, City, DateDonation, FromHour, ToHour,long,lat} = {}, intl}) {
-    const address = Name + ", " + City + ", " + "israel";
+    const address = `${Name}, ${City}`;
     const textToShare = {
-        title: "come donate blood at...",
-        body: "....."
+        title: intl.formatMessage({id: 'shareMessageTitle' }).replace('(1)', address).replace('(2)', DateDonation.split('T')[0]),
+        body: intl.formatMessage({id: 'shareMessageBody'}) || '',
+        url: window.location.origin 
     }
     const addToCalenderEvent = {
-        title: "Blood Donation",
-        description: "Reminder to donate blood",
+        title: intl.formatMessage({id: 'AddToCalendarTitle'}),
+        description: intl.formatMessage({id: 'AddToCalendarDescription'}) || '',
         location: address,
         startTime: moment(DateDonation).hours(FromHour.slice(0, 2)).minutes(FromHour.slice(3, 5)).toDate(),
         endTime: moment(DateDonation).hours(ToHour.slice(0, 2)).minutes(ToHour.slice(3, 5)).toDate(),

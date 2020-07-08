@@ -40,7 +40,11 @@ export default {
     SearchPlaceholder: 'חיפוש...',
     Donations: 'תרומות',
     Language: 'שפה',
-    MostRecentDonation: 'מתי הייתה תרומת הדם האחרונה שלך?'
+    MostRecentDonation: 'מתי הייתה תרומת הדם האחרונה שלך?',
+    shareMessageTitle: `הי, רציתי לשתף אותך שניתן לתרום דם ב (1) ב (2) - תודה!`,
+    AddToCalendarTitle: 'תרומת דם - תודה!',
+    AddToCalendarDescription: ' ',
+    shareMessageBody: ' ',
 
 }
 

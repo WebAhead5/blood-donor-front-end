@@ -32,15 +32,19 @@ export default {
     WhatIYourBloodType: 'نوعية الدم',
     ChooseYourBloodType: 'اختر نوع دمك',
     PersonalSettings: 'اعدادات شخصية',
-    HowManyTimesDidYouDonateBlood: 'كم مرة تبرعت بلدم؟',
+    HowManyTimesDidYouDonateBlood: 'كم مرة تبرعت بالدم؟',
     HowManyTimesWouldYouLikeToDonatePerYear: 'كم مرة بالسنة ستتبرع بالدم',
-    Settings: 'أعدادات',
+    Settings: 'إعدادات',
     RemindersSettings: 'اشعارات',
     SearchPlaceholder: 'بحث...',
     Goals: 'اهداف',
     Donations: 'تبرعات',
     Language: 'اللغه',
-    MostRecentDonation: 'متى قمت باخر تبرع بالدم '
+    MostRecentDonation: 'متى قمت باخر تبرع بالدم ',
+    shareMessageTitle: 'مرحبا, وددت ان اعلمكم انه بأمكانكم التبرع بالدم ب (1) عند الساعه (2), شكرا!',
+    AddToCalendarTitle: 'تبرع بالدم - شكرا!',
+    AddToCalendarDescription: ' ',
+    shareMessageBody: ' ',
 
 
 }

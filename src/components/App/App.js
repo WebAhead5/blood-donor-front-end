@@ -32,13 +32,23 @@ function App() {
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-  const [jdObject, setJdObject] = useState([]);
+  const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
+  const onResize = window.innerHeight
 
-  function parseLocations(err, result) {
-    setJdObject(result.data)
-  }
 
+
+  //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
+  useEffect(() => {
+    const hideKeyboard = () => {
+      const elements = document.querySelectorAll('.hideKeyboard')
+      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+    }
+    window.addEventListener('resize', hideKeyboard)
+    return () => window.removeEventListener('resize', hideKeyboard)
+  }, [])
+
+  //load the user history loag from local storage
   useEffect(() => {
     let logItems = localStorage.getItem('logItems')
     if (logItems) {
@@ -48,8 +58,7 @@ function App() {
 
   }, [])
 
-  // Save user input to localStorage
-
+  // load the personal settings from the localStorage
   useEffect(() => {
     let cachedState = {
       name: localStorage.getItem('username') || '',
@@ -62,6 +71,7 @@ function App() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
 
   // Alert Effects :
@@ -83,8 +93,10 @@ function App() {
       else setGoalsData(res.data);
     })
 
-
-    callApi("GET", "/api/locations", null, parseLocations)
+    callApi('GET', '/api/locations', null, (err, res) => {
+      if (err) console.error(err);
+      else setLocationsData(res.data)
+    })
 
     setUserLanguage(getLocaleLanguage())
 
@@ -110,7 +122,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={jdObject} />
+            <MapScreen arrayOfGeolocationObjects={locationsData} />
           </Route>
 
           <Route exact path={routes.personal}>

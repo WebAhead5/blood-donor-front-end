@@ -68,7 +68,7 @@ const PersonalScreen = () => {
         <MainScreenWrapper className='personalScreenMainWrapper'>
             <TitleHeader title={<FormattedMessage id="PersonalScreenTitle" />} />
             <HistoryLogList />
-            <Image src="/img/icon-add.svg" className={`personalScreenContainerAddBtn ${direction === "rtl" && 'personalScreenContainerAddBtnRtl'}`} alt="Add button" onClick={onAddClick} />
+            <Image src="/img/icon-add.svg" className={`hideKeyboard personalScreenContainerAddBtn ${direction === "rtl" && 'personalScreenContainerAddBtnRtl'}`} alt="Add button" onClick={onAddClick} />
             <HistoryLogFooter />
 
         </MainScreenWrapper>

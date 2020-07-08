@@ -9,6 +9,7 @@
   --color-gray: #F5F5F5;
   --color-white: white;
   --box-uppershadow: 0px -8px 8px 0px rgba(0, 0, 0, 0.2);
+  --titleHeader-field-height: 60px;
 }
 
 body {
