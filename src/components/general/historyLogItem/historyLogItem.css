@@ -1,45 +1,49 @@
 .historyLogItemContanier {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 
-.historyLogItemRow{
-    display: flex;
-    flex-direction: flex-row;
-    justify-content: right;
-    align-items:center;
-    width: 95%;
-    padding-left: 10px;
-    height: 40px;
-
+.historyLogItemRow {
+  display: flex;
+  flex-direction: flex-row;
+  justify-content: right;
+  align-items: center;
+  width: 95%;
+  padding-left: 10px;
+  height: 40px;
 }
 
-.historyLogItemRowRtl{
-    padding-left: unset;
-    padding-right: 10px;
+.historyLogItemRowRtl {
+  padding-left: unset;
+  padding-right: 10px;
 }
 
-.historyLogItemEditIcon{
-    width: 20px;
-    height: 20px;
+.historyLogItemEditIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .historyLogItemDateInputNotEditable {
-    width: 20%;
-    border: none;
-    outline-style: none; 
+  width: 20%;
+  border: none;
+  outline-style: none;
 }
 
 .historyLogItemDateInputEditable {
-    width: 20%;
-    border: palegreen;
-    margin-right: 5px;
-    outline-style:solid;
-    outline-width: 0.1em;
+  width: 20%;
+  border: palegreen;
+  margin-right: 5px;
+  outline-style: solid;
+  outline-width: 0.1em;
 }
 
-.historyLogItemRedBorder{
-    width: 20%;
-    border: red solid 3px;
-    margin-right: 5px;
-   
+.historyLogItemRedBorder {
+  width: 20%;
+  border: red solid 3px;
+  margin-right: 5px;
+}
+
+.removedateIcon::-webkit-inner-spin-button,
+.removedateIcon::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
 }

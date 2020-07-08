@@ -1,3 +1,3 @@
 
-import Drop from "./drop";
-export default Drop;
+import YourPersonalGoals from "./yourPersonalGoals";
+export default YourPersonalGoals;

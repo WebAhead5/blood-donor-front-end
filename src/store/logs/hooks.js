@@ -34,6 +34,13 @@ export const useAddLogItemToLogsState = () => {
   };
 }
 
+export const useSetLogState = () => {
+  const [log, setLog] = useRecoilState(logsState);
+    return (array) => {
+      setLog(array)
+    }
+}
+
 const updateItem = (items,item) => {
     let updatedItems = [];
     items.forEach((element) => {

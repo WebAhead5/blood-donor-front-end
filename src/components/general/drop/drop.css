@@ -18,7 +18,6 @@
     width: 100%;
     height: 100%;
     position: relative;
-  
     background: black;
     mask-border: url("/img/icon-goal-drop.svg") stretch;
   }

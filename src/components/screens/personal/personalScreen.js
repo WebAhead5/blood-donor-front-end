@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HistoryLogList from '../../general/historyLogList';
 import Image from "../../general/image";
 import './personalScreen.css'
 import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
-import {useRecoilValue} from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { textDirection } from '../../../store/textDirection';
-import {logsState ,useClearEmptyValuesLogsState,useAddLogItemToLogsState} from '../../../store/logs';
+import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState, useSetLogState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import HistoryLogFooter from '../../general/historyLogFooter';
 
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
     const addLogToState = useAddLogItemToLogsState();
-    const clearEmptyLogs= useClearEmptyValuesLogsState();
+    const setLog = useSetLogState()
+    const clearEmptyLogs = useClearEmptyValuesLogsState();
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        let logItems = localStorage.getItem('logItems')
+        if (logItems) {
+            let items = JSON.parse(logItems)
+            setLog(items)
+        }
+
+    }, [])
+
+    useEffect(() => {
+        if (loaded) {
+            if (logsItemsState[logsItemsState.length - 1].date)
+                localStorage.setItem('logItems', JSON.stringify(logsItemsState))
+        }
+        else setLoaded(true)
+
+    }, [logsItemsState])
+
 
     const direction = useRecoilValue(textDirection)
 
     const includeEmptyItem = (arr) => {
         let empty = false
 
-        if(!arr){
+        if (!arr) {
             return;
         }
         //I use the try catch to throw exception and stop the forEach loop
@@ -48,8 +69,8 @@ const PersonalScreen = () => {
             clearEmptyLogs(logsItemsState);
             return;
         }
-        
-        addLogToState ({ date: "", pulse: "", pressure: "", hemoglobin: "" })
+
+        addLogToState({ date: "", pulse: "", pressure: "", hemoglobin: "" })
     }
 
 

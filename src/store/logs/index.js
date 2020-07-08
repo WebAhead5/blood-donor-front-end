@@ -1,2 +1,2 @@
 export { logsState } from './atoms';
-export { useSetLogsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState} from './hooks';
+export { useSetLogsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState, useSetLogState} from './hooks';

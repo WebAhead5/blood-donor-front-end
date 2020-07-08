@@ -28,7 +28,7 @@ const HistoryLogItem = (props) => {
 
   //If all the fields is empty this means this is a new entry and fields should
   //apper in edit mood
-  let style = "historyLogItemDateInputNotEditable";
+  let style = "historyLogItemDateInputNotEditable removedateIcon";
   useEffect(() => {
     if (!props.date && !props.pulse && !props.pressure && !props.hemoglobin) {
       changeAllStyles("historyLogItemDateInputEditable");
@@ -76,7 +76,7 @@ const HistoryLogItem = (props) => {
       setReadOnly(false);
     } else {
       setIcon("/img/icon-edit-log.svg");
-      changeAllStyles("historyLogItemDateInputNotEditable");
+      changeAllStyles("historyLogItemDateInputNotEditable removedateIcon");
       setReadOnly(true);
       if (allFieldsEmpty()) {
         clearEmptyLogsFromLogsState(logsItemsState);
@@ -89,8 +89,8 @@ const HistoryLogItem = (props) => {
           hemoglobin: inputs.hemoglobin.value
         })
         let existingLatestDonation = localStorage.getItem('mostRecentDonation')
-        let latestDonationCompared = [existingLatestDonation,inputs.date.value].sort().reverse()[0]
-        localStorage.setItem('mostRecentDonation',  latestDonationCompared)
+        let latestDonationCompared = [existingLatestDonation, inputs.date.value].sort().reverse()[0]
+        localStorage.setItem('mostRecentDonation', latestDonationCompared)
       }
     }
   };
