@@ -1,13 +1,12 @@
 
 .titleHeader {
-  --titleHeader-field-height: 60px;
 
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  height: var(--titleHeader-field-height);
+  min-height: var(--titleHeader-field-height);
   width: 100%;
 
   background-color: var(--color-blue);

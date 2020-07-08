@@ -6,25 +6,15 @@ import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 import { useRecoilValue } from 'recoil';
 import { textDirection } from '../../../store/textDirection';
-import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState, useSetLogState } from '../../../store/logs';
+import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import HistoryLogFooter from '../../general/historyLogFooter';
 
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
     const addLogToState = useAddLogItemToLogsState();
-    const setLog = useSetLogState()
     const clearEmptyLogs = useClearEmptyValuesLogsState();
     const [loaded, setLoaded] = useState(false)
-
-    useEffect(() => {
-        let logItems = localStorage.getItem('logItems')
-        if (logItems) {
-            let items = JSON.parse(logItems)
-            setLog(items)
-        }
-
-    }, [])
 
     useEffect(() => {
         if (loaded) {
@@ -78,7 +68,7 @@ const PersonalScreen = () => {
         <MainScreenWrapper className='personalScreenMainWrapper'>
             <TitleHeader title={<FormattedMessage id="PersonalScreenTitle" />} />
             <HistoryLogList />
-            <Image src="/img/icon-add.svg" className={`personalScreenContainerAddBtn ${direction === "rtl" && 'personalScreenContainerAddBtnRtl'}`} alt="Add button" onClick={onAddClick} />
+            <Image src="/img/icon-add.svg" className={`hideKeyboard personalScreenContainerAddBtn ${direction === "rtl" && 'personalScreenContainerAddBtnRtl'}`} alt="Add button" onClick={onAddClick} />
             <HistoryLogFooter />
 
         </MainScreenWrapper>

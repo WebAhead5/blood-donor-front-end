@@ -30,7 +30,7 @@ const HistoryLogFooter = () => {
 
     return (
 
-        <div className='HistoryLogFooter_container'>
+        <div className='HistoryLogFooter_container hideKeyboard'>
             <div className="HistoryLogFooter_previous_goal_done" />
             {/* previous goal */}
             <div className="HistoryLogFooter_second_third_img_container">

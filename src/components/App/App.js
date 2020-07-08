@@ -16,6 +16,7 @@ import { routes } from "../../constants";
 import { callApi } from "../../utils/api"
 import { useRecoilValue } from 'recoil'
 import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
+import { useSetLogState } from '../../store/logs';
 import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
 import deepEqual from 'deep-equal'
@@ -25,6 +26,7 @@ import deepEqual from 'deep-equal'
 function App() {
 
 
+  const setLog = useSetLogState()
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
 
@@ -32,19 +34,34 @@ function App() {
   const setUserSettings = useSetPersonalSettings()
 
   const [goalsData, setGoalsData] = useState([])
-
-
-  //Alert States :
   const [alertData, setAlertData] = useState([])
-  const [jdObject, setJdObject] = useState([]);
+  const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
-
-  function parseLocations(err, result) {
-    setJdObject(result.data)
-  }
+  const onResize = window.innerHeight
 
 
-  // load user settings from local storage
+
+  //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
+  useEffect(() => {
+    const hideKeyboard = () => {
+      const elements = document.querySelectorAll('.hideKeyboard')
+      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+    }
+    window.addEventListener('resize', hideKeyboard)
+    return () => window.removeEventListener('resize', hideKeyboard)
+  }, [])
+
+  //load the user history loag from local storage
+  useEffect(() => {
+    let logItems = localStorage.getItem('logItems')
+    if (logItems) {
+      let items = JSON.parse(logItems)
+      setLog(items)
+    }
+
+  }, [])
+
+  // load the personal settings from the localStorage
   useEffect(() => {
     let cachedState = {
       name: localStorage.getItem('username') || '',
@@ -52,7 +69,6 @@ function App() {
       donationCount: localStorage.getItem('donationCount') || '',
       reminderCount: +localStorage.getItem('reminderCount') || 1,
       mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
-      loaded:true
     }
     setUserSettings(cachedState)
 
@@ -60,7 +76,8 @@ function App() {
   }, [])
 
 
-  // api calls to the back end
+
+  // Alert Effects :
   useEffect(() => {
 
     callApi('GET', '/api/alerts', null, (err, res) => {
@@ -80,8 +97,10 @@ function App() {
       else setGoalsData(res.data);
     })
 
-
-    callApi("GET", "/api/locations", null, parseLocations)
+    callApi('GET', '/api/locations', null, (err, res) => {
+      if (err) console.error(err);
+      else setLocationsData(res.data)
+    })
 
     setUserLanguage(getLocaleLanguage())
 
@@ -118,7 +137,7 @@ useEffect(()=>{
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={jdObject} />
+            <MapScreen arrayOfGeolocationObjects={locationsData} />
           </Route>
 
           <Route exact path={routes.personal}>

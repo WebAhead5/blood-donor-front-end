@@ -25,9 +25,9 @@ import {
 
 function Share({
                    shareData: {title, body, url} = {
-                       title: "title",
-                       body: "body",
-                       url: window.location.origin
+                       title: " ",
+                       body: " ",
+                       url: window.location.origin 
                    }, onCloseClick
                }) {
 
@@ -37,7 +37,6 @@ function Share({
     }
 
     const SharedString = `${title}\n\n${body}\n\n`;
-
     return (
 
         <div className="share">
