@@ -11,15 +11,18 @@ const HistoryLogFooter = () => {
 
     const userSettings = useRecoilValue(personalSettings)
 
-    let count = userSettings.donationCount;
+    let count = 0;
+    if (userSettings.donationCount) {
+        count = userSettings.donationCount;
+    }
 
-    const levels = [{ title: 'Soldier', goal: 10, imgSrc: '/img/icon-frog.svg', alt: 'Soldier level' },
-    { title: 'Veteran', goal: 20, imgSrc: '/img/icon-prince.svg', alt: 'Veteran level' },
-    { title: 'Hero', goal: 30, imgSrc: '/img/icon-king.svg', alt: 'Hero level' },
-    { title: 'King', goal: 50, imgSrc: '/img/icon-king.svg', alt: 'King level' },
-    { title: 'Legend', goal: 100, imgSrc: '/img/icon-king.svg', alt: 'Legend level' },
-    { title: 'Mythic', goal: 150, imgSrc: '/img/icon-king.svg', alt: 'Mythic level' },
-    { title: 'Immortal', goal: 200, imgSrc: '/img/icon-king.svg', alt: 'Immortal level' },
+    const levels = [{ title: 'Soldier', goal: 5, imgSrc: '/img/icon-frog.svg', alt: 'Soldier level' },
+    { title: 'Veteran', goal: 10, imgSrc: '/img/icon-prince.svg', alt: 'Veteran level' },
+    { title: 'Hero', goal: 15, imgSrc: '/img/icon-king.svg', alt: 'Hero level' },
+    { title: 'King', goal: 25, imgSrc: '/img/icon-king.svg', alt: 'King level' },
+    { title: 'Legend', goal: 50, imgSrc: '/img/icon-king.svg', alt: 'Legend level' },
+    { title: 'Mythic', goal: 75, imgSrc: '/img/icon-king.svg', alt: 'Mythic level' },
+    { title: 'Immortal', goal: 125, imgSrc: '/img/icon-king.svg', alt: 'Immortal level' },
     ]
 
     const firstIndex = levels.findIndex(level => level.goal > count);
@@ -42,10 +45,10 @@ const HistoryLogFooter = () => {
             <div className="HistoryLogFooter_first_img_container">
                 <img src={firstImg?.imgSrc ? firstImg.imgSrc : ''} alt={firstImg?.alt ? firstImg.alt : ''} />
                 <CircularProgressbar value={(count - (secondImg?.goal || 0)) / (firstImg?.goal - (secondImg?.goal || 0)) * 100} background={true} />
-                <span>{`${count}/${firstImg.goal}`}</span>
-                <br/>
+                <span>{`${count}/${firstImg?.goal}`}</span>
+                <br />
                 <div><FormattedMessage id='Donations' /></div>
-                
+
             </div>
             {/* next goal */}
             <div className="HistoryLogFooter_second_third_img_container">
@@ -54,7 +57,7 @@ const HistoryLogFooter = () => {
                 <CircularProgressbar value={0} background={true} />
             </div>
             <div className="HistoryLogFooter_next_goal" />
-            <div className='HistoryLogFooter_background_split'/>
+            <div className='HistoryLogFooter_background_split' />
         </div>
     )
 

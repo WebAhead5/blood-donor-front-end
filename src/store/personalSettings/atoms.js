@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const personalSettings = atom ({
+export const personalSettings = atom({
     key: 'personalSettings',
     default: {
         name: '',
