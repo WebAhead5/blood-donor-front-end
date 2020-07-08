@@ -7,6 +7,7 @@ export default {
     Closes: 'Closes',
     OnDate: 'On Date',
     Share: 'Share',
+    mapGO: 'Go',
     AddToCalendar: 'Add to calendar',
     SettingsPersonal: 'Personal',
     SettingsReminders: 'Reminders',
