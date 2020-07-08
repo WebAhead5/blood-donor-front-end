@@ -111,15 +111,16 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-useEffect(()=>{
-  if(userSettings.loaded && alertData.length)
-  {
-    let filteredRes = alertData.filter(alert=>alert.bloodType.includes(userSettings.bloodType))
-    setFilteredAlertsData(filteredRes)
-  }
+    //filter alerts based in user blood type
+    useEffect(()=>{
+      if(userSettings.loaded && alertData.length)
+      {
+        let filteredRes = alertData.filter(alert=>alert.bloodType.includes(userSettings.bloodType))
+        setFilteredAlertsData(filteredRes)
+      }
 
 
-},[userSettings,alertData])
+    },[userSettings,alertData])
 
 
   return (
