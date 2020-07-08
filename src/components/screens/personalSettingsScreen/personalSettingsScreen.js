@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect} from 'react';
+import React, {useEffect} from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
@@ -20,7 +20,7 @@ const PersonalSettingsScreen = ({ intl }) => {
     const [loaded,setLoaded] = useState(false);
 
     // Save user input to localStorage
-    useLayoutEffect(() => {
+    useEffect(() => {
         if(!userSettings.loaded)
             return;
         localStorage.setItem('username', userSettings.name)
