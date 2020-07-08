@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
@@ -15,15 +15,19 @@ const PersonalSettingsScreen = ({ intl }) => {
 
     const userSettings = useRecoilValue(personalSettings)
     const setUserSettings = useSetPersonalSettings()
+    const [loaded,setLoaded] = useState(false);
 
+    // Save user input to localStorage
     useEffect(() => {
+        if(!userSettings.loaded)
+            return;
         localStorage.setItem('username', userSettings.name)
         localStorage.setItem('bloodType', userSettings.bloodType)
         localStorage.setItem('donationCount', userSettings.donationCount)
         localStorage.setItem('reminderCount', userSettings.reminderCount)
         localStorage.setItem('mostRecentDonation', userSettings.mostRecentDonation)
-    },
-        [userSettings])
+    }, [userSettings])
+
 
     // Array to populate radioButtons from
     const radioButton = [1, 2, 3, 4]

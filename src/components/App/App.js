@@ -17,8 +17,8 @@ import { callApi } from "../../utils/api"
 import { useRecoilValue } from 'recoil'
 import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
 import { useSetLogState } from '../../store/logs';
+import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-import { useSetPersonalSettings } from '../../store/personalSettings'
 import { isMobile } from "react-device-detect";
 
 
@@ -28,11 +28,13 @@ function App() {
   const setLog = useSetLogState()
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
-  const [goalsData, setGoalsData] = useState([])
+  const userSettings = useRecoilValue(personalSettings)
   const setUserSettings = useSetPersonalSettings()
 
-  //Alert States : 
+  //Alert States :
+  const [goalsData, setGoalsData] = useState([])
   const [alertData, setAlertData] = useState([])
+  const [filteredAlertsData, setFilteredAlertsData] = useState([])
   const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
   const onResize = window.innerHeight
@@ -71,6 +73,7 @@ function App() {
       donationCount: localStorage.getItem('donationCount') || '',
       reminderCount: +localStorage.getItem('reminderCount') || 1,
       mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+      loaded:true
     }
     setUserSettings(cachedState)
 
@@ -108,6 +111,17 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+    //filter alerts based in user blood type
+    useEffect(()=>{
+      if(userSettings.loaded && alertData.length)
+      {
+        let filteredRes = alertData.filter(alert=>alert.bloodType.includes(userSettings.bloodType))
+        setFilteredAlertsData(filteredRes)
+      }
+
+
+    },[userSettings,alertData])
+
 
   return (
     <IntlProvider locale={userLanguage} messages={languages[userLanguage]}>
@@ -119,7 +133,7 @@ function App() {
       >
         <Switch>
           <Route exact path={routes.home}>
-            <HomeScreen alertsData={alertData} homeHeaderData={homeMenuData} />
+            <HomeScreen alertsData={filteredAlertsData} homeHeaderData={homeMenuData} />
           </Route>
 
           <Route exact path={routes.goals}>

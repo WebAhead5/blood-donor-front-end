@@ -1,3 +1,6 @@
+.mainheader{
+  position: relative;
+}
 .mainheader-logo {
   position: relative;
   float: right;
