@@ -34,16 +34,16 @@ function App() {
   const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
   const onResize = window.innerHeight
-  
 
 
+  //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
   useEffect(() => {
-    const func = () => {
+    const hideKeyboard = () => {
       const elements = document.querySelectorAll('.hideKeyboard')
       elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
     }
-    window.addEventListener('resize', func)
-    return () => window.removeEventListener('resize', func)
+    window.addEventListener('resize', hideKeyboard)
+    return () => window.removeEventListener('resize', hideKeyboard)
   }, [])
 
   // Alert Effects :
