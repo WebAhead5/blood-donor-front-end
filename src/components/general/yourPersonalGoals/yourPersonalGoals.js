@@ -5,20 +5,21 @@ import { personalSettings } from '../../../store/personalSettings'
 import { logsState } from '../../../store/logs';
 import { useRecoilValue } from 'recoil';
 
+import moment from "moment";
 
-
-// Need total target number
-// TODO: Need current number
-// TODO: Need to sort length of bars out
-// TODO: Need to maybe add middle bit showing 2/4 score, etc
 function YourPersonalGoals({ scale, text, percentage }) {
 
     const userSettings = useRecoilValue(personalSettings)
     let reminderCount = userSettings.reminderCount
 
     const logs = useRecoilValue(logsState)
-    console.log(logs);
-    
+    let currentYear = moment(Date.now()).format("YYYY");
+
+    let numberOfDonationsThisYear = logs.reduce((acc, cur) => {
+
+        if (cur.date.includes(currentYear)) return acc + 1
+        else return acc;
+    }, 0)
 
     let bars = reminderCount;
     let linesToAddArray = [];
@@ -27,11 +28,10 @@ function YourPersonalGoals({ scale, text, percentage }) {
             <div className="textAndLine">
                 <div className="letMeTop">
                     <p>{bar + 1}</p>
-                    <div className="horizontalLine">
+                    <div className="horizontalLine" style={{width:30+40*(bar+1)/bars }}>
                     </div>
                 </div>
             </div>
-
         )
     }
 
@@ -47,7 +47,7 @@ function YourPersonalGoals({ scale, text, percentage }) {
                         </div>
                     }
 
-                    <Drop scale="0.8" text={`0/${reminderCount}`} percentage={`1/${reminderCount}`} bars="3" />
+                    <Drop scale="0.8" text={`${numberOfDonationsThisYear}/${reminderCount}`} percentage={`${numberOfDonationsThisYear / reminderCount * 100}`} bars="3" />
                 </div>
                 <p className="nextDonationAdvisor">Your next donation is in <span className="red">August</span></p>
             </div>
