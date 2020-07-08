@@ -40,6 +40,9 @@ export default {
     SearchPlaceholder: 'Search...',
     Donations: 'Donations',
     Language: 'Language',
-    MostRecentDonation: 'When was your most recent donation?'
-
+    MostRecentDonation: 'When was your most recent donation?',
+    shareMessageTitle: "Hi, I thought you would like to know that you can donate blood near you at (1) on (2) - Thanks!",
+    AddToCalendarTitle: 'Blood donation - Thanks!',
+    AddToCalendarDescription: ' ',
+    shareMessageBody: ' ',
 }

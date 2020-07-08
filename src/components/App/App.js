@@ -31,14 +31,11 @@ function App() {
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-  const [jdObject, setJdObject] = useState([]);
+  const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
-  const [onResize, setonResize] = useState(window.innerHeight)
+  const onResize = window.innerHeight
   
 
-  function parseLocations(err, result) {
-    setJdObject(result.data)
-  }
 
   useEffect(() => {
     const func = () => {
@@ -68,8 +65,10 @@ function App() {
       else setGoalsData(res.data);
     })
 
-
-    callApi("GET", "/api/locations", null, parseLocations)
+    callApi('GET', '/api/locations', null, (err, res) => {
+      if (err) console.error(err);
+      else setLocationsData(res.data)
+    })
 
     setUserLanguage(getLocaleLanguage())
 
@@ -95,7 +94,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={jdObject} />
+            <MapScreen arrayOfGeolocationObjects={locationsData} />
           </Route>
 
           <Route exact path={routes.personal}>
