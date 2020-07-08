@@ -19,6 +19,7 @@ import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
 import { useSetLogState } from '../../store/logs';
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
 import { useSetPersonalSettings } from '../../store/personalSettings'
+import { isMobile } from "react-device-detect";
 
 
 function App() {
@@ -39,11 +40,15 @@ function App() {
 
 
   //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
+
   useEffect(() => {
     const hideKeyboard = () => {
-      const elements = document.querySelectorAll('.hideKeyboard')
-      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+      if (isMobile) {
+        const elements = document.querySelectorAll('.hideKeyboard')
+        elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+      }
     }
+
     window.addEventListener('resize', hideKeyboard)
     return () => window.removeEventListener('resize', hideKeyboard)
   }, [])
