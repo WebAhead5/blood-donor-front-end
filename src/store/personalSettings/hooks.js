@@ -11,7 +11,7 @@ export const useSetPersonalSettings = () => {
 export const useIncreaseDonationCount = () => {
     const [items, setItems] = useRecoilState(personalSettings)
     return () => {
-        let newItem = { ...items, "donationCount": items.donationCount + 1 };
+        let newItem = { ...items, "donationCount": +items.donationCount + 1 };
         setItems(newItem)
     }
 }
