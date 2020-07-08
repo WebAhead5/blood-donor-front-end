@@ -1,13 +1,18 @@
 // Validates that the input string is a valid date formatted as "mm/dd/yyyy"
 export function isValidDate(dateString) {
+
+  console.log(dateString);
+  
   // First check for the pattern
-  if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) return false;
+  if (!/^\d{4}-\d{1,2}-\d{1,2}/.test(dateString)) return false;
 
   // Parse the date parts to integers
-  var parts = dateString.split("/");
-  var day = parseInt(parts[1], 10);
-  var month = parseInt(parts[0], 10);
-  var year = parseInt(parts[2], 10);
+  var parts = dateString.split("-");
+  var day = parseInt(parts[2], 10);
+  var month = parseInt(parts[1], 10);
+  var year = parseInt(parts[0], 10);
+
+  console.log(parts);
 
   // Check the ranges of month and year
   if (year < 1000 || year > 3000 || month === 0 || month > 12) return false;
