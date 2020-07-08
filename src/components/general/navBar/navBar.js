@@ -108,7 +108,7 @@ function NavBar({
 
 
   return (
-    <header className="navBar">
+    <header className="navBar hideKeyboard">
       <nav className={`navBar_flexContainer ${className}`} ref={container} >
         {data.map((element, index) => (
           <NavBarItem

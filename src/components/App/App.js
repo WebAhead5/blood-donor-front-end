@@ -33,11 +33,21 @@ function App() {
   const [alertData, setAlertData] = useState([])
   const [jdObject, setJdObject] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
+  const [onResize, setonResize] = useState(window.innerHeight)
+  
 
   function parseLocations(err, result) {
     setJdObject(result.data)
   }
 
+  useEffect(() => {
+    const func = () => {
+      const elements = document.querySelectorAll('.hideKeyboard')
+      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+    }
+    window.addEventListener('resize', func)
+    return () => window.removeEventListener('resize', func)
+  }, [])
 
   // Alert Effects :
   useEffect(() => {
