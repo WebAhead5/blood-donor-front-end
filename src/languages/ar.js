@@ -7,6 +7,7 @@ export default {
     Closes: 'ساعة الانتهاء',
     OnDate: 'تاريخ',
     Share: 'مشاركة',
+    mapGO: 'اذهب ',
     AddToCalendar: "اضافة الى التقويم",
     SettingsPersonal: 'تفاصيل شخصيه',
     SettingsReminders: 'تذكيرات',
@@ -38,6 +39,8 @@ export default {
     SearchPlaceholder: 'بحث...',
     Goals: 'اهداف',
     Donations: 'تبرعات',
-    Language: 'اللغه'
+    Language: 'اللغه',
+    MostRecentDonation: 'متى قمت باخر تبرع بالدم '
+
 
 }

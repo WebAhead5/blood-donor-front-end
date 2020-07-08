@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./reminderSettings.css";
 import Button from "../button";
 import WhiteBackgroundShadow from "../whiteBackgroundShadow";
 // import { isValidEmail } from "../../../utils/validator";
-import { FormattedMessage } from 'react-intl';
-
+import { FormattedMessage } from "react-intl";
 
 const ReminderSettings = (props) => {
   const [reminderSettings, setReminderSettings] = useState({
     smsReminder: false,
     phoneNumber: "",
   });
+
+  useEffect(() => {
+    let reminderSettings = localStorage.getItem("reminderSettings");
+    if (reminderSettings) {
+      let items = JSON.parse(reminderSettings);
+      setReminderSettings(items);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("reminderSettings", JSON.stringify(reminderSettings));
+
+    document
+      .querySelector(`.yesButton`)
+      .classList.toggle(
+        "reminderSettingsScreen_selected_button",
+        reminderSettings.smsReminder
+      );
+    document
+      .querySelector(`.noButton`)
+      .classList.toggle(
+        "reminderSettingsScreen_selected_button",
+        !reminderSettings.smsReminder
+      );
+  }, [reminderSettings]);
 
   return (
     <WhiteBackgroundShadow className="reminderSettings_container">
@@ -27,22 +51,21 @@ const ReminderSettings = (props) => {
 
         <div className="reminder_button_container">
           <Button
-            className="button"
-            text={<FormattedMessage id='Yes'/>}
+            className="button yesButton"
+            text={<FormattedMessage id="Yes" />}
             onClick={() =>
               setReminderSettings({ ...reminderSettings, smsReminder: true })
             }
           />
           <Button
-            className="button"
-            text={<FormattedMessage id='No'/>}
+            className="button noButton"
+            text={<FormattedMessage id="No" />}
             onClick={() =>
               setReminderSettings({ ...reminderSettings, smsReminder: false })
             }
           />
         </div>
-
-        <div className="input_container">
+        {/* <div className="input_container">
           {props.hideInput ? (
             ""
           ) : reminderSettings.smsReminder ? (
@@ -62,7 +85,7 @@ const ReminderSettings = (props) => {
               />
             </form>
           ) : null}
-        </div>
+        </div> */}
       </div>
     </WhiteBackgroundShadow>
   );

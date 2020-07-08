@@ -50,12 +50,9 @@ input[type="text"] {
   height: 130px !important;
 }
 
-.button:hover {
-  background-color: #ffa5a5;
-}
 
-.button:focus {
-  background-color: #ffa5a5;
+.reminderSettingsScreen_selected_button {
+  background-color: #ffa5a5 !important;
 }
 
 .reminderSettingsScreen_container {

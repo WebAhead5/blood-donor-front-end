@@ -7,6 +7,7 @@ export default {
     Closes: 'Closes',
     OnDate: 'On Date',
     Share: 'Share',
+    mapGO: 'Go',
     AddToCalendar: 'Add to calendar',
     SettingsPersonal: 'Personal',
     SettingsReminders: 'Reminders',
@@ -38,6 +39,7 @@ export default {
     RemindersSettings: 'Reminders',
     SearchPlaceholder: 'Search...',
     Donations: 'Donations',
-    Language: 'Language'
+    Language: 'Language',
+    MostRecentDonation: 'When was your most recent donation?'
 
 }
