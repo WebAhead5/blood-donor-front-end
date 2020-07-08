@@ -6,25 +6,15 @@ import TitleHeader from '../../general/titleHeader'
 import MainScreenWrapper from '../../general/mainScreenWrapper'
 import { useRecoilValue } from 'recoil';
 import { textDirection } from '../../../store/textDirection';
-import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState, useSetLogState } from '../../../store/logs';
+import { logsState, useClearEmptyValuesLogsState, useAddLogItemToLogsState } from '../../../store/logs';
 import { FormattedMessage } from 'react-intl';
 import HistoryLogFooter from '../../general/historyLogFooter';
 
 const PersonalScreen = () => {
     const logsItemsState = useRecoilValue(logsState);
     const addLogToState = useAddLogItemToLogsState();
-    const setLog = useSetLogState()
     const clearEmptyLogs = useClearEmptyValuesLogsState();
     const [loaded, setLoaded] = useState(false)
-
-    useEffect(() => {
-        let logItems = localStorage.getItem('logItems')
-        if (logItems) {
-            let items = JSON.parse(logItems)
-            setLog(items)
-        }
-
-    }, [])
 
     useEffect(() => {
         if (loaded) {
