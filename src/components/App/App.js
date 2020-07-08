@@ -19,7 +19,6 @@ import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
 import { useSetLogState } from '../../store/logs';
 import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-import { useSetPersonalSettings } from '../../store/personalSettings'
 import { isMobile } from "react-device-detect";
 
 
