@@ -44,6 +44,16 @@
 }
 .infoPanel_shareButton {
     background-color: var(--color-blue);
-    width: 40%;
+    width: 25%;
+}
+.infoPanel_addToCalender {
+    background-color: var(--color-blue);
+    width: 45% !important;
 }
 
+.infoPanel_go{
+    background-color: var(--color-green);
+    /*width: 40%;*/
+    width: 20%;
+
+}

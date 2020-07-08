@@ -16,23 +16,62 @@ import { routes } from "../../constants";
 import { callApi } from "../../utils/api"
 import { useRecoilValue } from 'recoil'
 import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
+import { useSetLogState } from '../../store/logs';
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-
-
+import { useSetPersonalSettings } from '../../store/personalSettings'
 
 
 function App() {
 
 
+  const setLog = useSetLogState()
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
   const [goalsData, setGoalsData] = useState([])
-
+  const setUserSettings = useSetPersonalSettings()
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
-  const [locations, setLocations] = useState([]);
+  const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
+  const onResize = window.innerHeight
+
+
+
+  //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
+  useEffect(() => {
+    const hideKeyboard = () => {
+      const elements = document.querySelectorAll('.hideKeyboard')
+      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+    }
+    window.addEventListener('resize', hideKeyboard)
+    return () => window.removeEventListener('resize', hideKeyboard)
+  }, [])
+
+  //load the user history loag from local storage
+  useEffect(() => {
+    let logItems = localStorage.getItem('logItems')
+    if (logItems) {
+      let items = JSON.parse(logItems)
+      setLog(items)
+    }
+
+  }, [])
+
+  // load the personal settings from the localStorage
+  useEffect(() => {
+    let cachedState = {
+      name: localStorage.getItem('username') || '',
+      bloodType: localStorage.getItem('bloodType') || '',
+      donationCount: localStorage.getItem('donationCount') || '',
+      reminderCount: +localStorage.getItem('reminderCount') || 1,
+      mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+    }
+    setUserSettings(cachedState)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const [settingsMenuData, setSettingsMenuData] = useState([])
 
 
@@ -55,14 +94,13 @@ function App() {
       else setGoalsData(res.data);
     })
 
+    callApi('GET', '/api/locations', null, (err, res) => {
+      if (err) console.error(err);
+      else setLocationsData(res.data)
+    })
     callApi('GET', '/api/settingsMenu', null, (err, res) => {
       if (err) console.error(err);
       else setSettingsMenuData(res.data);
-    })
-
-    callApi("GET", "/api/locations", null, (err, res)=>{
-      if (err) console.error(err);
-      else setLocations(res.data);
     })
 
     setUserLanguage(getLocaleLanguage())
@@ -89,7 +127,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.map}>
-            <MapScreen arrayOfGeolocationObjects={locations} />
+            <MapScreen arrayOfGeolocationObjects={locationsData} />
           </Route>
 
           <Route exact path={routes.personal}>
@@ -97,7 +135,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.settings}>
-            <SettingsListScreen data={settingsMenuData}/>
+            <SettingsListScreen />
           </Route>
 
           <Route exact path={routes.settings_personal}>
