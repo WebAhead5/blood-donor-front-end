@@ -1,6 +1,7 @@
 import React from 'react';
 import "./subHeader.css";
 import { FormattedMessage } from 'react-intl';
+import Drop from '../drop'
 
 function SubHeader({total = 100,
                        current = 0,
@@ -13,8 +14,8 @@ function SubHeader({total = 100,
         <div className={`subHeader ${className}`}>
 
             {/*goal section---------------------------------------------------------------------*/}
-            <div className="subHeader_goalGroup" style={{marginTop:`${titlePosPx}px`}}>
-                <span className="subHeader_goalGroup_title"><FormattedMessage id='Goal'/></span>
+            <div className="subHeader_goalGroup" style={{ marginTop: `${titlePosPx}px` }}>
+                <span className="subHeader_goalGroup_title"><FormattedMessage id='Goal' /></span>
                 <span>{total}</span>
             </div>
 
@@ -41,8 +42,8 @@ function SubHeader({total = 100,
 
 
             {/*current section---------------------------------------------------------------------*/}
-            <div className="subHeader_goalGroup" style={{paddingTop:`${titlePosPx}px`}}>
-                <span className="subHeader_goalGroup_title"><FormattedMessage id='Current'/></span>
+            <div className="subHeader_goalGroup" style={{ paddingTop: `${titlePosPx}px` }}>
+                <span className="subHeader_goalGroup_title"><FormattedMessage id='Current' /></span>
                 <span>{current}</span>
             </div>
 

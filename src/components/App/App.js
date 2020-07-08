@@ -16,18 +16,19 @@ import { routes } from "../../constants";
 import { callApi } from "../../utils/api"
 import { useRecoilValue } from 'recoil'
 import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
+import { useSetLogState } from '../../store/logs';
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-
-
+import { useSetPersonalSettings } from '../../store/personalSettings'
 
 
 function App() {
 
 
+  const setLog = useSetLogState()
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
   const [goalsData, setGoalsData] = useState([])
-
+  const setUserSettings = useSetPersonalSettings()
 
   //Alert States : 
   const [alertData, setAlertData] = useState([])
@@ -37,6 +38,30 @@ function App() {
   function parseLocations(err, result) {
     setJdObject(result.data)
   }
+
+  useEffect(() => {
+    let logItems = localStorage.getItem('logItems')
+    if (logItems) {
+      let items = JSON.parse(logItems)
+      setLog(items)
+    }
+
+  }, [])
+
+  // Save user input to localStorage
+
+  useEffect(() => {
+    let cachedState = {
+      name: localStorage.getItem('username') || '',
+      bloodType: localStorage.getItem('bloodType') || '',
+      donationCount: localStorage.getItem('donationCount') || '',
+      reminderCount: +localStorage.getItem('reminderCount') || 1,
+      mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+    }
+    setUserSettings(cachedState)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
 
   // Alert Effects :

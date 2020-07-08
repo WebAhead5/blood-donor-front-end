@@ -16,21 +16,6 @@ const PersonalSettingsScreen = ({ intl }) => {
     const userSettings = useRecoilValue(personalSettings)
     const setUserSettings = useSetPersonalSettings()
 
-    // Save user input to localStorage
-
-    useEffect(() => {
-        let cachedState = {
-            name: localStorage.getItem('username') || '',
-            bloodType: localStorage.getItem('bloodType') || '',
-            donationCount: localStorage.getItem('donationCount') || '',
-            reminderCount: +localStorage.getItem('reminderCount') || 1,
-            mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
-        }
-        setUserSettings(cachedState)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     useEffect(() => {
         localStorage.setItem('username', userSettings.name)
         localStorage.setItem('bloodType', userSettings.bloodType)
