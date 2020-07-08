@@ -154,7 +154,7 @@ function App() {
           </Route>
 
           <Route exact path={routes.settings}>
-            <SettingsListScreen />
+            <SettingsListScreen data={settingsMenuData} />
           </Route>
 
           <Route exact path={routes.settings_personal}>
