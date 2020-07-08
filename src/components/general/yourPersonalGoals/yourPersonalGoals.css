@@ -17,6 +17,7 @@ div.dropAndTargetContainer {
   box-sizing: border-box;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 20px;
+  max-height: 170px;
 }
 
 div.yourPersonalGoalDrop {
@@ -49,7 +50,7 @@ div.dropBars {
   align-items: start;
   padding: 0;
   margin: 0;
-  left: -25px;
+
 }
 
 div.textAndLine {

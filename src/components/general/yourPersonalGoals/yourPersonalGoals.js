@@ -4,13 +4,15 @@ import Drop from '../drop'
 import { personalSettings } from '../../../store/personalSettings'
 import { logsState } from '../../../store/logs';
 import { useRecoilValue } from 'recoil';
-
+import {textDirection} from "../../../store/textDirection";
+import {FormattedMessage} from "react-intl";
 import moment from "moment";
 
 function YourPersonalGoals({ scale, text, percentage }) {
 
     const userSettings = useRecoilValue(personalSettings)
     let reminderCount = userSettings.reminderCount
+    const direction = useRecoilValue(textDirection)
 
     const logs = useRecoilValue(logsState)
     let currentYear = moment(Date.now()).format("YYYY");
@@ -37,12 +39,12 @@ function YourPersonalGoals({ scale, text, percentage }) {
 
     return (
         <div className="yourPersonalGoals_container">
-            <h3>Your Personal Goals</h3>
+            <h3 className="h3_padding_bottom"><FormattedMessage id="yourPersonalGoals" /></h3>
             <div className="dropAndTargetContainer">
                 <div className="yourPersonalGoalDrop">
 
                     {bars &&
-                        <div className="dropBars">
+                        <div className="dropBars" style={direction === "ltr"?{  left: "-25px"}: {right:"-25px"}}>
                             {linesToAddArray}
                         </div>
                     }

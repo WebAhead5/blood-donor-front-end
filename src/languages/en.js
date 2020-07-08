@@ -40,4 +40,6 @@ export default {
     AddToCalendarTitle: 'Blood donation - Thanks!',
     AddToCalendarDescription: ' ',
     shareMessageBody: ' ',
+    yourPersonalGoals:"Your Personal Goal"
+
 }

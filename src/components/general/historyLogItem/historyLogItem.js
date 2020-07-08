@@ -10,6 +10,7 @@ import {
   isValidPressure,
   isValidHemoglobin,
 } from "../../../utils/validator";
+import { useIncreaseDonationCount } from '../../../store/personalSettings'
 
 const HistoryLogItem = (props) => {
 
@@ -22,8 +23,11 @@ const HistoryLogItem = (props) => {
   const logsItemsState = useRecoilValue(logsState);
   const clearEmptyLogsFromLogsState = useClearEmptyValuesLogsState();
   const addLogToState = useAddLogItemToLogsState();
+  const addDonationCount = useIncreaseDonationCount();
+
 
   const direction = useRecoilValue(textDirection)
+
 
 
   //If all the fields is empty this means this is a new entry and fields should
@@ -88,6 +92,7 @@ const HistoryLogItem = (props) => {
           pressure: inputs.pressure.value,
           hemoglobin: inputs.hemoglobin.value
         })
+        addDonationCount();
         let existingLatestDonation = localStorage.getItem('mostRecentDonation')
         let latestDonationCompared = [existingLatestDonation, inputs.date.value].sort().reverse()[0]
         localStorage.setItem('mostRecentDonation', latestDonationCompared)

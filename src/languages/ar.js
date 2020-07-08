@@ -40,6 +40,6 @@ export default {
     AddToCalendarTitle: 'تبرع بالدم - شكرا!',
     AddToCalendarDescription: ' ',
     shareMessageBody: ' ',
-
+    yourPersonalGoals:"هدفك الشخصي"
 
 }
