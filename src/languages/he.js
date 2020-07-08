@@ -45,6 +45,6 @@ export default {
     AddToCalendarTitle: 'תרומת דם - תודה!',
     AddToCalendarDescription: ' ',
     shareMessageBody: ' ',
-
+    yourPersonalGoals:"היעד האישי שלך"
 }
 
