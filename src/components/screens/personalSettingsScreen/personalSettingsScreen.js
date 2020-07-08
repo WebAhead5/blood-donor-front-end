@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import TitleHeader from '../../general/titleHeader';
 import PersonalSettingsInput from '../../general/personalSettingsInput'
 import MainScreenWrapper from '../../general/mainScreenWrapper';
@@ -7,8 +7,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { personalSettings, useSetPersonalSettings } from '../../../store/personalSettings'
 import { useRecoilValue } from 'recoil';
 import moment from 'moment';
-
-const {useState} = require("react");
 
 
 const PersonalSettingsScreen = ({ intl }) => {
