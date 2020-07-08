@@ -37,7 +37,7 @@ function YourPersonalGoals({ scale, text, percentage }) {
 
     return (
         <div className="yourPersonalGoals_container">
-            <h3>Your Personal Goals</h3>
+            <h3 className="h3_padding_bottom">Your Personal Goals</h3>
             <div className="dropAndTargetContainer">
                 <div className="yourPersonalGoalDrop">
 

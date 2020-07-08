@@ -13,7 +13,7 @@ const AlertList = ({ data }) => {
     return (
         <div className="alertList_title_container" >
             {/* adding the language support */}
-            <h3><FormattedMessage id="Alerts" /></h3>
+            <h3 className="h3_padding_bottom"><FormattedMessage id="Alerts" /></h3>
             <div className="alertList_container">
 
                 {data?.map(({ title, context }, index) =>
