@@ -19,7 +19,8 @@ import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
 import { useSetLogState } from '../../store/logs';
 import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-
+import { useSetPersonalSettings } from '../../store/personalSettings'
+import { isMobile } from "react-device-detect";
 
 
 function App() {
@@ -28,10 +29,10 @@ function App() {
   const setLog = useSetLogState()
   const userLanguage = useRecoilValue(userLanguageState)
   const setUserLanguage = useSetUserLanguage()
-
   const userSettings = useRecoilValue(personalSettings)
   const setUserSettings = useSetPersonalSettings()
 
+  //Alert States :
   const [goalsData, setGoalsData] = useState([])
   const [alertData, setAlertData] = useState([])
   const [filteredAlertsData, setFilteredAlertsData] = useState([])
@@ -42,11 +43,15 @@ function App() {
 
 
   //  checks when the height of the page is changed(like  openning the keyboard) and then toggle class hidden.
+
   useEffect(() => {
     const hideKeyboard = () => {
-      const elements = document.querySelectorAll('.hideKeyboard')
-      elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+      if (isMobile) {
+        const elements = document.querySelectorAll('.hideKeyboard')
+        elements.forEach(elm => elm.classList.toggle('hidden', window.innerHeight !== onResize))
+      }
     }
+
     window.addEventListener('resize', hideKeyboard)
     return () => window.removeEventListener('resize', hideKeyboard)
   }, [])
@@ -84,7 +89,6 @@ function App() {
     callApi('GET', '/api/alerts', null, (err, res) => {
       if (err) console.error(err);
       else setAlertData(res.data)
-
     })
 
     // HomeMenu Effects :
