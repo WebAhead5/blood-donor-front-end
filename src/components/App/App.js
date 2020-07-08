@@ -19,7 +19,6 @@ import { userLanguageState, useSetUserLanguage } from '../../store/userLanguage'
 import { useSetLogState } from '../../store/logs';
 import {personalSettings, useSetPersonalSettings} from '../../store/personalSettings'
 import getLocaleLanguage from '../../utils/getLocaleLanguage'
-import deepEqual from 'deep-equal'
 
 
 
@@ -35,6 +34,7 @@ function App() {
 
   const [goalsData, setGoalsData] = useState([])
   const [alertData, setAlertData] = useState([])
+  const [filteredAlertsData, setFilteredAlertsData] = useState([])
   const [locationsData, setLocationsData] = useState([]);
   const [homeMenuData, setHomeMenuData] = useState([])
   const onResize = window.innerHeight
@@ -69,6 +69,7 @@ function App() {
       donationCount: localStorage.getItem('donationCount') || '',
       reminderCount: +localStorage.getItem('reminderCount') || 1,
       mostRecentDonation: localStorage.getItem('mostRecentDonation') || '',
+      loaded:true
     }
     setUserSettings(cachedState)
 
@@ -111,8 +112,7 @@ useEffect(()=>{
   if(userSettings.loaded && alertData.length)
   {
     let filteredRes = alertData.filter(alert=>alert.bloodType.includes(userSettings.bloodType))
-    if(!deepEqual(filteredRes,alertData))
-      setAlertData(filteredRes)
+    setFilteredAlertsData(filteredRes)
   }
 
 
@@ -129,7 +129,7 @@ useEffect(()=>{
       >
         <Switch>
           <Route exact path={routes.home}>
-            <HomeScreen alertsData={alertData} homeHeaderData={homeMenuData} />
+            <HomeScreen alertsData={filteredAlertsData} homeHeaderData={homeMenuData} />
           </Route>
 
           <Route exact path={routes.goals}>
