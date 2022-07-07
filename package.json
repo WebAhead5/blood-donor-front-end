@@ -10,7 +10,7 @@
     "deep-equal": "^2.0.3",
     "dotenv": "^8.2.0",
     "mapbox-gl-geocoder": "^2.0.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-add-to-calendar": "^0.1.5",
     "react-calendar": "^3.1.0",
